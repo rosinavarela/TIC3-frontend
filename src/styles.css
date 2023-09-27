@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksandand&display=swap");
+
+*{
+    box-sizing:border-box;
+}
+
+html{ /*para que sea uniforme en todo*/
+    font-size:16px; 
+}
+
+body{
+    margin:0;
+    font-family: "Quicksand", sand-serif;
+    font-size:18px;
+}
+
+a{ /* select all the anchor tags*/
+    text-decoration: none; /*para sacarle el underline*/
+}

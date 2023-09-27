@@ -1,0 +1,45 @@
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a{ 
+    height: 25rem;
+    width: 25rem;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color:black;
+    transition: opacity 0.2s ease; /* Add a smooth hover effect */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*todas las a tags adentro de li andentro de ul*/
+
+li a:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+ul li a:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Make the "name" text larger */
+.name {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Make the "date" and "place" text smaller */
+.date,
+.place {
+    font-size: 14px; /* Adjust the font size as needed */
+}
