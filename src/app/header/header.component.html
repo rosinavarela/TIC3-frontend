@@ -2,9 +2,11 @@
     <div class = "container">
         <a href="#" routerLink="/" class="logo">LiveTune
         </a>
-        <button class="login-button" (click)="goToPage('Login')">
-            <img src="/assets/images/logos/login.png" alt="Login">
-        </button>
+        <mat-dialog-actions>
+            <button class="login-button" (click)="goToPage('Login')">
+                <img src="/assets/images/logos/login.png" alt="Login">
+            </button>
+        </mat-dialog-actions>
     </div>
 
 </header>
