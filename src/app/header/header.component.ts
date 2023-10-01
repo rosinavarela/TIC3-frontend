@@ -1,6 +1,8 @@
 // Import necessary Angular modules and components
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 // Define the HeaderComponent as an Angular component
 @Component({
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'] // The associated CSS styles for this component
 })
 export class HeaderComponent {
-
+/*
   // Constructor method for the HeaderComponent, which injects the Router service
   constructor(private router: Router) {}
 
@@ -18,5 +20,14 @@ export class HeaderComponent {
   goToPage(pageName: string): void {
     // Use the Angular Router's 'navigate' method to navigate to the specified route
     this.router.navigate([`${pageName}`]);
+  }
+*/
+
+  constructor(private matDialog:MatDialog){}
+  goToPage(pageName: string){
+    //podria hacer un if para ver a que pagina quiere ir
+    this.matDialog.open(LoginComponent,{
+      width:'360px',
+    })
   }
 }

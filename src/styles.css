@@ -19,3 +19,5 @@ body{
 a{ /* select all the anchor tags*/
     text-decoration: none; /*para sacarle el underline*/
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
