@@ -5,7 +5,8 @@ import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'Login', component: LoginComponent}
+  {path: 'Login', component: LoginComponent},
+  { path: '**', component: HomeComponent }    //wildcard route, could be a 404 not found page
 ];
 
 /* 
