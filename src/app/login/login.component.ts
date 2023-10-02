@@ -12,6 +12,7 @@ export class LoginComponent {
   email!: string;
   password!: string;
   loginMessage?: string;
+  user?: User;
 
   constructor(private loginService: LoginService, private snackBar: MatSnackBar) {
 
@@ -37,6 +38,19 @@ export class LoginComponent {
           this.loginMessage = data.message;
         }
         else if (data.type == "artist") {
+          try {
+            let jsonUser = data.user;
+            if (jsonUser && typeof jsonUser === 'object') {
+              this.user = new User();
+              this.user.email = jsonUser.email
+              this.user.password = jsonUser.password
+              console.log('user:', this.user); // Use "this.user" to access the property
+            } else {
+              console.error('Invalid JSON data or not an object:', jsonUser);
+            }
+          } catch (error) {
+            console.error('Error parsing JSON:', error);
+          }
           //definir
         } else if (data.type == "business") {
           //definir 
@@ -52,6 +66,6 @@ export class LoginComponent {
         });
       }
     );
-}
+  }
 
 }
