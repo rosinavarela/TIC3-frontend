@@ -6,11 +6,11 @@ import { MatDialog } from '@angular/material/dialog';
 
 // Define the HeaderComponent as an Angular component
 @Component({
-  selector: 'app-header', // The component can be used in templates with the <app-header> tag
-  templateUrl: './header.component.html', // The HTML template for this component
-  styleUrls: ['./header.component.css'] // The associated CSS styles for this component
+  selector: 'app-menubar', // The component can be used in templates with the <app-header> tag
+  templateUrl: './menubar.component.html', // The HTML template for this component
+  styleUrls: ['./menubar.component.css'] // The associated CSS styles for this component
 })
-export class HeaderComponent {
+export class MenubarComponent {
 /*
   // Constructor method for the HeaderComponent, which injects the Router service
   constructor(private router: Router) {}
