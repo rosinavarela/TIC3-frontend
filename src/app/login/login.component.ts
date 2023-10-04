@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { LoginService } from '../services/login/login.service';
 import { User } from '../shared/models/User';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Artist } from '../shared/models/Artist'
+import { Business } from '../shared/models/Business';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,8 @@ export class LoginComponent {
   password!: string;
   loginMessage?: string;
   user?: User;
+  artist?: Artist;
+  business?: Business;
 
   constructor(private loginService: LoginService, private snackBar: MatSnackBar) {
 
@@ -22,38 +26,43 @@ export class LoginComponent {
     // Clear the input field
     this.email = '';
     this.password = '';
+    this.loginMessage = '';
   }
 
   checkLogin() {
-    console.log("function called");
-    console.log(this.email);
-    console.log(this.password);
     const user = { email: this.email, password: this.password };//ver si cambiar esto a model user o no
-    console.log(user);
     this.loginService.checkUser(user).subscribe(
       (data) => {
         // Handle success
         console.log('Response:', data);
-        if (data.type == null) {
+        if (data.type === null) {
           this.loginMessage = data.message;
         }
-        else if (data.type == "artist") {
+        else if (data.type === "artist") {
           try {
             let jsonUser = data.user;
             if (jsonUser && typeof jsonUser === 'object') {
-              this.user = new User();
-              this.user.email = jsonUser.email
-              this.user.password = jsonUser.password
-              console.log('user:', this.user); // Use "this.user" to access the property
+              this.artist = jsonUser
+              console.log('artist:', this.artist);
             } else {
               console.error('Invalid JSON data or not an object:', jsonUser);
             }
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
-          //definir
-        } else if (data.type == "business") {
-          //definir 
+
+        } else if (data.type === "business") {
+          try {
+            let jsonUser = data.user;
+            if (jsonUser && typeof jsonUser === 'object') {
+              this.business = jsonUser
+              console.log('business:', this.business);
+            } else {
+              console.error('Invalid JSON data or not an object:', jsonUser);
+            }
+          } catch (error) {
+            console.error('Error parsing JSON:', error);
+          }
         }
       },
       (error) => {
