@@ -3,11 +3,11 @@ import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event'
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.css']
 })
-export class HomeComponent implements OnInit{
+export class EventComponent implements OnInit{
 
   events: Event[] = [];
   constructor(private eventservice: EventService){}

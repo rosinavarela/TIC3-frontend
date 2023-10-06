@@ -1,44 +1,13 @@
-header{
-    padding:0;
-    border-bottom: transparent;
+/* esto deja un espacio*/
+.example-spacer {
+    flex: 1 1 auto;
 }
 
-a{/* selecciona todos los elementos a (anchor elements) */
-    color:  #fea386; 
-
+.menu-button{
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
 }
 
-a:hover{ /*cuando te paras arriba pasa esto*/
-    background: #cfcbcb;
-    color: white; 
+.menu-button.rotated {
+    transform: rotate(180deg);
 }
-
-.container{
-    margin:0 auto; /*el primero es vertical y el segundo es horizonatal*/
-    display: flex; 
-    justify-content: space-between;
-    background-color: #f6e4c4;
-}
-
-a.logo{
-    font-weight: bold;
-    padding: 1em; /*padding a los costados*/
-}
-
-.login-button {
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    color: white;
-    background-color: transparent; /* Set the background color to transparent */
-
-}
-
-.login-button img {
-    width: 50px; /* Adjust the image width as needed */
-    height: 50px; /* Adjust the image height as needed */
-}
-
-
-
-

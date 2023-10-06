@@ -48,13 +48,28 @@ $my-palette-primary: mat-palette($my-primary-color);
 $my-palette-accent: mat-palette($my-accent-color);
 $my-palette-warn: mat-palette($my-warn-color);
 
+/*
+@font-face {
+  font-family: 'MyFont'; // Replace with your desired font name
+  src: url('../assets/fonts/custom-font.woff2') format('woff2'),
+       url('../assets/fonts/custom-font.woff') format('woff'),
+       url('../assets/fonts/custom-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
 // TEMA PROPIO
 $my-theme: mat-light-theme((
- color: (
-   primary: $my-palette-primary,
-   accent: $my-palette-accent,
-   warn: $my-palette-warn
- )
+  /*typography: (
+    font-family: 'CustomFont', sans-serif; // Use the custom font here
+  ),
+  */
+  color: (
+    primary: $my-palette-primary,
+    accent: $my-palette-accent,
+    warn: $my-palette-warn
+  )
 ));
 
 // APLICAR NUESTRO TEMA A ANGULAR

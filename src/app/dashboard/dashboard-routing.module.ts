@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { InfoComponent } from './components/info/info.component';
-import { UserComponent } from './components/user/user.component';
+import { EventComponent } from './components/event/event.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SidenavWrapperComponent } from './components/sidenav-wrapper/sidenav-wrapper.component';
 
 const routes: Routes = [
@@ -12,22 +11,23 @@ const routes: Routes = [
     component: SidenavWrapperComponent,
     children: [
       {
-        path: 'home',
-        component: HomeComponent
+        path: '',
+        redirectTo: 'event', // Redirect to 'home' by default
+        pathMatch: 'full'
       },
       {
-        path: 'info',
-        component: InfoComponent
+        path: 'event',
+        component: EventComponent
       },
       {
-        path: 'user',
-        component: UserComponent
+        path: 'aboutus',
+        component: AboutusComponent
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/event',
     pathMatch: 'full'
   }
 ];

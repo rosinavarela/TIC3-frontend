@@ -1,11 +1,10 @@
-<header>
-    <div class = "container">
-        <a href="#" routerLink="/" class="logo">LiveTune
-        </a>
-        <mat-dialog-actions>
-            <button class="login-button" (click)="goToPage('Login')">
-                <img src="/assets/images/logos/login.png" alt="Login">
-            </button>
-        </mat-dialog-actions>
-    </div>
-</header>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (sidenavService.isExpanded$ | async)}" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>LiveTune</span>
+    <span class="example-spacer"></span>
+    <button (click)="goToPage('Login')" mat-icon-button>
+        <mat-icon>supervisor_account</mat-icon>
+    </button>
+</mat-toolbar>

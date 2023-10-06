@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SidenavService } from 'src/app/services/menubar/sidenav.service'; 
+
 
 // Define the HeaderComponent as an Angular component
 @Component({
@@ -10,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './menubar.component.html', // The HTML template for this component
   styleUrls: ['./menubar.component.css'] // The associated CSS styles for this component
 })
-export class MenubarComponent {
+export class MenubarComponent{
 /*
   // Constructor method for the HeaderComponent, which injects the Router service
   constructor(private router: Router) {}
@@ -23,11 +25,16 @@ export class MenubarComponent {
   }
 */
 
-  constructor(private matDialog:MatDialog){}
+  constructor(private matDialog:MatDialog, public sidenavService: SidenavService){}
+  
   goToPage(pageName: string){
     //podria hacer un if para ver a que pagina quiere ir
     this.matDialog.open(LoginComponent,{
       width:'360px',
     })
+  }
+
+  toggleSidenav() {
+    this.sidenavService.toggleSidenav();
   }
 }
