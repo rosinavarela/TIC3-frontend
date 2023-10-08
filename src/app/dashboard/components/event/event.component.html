@@ -1,7 +1,7 @@
 <ul>
     <li *ngFor="let event of events"> <!--for por si tuviera mas fotos-->
         <a> <!--agregamos esto para que sea anchor, sino no se le aplica el css .a-->
-            <img src ="{{event.imageUrl}}" alt="">
+            <img src ="{{event.picture}}" alt="">
             <div class = "content">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
                 <div class= "date"> 
@@ -11,7 +11,7 @@
                     {{event.name}}
                 </div>
                 <div class= "place"> 
-                    {{event.place}}
+                    {{event.location}}
                 </div>
             </div>
         </a>

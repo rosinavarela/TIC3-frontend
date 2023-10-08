@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Event} from '../../shared/models/Event'
+import { Event } from '../../shared/models/Event'
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,47 +10,71 @@ import {Event} from '../../shared/models/Event'
 /* aca vamos a definir lo que tiene el modelo de comida asi cuando lo llamamos trae todo junto */
 export class EventService {
 
-  constructor() { }
+  baseURL: string = "http://localhost:3000/";
 
-  getAll():Event[]{ //queremos que devuelva objeto food
-    const date = new Date('2023-09-30T12:00:00');
-    return [
-      {
-        id:1,
-        name:"veni a cantar",
-        place:"Bar arocena",
-        imageUrl:"/assets/images/events/BarArocena.jpeg",
-        date:new Date('2023-09-30T12:00:00'), //o usar solo esto
-        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
-        date_limit: new Date('2023-09-29'),
-        payment:true,
-        artist: null, 
-      },
-      {
-        id:2,
-        name:"veni a cantar",
-        place:"Bar arocena",
-        imageUrl:"/assets/images/events/BarArocena.jpeg",
-        date:new Date('2023-09-30T12:00:00'),
-        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
-        date_limit: new Date('2023-09-29'),
-        payment:true,
-        artist: null, 
-      },
-      {
-        id:3,
-        name:"veni a cantar",
-        place:"Bar arocena",
-        imageUrl:"/assets/images/events/BarArocena.jpeg",
-        date:new Date('2023-09-30T12:00:00'),
-        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
-        date_limit: new Date('2023-09-29'),
-        payment:true,
-        artist: null, 
-      }
-      
-    ]
+  constructor(private http: HttpClient) { }
+
+  getEvents(): Observable<Event[]> {
+    return this.http.get<any[]>(this.baseURL + 'events').pipe(
+      map((response: any[]) => {
+        return response.map(eventData => new Event(
+          eventData.id,
+          eventData.name,
+          eventData.date,
+          eventData.genre, 
+          eventData.time, 
+          eventData.place,
+          eventData.date_limit,
+          eventData.paid,
+          eventData.artist,
+          eventData.picture,
+          eventData.applicationDeadline,
+          eventData.description,
+          eventData.equipment
+        ));
+      })
+    );
   }
+
+  // getAll(): Event[] { //queremos que devuelva objeto food
+  //   const date = new Date('2023-09-30T12:00:00');
+  //   return [
+  //     {
+  //       id: 1,
+  //       name: "veni a cantar",
+  //       place: "Bar arocena",
+  //       picture: "/assets/images/events/BarArocena.jpeg",
+  //       date: new Date('2023-09-30T12:00:00'), //o usar solo esto
+  //       //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+  //       date_limit: new Date('2023-09-29'),
+  //       payment: true,
+  //       artist: null,
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "veni a cantar",
+  //       place: "Bar arocena",
+  //       imageUrl: "/assets/images/events/BarArocena.jpeg",
+  //       date: new Date('2023-09-30T12:00:00'),
+  //       //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+  //       date_limit: new Date('2023-09-29'),
+  //       payment: true,
+  //       artist: null,
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "veni a cantar",
+  //       place: "Bar arocena",
+  //       imageUrl: "/assets/images/events/BarArocena.jpeg",
+  //       date: new Date('2023-09-30T12:00:00'),
+  //       //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+  //       date_limit: new Date('2023-09-29'),
+  //       payment: true,
+  //       artist: null,
+  //     }
+
+    // ]
+  // }
 
 }
 
