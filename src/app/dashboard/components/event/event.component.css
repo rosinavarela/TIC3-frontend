@@ -1,45 +1,79 @@
-ul{
+/* Apply styles to the Angular Material list */
+mat-nav-list {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    list-style-type: none;
     padding: 0;
-}
-
-ul li a{ 
-    height: 25rem;
+    list-style-type: none;
+  }
+  
+  /* Apply styles to the Angular Material list items */
+mat-list-item {
+    height: 25rem !important;
     width: 25rem;
-    border: 1px solid whitesmoke;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Use a lighter border color */
     border-radius: 1rem;
     margin: 0.5rem;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    color:black;
-    transition: opacity 0.2s ease; /* Add a smooth hover effect */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    transition: opacity 0.2s ease;
 }
-/*todas las a tags adentro de li andentro de ul*/
 
-li a:hover{
+mat-list-item img {
+    height: 70%; /* Adjust the height as needed */
+    width: 100%; /* Ensure the image maintains its aspect ratio */
+}
+
+mat-list-item .content {
+    height: 30%; /* Adjust the height as needed */
+    width: 100%; /* Ensure the image maintains its aspect ratio */
+    overflow: auto; /* Add scrollbars if necessary for overflow content */
+    word-wrap: break-word; /* Allow text to break/wrap to the next line when needed */
+    white-space: normal; /* Allow text to wrap within the container */
+    align-items: center;
+}
+
+  /* Adjust hover styles for Angular Material list items */
+mat-list-item:hover {
     opacity: 0.9;
     cursor: pointer;
-}
-
-ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-/* Make the "name" text larger */
-.name {
-    font-size: 20px; /* Adjust the font size as needed */
+  
+  /* Adjust typography styles for Angular Material list items */
+mat-list-item .name {
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
 }
+  
+  /* Adjust styles for smaller text in Angular Material list items */
+mat-list-item .date,
+mat-list-item .place {
+  font-size: 14px;
+}
 
-/* Make the "date" and "place" text smaller */
-.date,
-.place {
-    font-size: 14px; /* Adjust the font size as needed */
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* Horizontally align items to the right */
+    align-items: center; /* Vertically center items */
+    padding-top: 30px;
+}
+
+/* Add spacing between filter components */
+.filter-container app-filter-ubicacion,
+.filter-container app-filter-mes,
+.filter-container app-filter-local,
+.filter-container app-filter-estilo {
+    margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+.filter-text{
+    margin-right: 10px; /* Adjust the spacing as needed */
+    align-items: center; /* Vertically center items */
+    display: flex; /* Use flexbox for vertical centering */
+    vertical-align: middle; /* Vertically align the text */
+    font-weight: 900;
 }

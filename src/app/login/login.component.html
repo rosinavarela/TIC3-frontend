@@ -1,25 +1,30 @@
+
 <button mat-icon-button style="float:right; margin: 5px" matDialogClose>
     <mat-icon>close</mat-icon>
 </button>
 <mat-dialog-content>
     <header>
-        <h1>Login</h1>
+        <h1 class="mat-headline-1">Login</h1>
     </header>
-    <p><!--define un parrafo-->
+    <p ><!--define un parrafo-->
         <mat-form-field class="mail">
             <input matInput type="email" [(ngModel)]="email" placeholder="Email">
-            <mat-icon matSuffix>drafts</mat-icon>
+            <mat-icon matSuffix >drafts</mat-icon>
         </mat-form-field>
     </p>
     <p><!--define un parrafo-->
-        <mat-form-field>
+        <mat-form-field class= "password">
             <input matInput type="password" [(ngModel)]="password" placeholder="Password">
             <mat-icon matSuffix>lock</mat-icon> <!--el icono que aparece al lado-->
         </mat-form-field>
     </p>
-    <p *ngIf="loginMessage" class="login-message">{{ loginMessage }}</p>
+    <p>
+        <span>Si no tienes cuenta</span>
+    </p>
+    <button mat-raised-button color="warn">Regístrate Aquí</button>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" (click)="checkLogin()" (click)="clearInput()">Login</button>
-    <button mat-raised-button color="warm" matDialogClose>Cancel</button>
+    <button mat-raised-button color="warn" matDialogClose>Cancel</button>
 </mat-dialog-actions>
+

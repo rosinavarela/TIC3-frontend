@@ -45,8 +45,73 @@ export class EventService {
         date_limit: new Date('2023-09-29'),
         payment:true,
         artist: null, 
+      },
+      {
+        id:3,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
+      },
+      {
+        id:4,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
+      },
+      {
+        id:5,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
+      },
+      {
+        id:6,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
+      },
+      {
+        id:7,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
+      },
+      {
+        id:8,
+        name:"veni a cantar",
+        place:"Bar arocena",
+        imageUrl:"/assets/images/events/BarArocena.jpeg",
+        date:new Date('2023-09-30T12:00:00'),
+        //time:new Date(10, 30),//fijarme si esto es solo hora uni fecha y hora
+        date_limit: new Date('2023-09-29'),
+        payment:true,
+        artist: null, 
       }
-      
     ]
   }
 

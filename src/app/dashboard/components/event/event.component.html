@@ -1,22 +1,24 @@
-<ul>
-    <li *ngFor="let event of events"> <!--for por si tuviera mas fotos-->
-        <a> <!--agregamos esto para que sea anchor, sino no se le aplica el css .a-->
-            <img src ="{{event.imageUrl}}" alt="">
-            <div class = "content">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-                <div class= "date"> 
-                    {{event.date}}
-                </div>
-                <div class="name"> 
-                    {{event.name}}
-                </div>
-                <div class= "place"> 
-                    {{event.place}}
-                </div>
+
+<div class="filter-container">
+    <span class="filter-text">Aplicar filtros:</span>
+    <app-filter-ubicacion></app-filter-ubicacion>
+    <app-filter-mes></app-filter-mes>
+    <app-filter-local></app-filter-local>
+    <app-filter-estilo></app-filter-estilo>
+</div>
+
+<mat-nav-list>
+    <mat-list-item *ngFor="let event of events">
+        <a>
+            <img [src]="event.imageUrl" alt="Event Image">
+            <div class="content">
+                <div class="date">{{ event.date | date:'dd/MM/yy'}}</div>
+                <div class="name">{{ event.name }}</div>
+                <div class="place">{{ event.place }}</div>
             </div>
         </a>
-    </li>
-</ul>
+    </mat-list-item>   
+</mat-nav-list>
 
 <!--
     <ul>: This is an unordered list element, typically used for creating a bullet-pointed list.

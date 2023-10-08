@@ -4,4 +4,16 @@
 .custom-snackbar {
     background-color: rgb(240, 165, 223) !important; /* Change to your desired background color */
     color: #0004f1 !important; /* Change to your desired text color */
-  }
+}
+
+mat-dialog-content{
+  width: 100%;
+  text-align: center;
+}
+
+.mail,
+.password {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}

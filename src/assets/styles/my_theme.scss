@@ -1,40 +1,53 @@
+@use '@angular/material' as mat;
 @import '@angular/material/theming';
-
 @include mat-core();
 
 
+//typography
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Poppins',
+  $headline-1: mat.define-typography-level(32px, 48px, 2000, $letter-spacing: .2rem),
+  $headline-2: mat.define-typography-level(28px, 40px, 700), 
+  $headline-3: mat.define-typography-level(24px, 32px, 700), 
+  $headline-4: mat.define-typography-level(20px, 28px, 700), 
+  $headline-5: mat.define-typography-level(18px, 24px, 700),
+  $body-1: mat.define-typography-level(16px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 20px, 400), 
+);
+
 // GAMA COLORES
 $my-primary-color: (
-  100 : #80a1ac,
-  200 : #80a1ac,
-  500 : #004358,
-  700 : #003447,
+  100: #4DB6AC,    // Lighter orange
+  200: #4DB6AC,    // Lighter orange
+  500: #4DB6AC,    // Pink
+  700: #4DB6AC,    // Pink
   contrast: (
-    100 : #000000,
-    200 : #000000,
+    100 : #ffffff,
+    200 : #ffffff,
     500 : #ffffff,
     700 : #ffffff,
   )
 );
 
 $my-accent-color: (
-  100 : #B8DBD3,
-  200 : #8fc5b8,
-  500 : #1f8a70,
-  700 : #17775d,
+  100: #80CBC4,    
+  200: #4DB6AC,    
+  500: #4DB6AC,    
+  700: #4DB6AC,   
   contrast: (
     100 : #000000,
     200 : #000000,
-    500 : #ffffff,
-    700 : #ffffff,
+    500 : #000000,
+    700 : #000000,
   )
 );
 
 $my-warn-color: (
-  100 : #feba80,
-  200 : #feba80,
-  500 : #fd7400,
-  700 : #fc6100,
+  100: #fcc999,    // Lighter orange
+  200: #fcc999,    // Lighter orange
+  500: #fcc999,    // Orange
+  700: #fcc999,    // Orange
   contrast: (
     100 : #000000,
     200 : #000000,
@@ -48,32 +61,18 @@ $my-palette-primary: mat-palette($my-primary-color);
 $my-palette-accent: mat-palette($my-accent-color);
 $my-palette-warn: mat-palette($my-warn-color);
 
-/*
-@font-face {
-  font-family: 'MyFont'; // Replace with your desired font name
-  src: url('../assets/fonts/custom-font.woff2') format('woff2'),
-       url('../assets/fonts/custom-font.woff') format('woff'),
-       url('../assets/fonts/custom-font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-*/
-
 // TEMA PROPIO
 $my-theme: mat-light-theme((
-  /*typography: (
-    font-family: 'CustomFont', sans-serif; // Use the custom font here
-  ),
-  */
   color: (
     primary: $my-palette-primary,
     accent: $my-palette-accent,
     warn: $my-palette-warn
-  )
+  ),
+  typography: $custom-typography,
 ));
 
 // APLICAR NUESTRO TEMA A ANGULAR
-@include angular-material-theme($my-theme);
+@include mat.all-component-themes($my-theme);
 
 
 // REEMPLAZA EN ANGULAR.JSON -> STYLES

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../services/event/event.service';
-import {Event} from '../../../shared/models/Event'
+import {Event} from '../../../shared/models/Event';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  styleUrls: ['./event.component.css'],
 })
 export class EventComponent implements OnInit{
 
