@@ -13,7 +13,15 @@ export class EventComponent implements OnInit{
   constructor(private eventservice: EventService){}
 
   ngOnInit(): void {
-    this.events=this.eventservice.getAll(); //llama a la funcion getall de los servicios
+    // this.events=this.eventservice.getEvents(); //llama a la funcion getall de los servicios
+    this.eventservice.getEvents().subscribe(
+      (data: Event[]) => {
+        this.events = data; // Update events when data is available
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
+    );
   }
 }
 
