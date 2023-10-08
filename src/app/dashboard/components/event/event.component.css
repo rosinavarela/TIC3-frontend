@@ -50,7 +50,7 @@ mat-list-item .name {
   
   /* Adjust styles for smaller text in Angular Material list items */
 mat-list-item .date,
-mat-list-item .place {
+mat-list-item .location {
   font-size: 14px;
 }
 

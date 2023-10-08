@@ -24,7 +24,7 @@ export class EventService {
           eventData.date,
           eventData.genre, 
           eventData.time, 
-          eventData.place,
+          eventData.business.location,
           eventData.date_limit,
           eventData.paid,
           eventData.artist,
