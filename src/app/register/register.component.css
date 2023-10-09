@@ -1,0 +1,17 @@
+mat-dialog-content{
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* .mail,
+  .password {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  } */
+
+ mat-form-field {
+    width: 100%; /* Adjust the width as needed */
+    padding-left: 15px;
+    padding-right: 15px;
+  }

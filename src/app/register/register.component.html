@@ -1,0 +1,80 @@
+<button mat-icon-button style="float:right; margin: 5px" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<div>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        <mat-dialog-content>
+            <header>
+                <h1 class="mat-headline-1">Registrarse</h1>
+            </header>
+
+            <mat-form-field>
+                <mat-label>Tipo de usuario</mat-label><!--esto aparece arriba del input-->
+                <mat-select formControlName="userType" (valueChange)="toggleUserType($event)">
+                    <mat-option value="artist">Artista</mat-option>
+                    <mat-option value="business">Negocio</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email">
+                <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
+                    El mail es necesario.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+                    Por favor ingrese un mail válido.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Nombre">
+                <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">
+                    El nombre es necesario.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Password" >
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                    <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                  </button>
+                <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">
+                    La contraseña es necesaria.
+                </mat-error>
+            </mat-form-field>
+            <!-- Artist-specific fields -->
+            <div *ngIf="userType === 'artist'">
+                <mat-form-field>
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="artistLastName" placeholder="Apellido">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Cédula</mat-label>
+                    <input matInput formControlName="artistId" placeholder="ej.: 12134715">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="artistDescription" ></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- Business-specific fields -->
+            <div *ngIf="userType === 'business'">
+                <mat-form-field>
+                    <mat-label>Business Name</mat-label>
+                    <input matInput formControlName="businessName" placeholder="Business Name">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Business Type</mat-label>
+                    <input matInput formControlName="businessType" placeholder="Business Type">
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button color="primary" type="submit">Confirmar</button>
+        </mat-dialog-content>
+    </form>
+</div>
