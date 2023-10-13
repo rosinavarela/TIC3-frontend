@@ -23,6 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { RegisterComponent } from './register/register.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { RegisterComponent } from './register/register.component';
     MatSelectModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Artist } from '../shared/models/Artist';
 import { Business } from '../shared/models/Business';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-register-form',
@@ -17,6 +18,7 @@ export class RegisterComponent {
   userType: string = 'artist'; // Default to 'artist'
   hidePassword: boolean = true; // Add this line to define the property
 
+
   constructor() {
     this.registrationForm = new FormGroup({
       userType: new FormControl('artist', Validators.required),
@@ -30,13 +32,29 @@ export class RegisterComponent {
       artistDescription: new FormControl(''),
       // Business-specific fields
       businessName: new FormControl(''),
-      businessType: new FormControl('')
+      businessType: new FormControl(''),
+
+      addMoreFields: new FormControl(false),  // Default value is set to 'false'
     });
   }
 
   toggleUserType(userType: string) {
     this.userType = userType;
   } 
+
+  toggleAdditionalFields(checked: MatCheckboxChange) {
+    if (checked.checked) {
+      // Add additional form controls
+      console.log('checkbox checked: ', checked.checked)
+      this.registrationForm.addControl('artistArtisticName', new FormControl(''));
+      // Add more controls as needed
+    } else {
+      // Remove additional form controls
+      this.registrationForm.removeControl('artistArtisticName');
+      // Remove more controls as needed
+    }
+  }
+  
 
   register() {
     // Handle the registration logic based on the selected user type and form values

@@ -35,14 +35,16 @@
 
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Password" >
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                    placeholder="Password">
                 <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                     <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
-                  </button>
+                </button>
                 <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">
                     La contraseña es necesaria.
                 </mat-error>
             </mat-form-field>
+
             <!-- Artist-specific fields -->
             <div *ngIf="userType === 'artist'">
                 <mat-form-field>
@@ -57,8 +59,18 @@
 
                 <mat-form-field>
                     <mat-label>Descripción</mat-label>
-                    <textarea matInput formControlName="artistDescription" ></textarea>
+                    <textarea matInput formControlName="artistDescription"></textarea>
                 </mat-form-field>
+
+                <mat-checkbox formControlName="addMoreFields" (change)="toggleAdditionalFields($event)">Configurar Perfil Ahora</mat-checkbox>
+                <div *ngIf="registrationForm.get('addMoreFields')?.value">
+                    <!-- Additional input fields here -->
+                    <mat-form-field>
+                        <mat-label>Nombre Artístico</mat-label>
+                        <input matInput formControlName="artistArtisticName">
+                    </mat-form-field>
+                </div>
+
             </div>
 
             <!-- Business-specific fields -->
