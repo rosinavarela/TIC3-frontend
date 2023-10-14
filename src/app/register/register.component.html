@@ -1,92 +1,141 @@
-<button mat-icon-button style="float:right; margin: 5px" matDialogClose>
-    <mat-icon>close</mat-icon>
-</button>
 <div>
     <form [formGroup]="registrationForm" (ngSubmit)="register()">
         <mat-dialog-content>
+            <button mat-icon-button class="right-align" matDialogClose>
+                <mat-icon>close</mat-icon>
+            </button>
             <header>
                 <h1 class="mat-headline-1">Registrarse</h1>
             </header>
-
-            <mat-form-field>
-                <mat-label>Tipo de usuario</mat-label><!--esto aparece arriba del input-->
-                <mat-select formControlName="userType" (valueChange)="toggleUserType($event)">
-                    <mat-option value="artist">Artista</mat-option>
-                    <mat-option value="business">Negocio</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="Email">
-                <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
-                    El mail es necesario.
-                </mat-error>
-                <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
-                    Por favor ingrese un mail válido.
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input matInput formControlName="name" placeholder="Nombre">
-                <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">
-                    El nombre es necesario.
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
-                    placeholder="Password">
-                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-                    <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
-                </button>
-                <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">
-                    La contraseña es necesaria.
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Artist-specific fields -->
-            <div *ngIf="userType === 'artist'">
+            <div class="row">
                 <mat-form-field>
-                    <mat-label>Apellido</mat-label>
-                    <input matInput formControlName="artistLastName" placeholder="Apellido">
+                    <mat-label>Tipo de usuario</mat-label><!--esto aparece arriba del input-->
+                    <mat-select formControlName="userType" (valueChange)="toggleUserType($event)">
+                        <mat-option value="artist">Artista</mat-option>
+                        <mat-option value="business">Negocio</mat-option>
+                    </mat-select>
                 </mat-form-field>
-
+            </div>
+            <div class="row">
                 <mat-form-field>
-                    <mat-label>Cédula</mat-label>
-                    <input matInput formControlName="artistId" placeholder="ej.: 12134715">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Email">
+                    <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+                        Por favor ingrese un mail válido.
+                    </mat-error>
                 </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>Descripción</mat-label>
-                    <textarea matInput formControlName="artistDescription"></textarea>
-                </mat-form-field>
-
-                <mat-checkbox formControlName="addMoreFields" (change)="toggleAdditionalFields($event)">Configurar Perfil Ahora</mat-checkbox>
-                <div *ngIf="registrationForm.get('addMoreFields')?.value">
-                    <!-- Additional input fields here -->
+            </div>
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col">
                     <mat-form-field>
-                        <mat-label>Nombre Artístico</mat-label>
-                        <input matInput formControlName="artistArtisticName">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput [type]="hidePassword1 ? 'password' : 'text'" formControlName="password"
+                            placeholder="Password">
+                        <button mat-icon-button matSuffix type="button" (click)="hidePassword1 = !hidePassword1">
+                            <mat-icon>{{ hidePassword1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </button>
                     </mat-form-field>
                 </div>
-
+                <!-- Column 2 -->
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Repetir contraseña</mat-label>
+                        <input matInput [type]="hidePassword2 ? 'password2' : 'text'" formControlName="password2"
+                            placeholder="Password">
+                        <button mat-icon-button matSuffix type="button" (click)="hidePassword2 = !hidePassword2">
+                            <mat-icon>{{ hidePassword2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- Artist-specific fields -->
+            <div *ngIf="userType === 'artist'">
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="name" placeholder="Nombre">
+                        </mat-form-field>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Apellido</mat-label>
+                            <input matInput formControlName="lastName" placeholder="Apellido">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Cédula</mat-label>
+                            <input matInput formControlName="id" placeholder="ej.: 12134715">
+                        </mat-form-field>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput formControlName="phone">
+                        </mat-form-field>
+                    </div>
+                </div>
             </div>
 
             <!-- Business-specific fields -->
             <div *ngIf="userType === 'business'">
-                <mat-form-field>
-                    <mat-label>Business Name</mat-label>
-                    <input matInput formControlName="businessName" placeholder="Business Name">
-                </mat-form-field>
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="name" placeholder="Nombre">
+                        </mat-form-field>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput formControlName="phone">
+                        </mat-form-field>
+                    </div>
+                </div>
 
-                <mat-form-field>
-                    <mat-label>Business Type</mat-label>
-                    <input matInput formControlName="businessType" placeholder="Business Type">
-                </mat-form-field>
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Rut</mat-label>
+                            <input matInput formControlName="rut">
+                        </mat-form-field>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Razón Social</mat-label>
+                            <input matInput formControlName="legalName">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Ubicación</mat-label>
+                        <input matInput formControlName="location">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+                </div>
             </div>
 
-            <button mat-raised-button color="primary" type="submit">Confirmar</button>
+            <button mat-raised-button class="right-align" color="primary" [disabled]=" !checkControlValidity('email') || !checkControlValidity('password') || !checkControlValidity('password2') || !checkControlValidity('name') || !checkControlValidity('lastName') || !checkControlValidity('id') || !checkControlValidity('phone')"type="submit" (click)="clearInput()">Siguiente</button>
         </mat-dialog-content>
     </form>
 </div>

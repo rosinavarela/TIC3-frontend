@@ -42,8 +42,8 @@ export class LoginComponent {
   goToPage(pageName: string){
     //podria hacer un if para ver a que pagina quiere ir
     this.matDialog.open(RegisterComponent,{
-      width:'1000px',
-      height: '700px'
+      width:'900px',
+      height: '650px'
     })
   }
 

@@ -3,6 +3,7 @@ import { Artist } from '../shared/models/Artist';
 import { Business } from '../shared/models/Business';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { RegisterService } from '../services/register/register.service';
 
 @Component({
   selector: 'app-register-form',
@@ -12,68 +13,81 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 export class RegisterComponent {
   
   genres = ['pop', 'rock', 'jazz', 'clásic', 'alternativo', 'indie', 'cumbia', 'rap/trap', 'otro'];
-  // model = new Artist(1,"artista", "apellido", 123465);
-  // artist?: Artist;
   registrationForm: FormGroup;
   userType: string = 'artist'; // Default to 'artist'
-  hidePassword: boolean = true; // Add this line to define the property
+  hidePassword1: boolean = true;
+  hidePassword2: boolean = true;
 
-
-  constructor() {
+  constructor(private registerService: RegisterService) {
     this.registrationForm = new FormGroup({
       userType: new FormControl('artist', Validators.required),
       // Common fields
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
+      password2: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
       // Artist-specific fields
-      artistLastName: new FormControl('', Validators.required),
-      artistId: new FormControl('', Validators.required),
-      artistDescription: new FormControl(''),
+      lastName: new FormControl('', Validators.required),
+      id: new FormControl('', Validators.required),
       // Business-specific fields
-      businessName: new FormControl(''),
-      businessType: new FormControl(''),
-
-      addMoreFields: new FormControl(false),  // Default value is set to 'false'
+      legalName: new FormControl('', Validators.required),
+      rut: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required),
+      description: new FormControl(''),
     });
   }
 
   toggleUserType(userType: string) {
     this.userType = userType;
-  } 
+  }   
 
-  toggleAdditionalFields(checked: MatCheckboxChange) {
-    if (checked.checked) {
-      // Add additional form controls
-      console.log('checkbox checked: ', checked.checked)
-      this.registrationForm.addControl('artistArtisticName', new FormControl(''));
-      // Add more controls as needed
-    } else {
-      // Remove additional form controls
-      this.registrationForm.removeControl('artistArtisticName');
-      // Remove more controls as needed
+  checkControlValidity(controlName: string): boolean {
+    const control = this.registrationForm.get(controlName);
+    if (control) {
+      const isValid = control.valid;
+      //console.log(`Control '${controlName}' validity:`, isValid);
+      return isValid;
     }
+    return true; // Control not found (assumed valid)
   }
-  
 
   register() {
     // Handle the registration logic based on the selected user type and form values
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
-    // Add your registration logic here
+    this.registerService.registerArtist(formData).subscribe(
+      (resp) => {
+        console.log('response:', resp )
+      }
+    )
   }
 
   clearInput() {
-    // Clear the input field
-    
+    this.registrationForm.get('email')?.setValue('');
+    this.registrationForm.get('password')?.setValue('');
+    this.registrationForm.get('name')?.setValue('');
+    this.registrationForm.get('password2')?.setValue(''); 
+    this.registrationForm.get('phone')?.setValue('');
+  
+    if (this.userType === 'artist') {
+      this.registrationForm.get('lastName')?.setValue('');
+      this.registrationForm.get('id')?.setValue('');
+      
+    } else {
+      this.registrationForm.get('rut')?.setValue('');
+      this.registrationForm.get('location')?.setValue('');
+      this.registrationForm.get('legalName')?.setValue('');
+      this.registrationForm.get('description')?.setValue('');
+    }
   }
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
-
-  checkRegister(){
-
+  onSubmit() { 
+    this.submitted = true; 
+    console.log("apreté siguiente")
   }
+
 
 }
