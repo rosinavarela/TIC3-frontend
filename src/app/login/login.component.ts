@@ -4,6 +4,9 @@ import { User } from '../shared/models/User';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Artist } from '../shared/models/Artist'
 import { Business } from '../shared/models/Business';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +20,31 @@ export class LoginComponent {
   user?: User;
   artist?: Artist;
   business?: Business;
+  hide: boolean = true; // Variable para controlar la visibilidad de la contraseña
 
-  constructor(private loginService: LoginService, private snackBar: MatSnackBar) {
+  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar) {
 
+  }
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
+
+  passwordFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  formValid() {
+    return this.emailFormControl.valid && this.passwordFormControl.valid;
+  }
+
+  goToPage(pageName: string){
+    //podria hacer un if para ver a que pagina quiere ir
+    this.matDialog.open(RegisterComponent,{
+      width:'1000px',
+      height: '700px'
+    })
   }
 
   clearInput() {

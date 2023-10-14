@@ -11,6 +11,10 @@ mat-dialog-content{
   text-align: center;
 }
 
+mat-error {
+  color: red;
+}
+
 .mail,
 .password {
   width: 100%;

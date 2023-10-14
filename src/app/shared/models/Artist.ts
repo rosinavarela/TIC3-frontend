@@ -1,13 +1,16 @@
 export class Artist {
-    id!: number;
-    name!: string;
-    lastName!: string;
-    phone!: number;
-    artisticName?: string;
-    picture?: string;   //checkear esto a futuro
-    description?: string;
-    musicGenre?: string;
-    igUsername?: string;
-    links?: string;
-    rating?: number;
+    constructor(
+        public id: number,
+        public name: string,
+        public lastName: string,
+        public phone: number,
+        public artisticName?: string,
+        public picture?: string,   //checkear esto a futuro
+        public description?: string,
+        public musicGenre?: string,
+        public igUsername?: string,
+        public links?: string,
+        public rating?: number
+    ){}
+    
 }
