@@ -1,0 +1,24 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-list-item {
+  display: flex;
+  align-items: center; /* Center vertically */
+  padding: 10px; /* Add spacing around the list items */
+}
+
+mat-list-item mat-icon {
+  margin-right: 10px; /* Add spacing between icon and text */
+  vertical-align: middle; /* Vertically align the text */
+}
+
+mat-list-item span {
+  display: inline-block; /* Ensure line height affects only the span */
+  vertical-align: middle; /* Vertically align the text */
+}
+
+
+
+
+

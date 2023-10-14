@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
@@ -42,32 +42,28 @@ The HomeComponent class is defined, implementing the OnInit interface, which req
 The constructor takes an instance of FoodService through dependency injection.
 
 The ngOnInit method is defined but empty. This method is called when the component is initialized and is typically used for setting up initial data or making initial requests to services.
+*/
 
-
-/*
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
+import { RippleGlobalOptions } from '@angular/material/core';
 
+const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto para desactivar el efecto cuando apretas
+  disabled: true,
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0
+  }
+};
 
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css'],
+  selector: 'app-next-events',
+  templateUrl: './next-events.component.html',
+  styleUrls: ['./next-events.component.css'],
 })
-export class EventComponent implements OnInit{
+export class NextEventsComponent {
 
-  events: Event[] = [];
-  constructor(private eventservice: EventService, private router: Router){}
-
-  ngOnInit(): void {
-    this.events=this.eventservice.getAll(); //llama a la funcion getall de los servicios
-  }
-
-  onEventClick(eventId: number) {
-    // Navigate to the expanded-event component with the event ID as a parameter
-    this.router.navigate(['/expanded-event', eventId]);
-  }
 }
-*/
+

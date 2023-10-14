@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventComponent } from './components/event/event.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SidenavWrapperComponent } from './components/sidenav-wrapper/sidenav-wrapper.component';
+import {ExpandedEventComponent} from './components/expanded-event/expanded-event.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,12 @@ const routes: Routes = [
         component: EventComponent
       },
       {
-        path: 'aboutus',
+        path: 'aboutus', 
         component: AboutusComponent
+      },
+      {
+        path: 'expanded-event/:eventId', // Use a parameter to identify the event
+        component: ExpandedEventComponent
       }
     ]
   },

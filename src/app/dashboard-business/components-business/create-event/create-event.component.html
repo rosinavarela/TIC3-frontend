@@ -1,0 +1,59 @@
+<mat-card>
+    <div class= "content">
+        <mat-card-header>
+        <mat-card-title>Crear Evento</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+        <form class="form" fxLayout="column">
+            
+            <div class= "row1" fxLayout="row">
+            <mat-form-field class="name">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre" name="name">
+            </mat-form-field>
+            <mat-form-field class="place">
+                <mat-label>Ubicación</mat-label>
+                <input matInput placeholder="Ubicación" name="place">
+            </mat-form-field>
+            </div>
+    
+            <div class= "row2" fxLayout="row">
+            <mat-form-field class="date">
+                <mat-label>Fecha</mat-label>
+                <input matInput placeholder="Fecha" name="date" type="date">
+            </mat-form-field>
+            <mat-form-field class="time">
+                <mat-label>Horario</mat-label>
+                <input matInput placeholder="Horario" name="time" type="time">
+            </mat-form-field>
+            </div>
+            
+            <div class= "row3" fxLayout="row">
+            <mat-form-field class="style">
+                <mat-label>Estilo Musical</mat-label>
+                <input matInput placeholder="Estilo Musical" name="style">
+            </mat-form-field>
+            <mat-form-field class="equipment">
+                <mat-label>Equipos</mat-label>
+                <input matInput placeholder="Equipos" name="equipment">
+            </mat-form-field>
+            </div>
+            
+            <mat-checkbox class="payment">
+                Remunerado
+            </mat-checkbox>
+            <mat-form-field class="description">
+                <mat-label>Descripción</mat-label>
+                <textarea matInput placeholder="Descripción" name="description"></textarea>
+            </mat-form-field>
+            
+            <div class="button" align= "end">
+                <button mat-raised-button color="primary" type="submit" >Crear</button>
+            </div>
+
+        </form>
+    
+        </mat-card-content>
+    </div>
+</mat-card>

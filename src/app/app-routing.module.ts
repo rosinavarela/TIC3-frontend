@@ -6,6 +6,10 @@ import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   // lazy loaded dashboard module
   {
+    path: 'dashboard-business',
+    loadChildren: () => import('./dashboard-business/dashboard-business.module').then(m => m.DashboardBusinessModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },

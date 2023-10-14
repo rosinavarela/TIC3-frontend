@@ -1,0 +1,29 @@
+
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav [mode]="(businessSidenavService.isExpanded$ | async) ? 'side' : 'over'" [opened]="businessSidenavService.isExpanded$ | async">
+    <mat-nav-list>
+
+      <mat-list-item [routerLink]="'next-events'">
+        <mat-icon mat-list-icon >event</mat-icon>
+        <span *ngIf="businessSidenavService.isExpanded$ | async">Próximos Eventos</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'create-event'"> 
+        <mat-icon mat-list-icon>create</mat-icon>
+        <span *ngIf="businessSidenavService.isExpanded$ | async">Crear Evento</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'business-profile'"> 
+        <mat-icon mat-list-icon>face</mat-icon>
+        <span *ngIf="businessSidenavService.isExpanded$ | async">Mi Perfil</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
