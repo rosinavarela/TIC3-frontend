@@ -23,6 +23,7 @@ mat-list-item {
 mat-list-item img {
     height: 70%; /* Adjust the height as needed */
     width: 100%; /* Ensure the image maintains its aspect ratio */
+    border-radius: 0.7rem;
 }
 
 mat-list-item .content {
@@ -68,6 +69,9 @@ mat-list-item .location {
 .filter-container app-filter-local,
 .filter-container app-filter-estilo {
     margin-right: 10px; /* Adjust the spacing as needed */
+    align-items: center; /* Vertically center items */
+    display: flex; /* Use flexbox for vertical centering */
+    vertical-align: middle; /* Vertically align the text */
 }
 
 .filter-text{
@@ -76,4 +80,5 @@ mat-list-item .location {
     display: flex; /* Use flexbox for vertical centering */
     vertical-align: middle; /* Vertically align the text */
     font-weight: 900;
+    padding-bottom: 20px; /*lo tuve que centrar asi*/
 }

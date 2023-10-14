@@ -1,0 +1,66 @@
+/* Add spacing between rows and padding for form fields and labels */
+mat-card-header{
+    margin-top: 15px; /* Add margin between form fields */
+    margin-bottom: 20px; /* Add margin between form fields */
+    justify-content: center;
+}
+
+mat-card-title{
+    font-size: 30px;
+}
+
+.row1 .row2 .row3 {
+    margin-bottom: 20px; /* Add margin between form fields */
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field{
+    width: 270px;
+}
+
+mat-form-field ,.name , .date, .style{
+    margin-right: 20px;
+}
+
+mat-form-field ,.place , .time, .equipment{
+    margin-right: 0;
+}
+
+mat-checkbox {
+    margin-bottom: 20px; /* Add margin between form fields */
+}
+
+  /* Styling for the "Crear" button */
+button {
+    margin-top: 20px; /* Add margin to separate the button from the form */
+    padding: 10px 30px; /* Increase padding to make the button wider */
+    font-size: 16px; /* Increase font size */}
+  
+mat-card {
+    margin: 30px auto; /* Add margin on top and center horizontally */
+    width: 55%; /* Set the desired width */
+}
+
+mat-card-content{
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+}
+
+.description {
+    margin-right: 0; /* Remove the margin on the right */
+    width: 100%;
+}
+
+.content{
+    margin: 25px 10px;
+    justify-content: center;
+    align-items: center;
+}

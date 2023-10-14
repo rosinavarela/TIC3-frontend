@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenavWrapperComponent } from './sidenav-wrapper.component';
 
-describe('WrapperComponent', () => {
+describe('SidenavWrapperComponent', () => {
   let component: SidenavWrapperComponent;
   let fixture: ComponentFixture<SidenavWrapperComponent>;
 

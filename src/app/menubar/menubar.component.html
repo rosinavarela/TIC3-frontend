@@ -1,9 +1,12 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
-    <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (sidenavService.isExpanded$ | async)}" mat-icon-button>
+    <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (businessSidenavService.isExpanded$ | async)}" mat-icon-button> <!--ojo con esto business-->
         <mat-icon>menu</mat-icon>
     </button>
     <span >LiveTune</span>
     <span class="example-spacer"></span>
+    <button (click)="navigateToBusinessDashboard()" mat-icon-button>
+        <mat-icon>face</mat-icon>
+    </button>
     <button (click)="goToPage('Login')" mat-icon-button>
         <mat-icon>supervisor_account</mat-icon>
     </button>

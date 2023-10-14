@@ -22,6 +22,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardBusinessModule } from './dashboard-business/dashboard-business.module';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSelectModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    DashboardModule,
+    DashboardBusinessModule
   ],
   providers: [],
   bootstrap: [AppComponent]
