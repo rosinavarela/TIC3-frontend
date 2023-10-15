@@ -1,12 +1,14 @@
 <div>
     <form [formGroup]="registrationForm" (ngSubmit)="register()">
         <mat-dialog-content>
-            <button mat-icon-button class="right-align" matDialogClose>
-                <mat-icon>close</mat-icon>
-            </button>
-            <header>
-                <h1 class="mat-headline-1">Registrarse</h1>
-            </header>
+            <div class="row">
+                <header class="center-header">
+                    <h1 class="mat-headline-1">Registrarse</h1>
+                </header>
+                <button mat-icon-button class="right-align" matDialogClose>
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
             <div class="row">
                 <mat-form-field>
                     <mat-label>Tipo de usuario</mat-label><!--esto aparece arriba del input-->
@@ -122,10 +124,20 @@
                 </div>
 
                 <div class="row">
-                    <mat-form-field>
-                        <mat-label>Ubicación</mat-label>
-                        <input matInput formControlName="location">
-                    </mat-form-field>
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Ubicación</mat-label>
+                            <input matInput formControlName="location">
+                        </mat-form-field>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <mat-form-field>
+                            <mat-label>Página Web</mat-label>
+                            <input matInput formControlName="webPage">
+                        </mat-form-field>
+                    </div>
                 </div>
                 <div class="row">
                     <mat-form-field>
@@ -134,8 +146,14 @@
                     </mat-form-field>
                 </div>
             </div>
-
-            <button mat-raised-button class="right-align" color="primary"  [disabled]="isButtonDisabled()" type="submit">Siguiente</button>
+            <div class="row">
+                <mat-checkbox formControlName="terms">He leído y acepto los términos y condiciones</mat-checkbox>
+            </div>
+            <div class="row">
+                <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>
+                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()"
+                    type="submit">Siguiente</button>
+            </div>
         </mat-dialog-content>
     </form>
 </div>

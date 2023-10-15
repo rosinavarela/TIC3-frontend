@@ -1,9 +1,4 @@
 mat-dialog-content {
-  /*width: 100%;
-    height: 100%;
-    text-align: center;
-    */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +12,16 @@ mat-dialog-content {
   align-items: right;
   justify-content: space-between;
   margin-left: auto;
+}
+
+.mat-headline-1{
+  text-align: center;
+}
+.center-header {
+  flex: 1; /* This makes the header take up available vertical space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mat-mdc-dialog-content {
@@ -48,4 +53,13 @@ mat-form-field {
 .ng-star-inserted {
   width: 100%;
 
+}
+
+.failure-message {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: red;
+  text-align: right;
+  justify-content: space-between;
+  margin-left: auto;
 }
