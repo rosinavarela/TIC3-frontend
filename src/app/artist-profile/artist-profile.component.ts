@@ -15,7 +15,7 @@ export class ArtistProfileComponent {
   artisticName: string | null = null;
   igUsername: string | null = null;
   description: string | null = null;
-  links: string | null = null ;
+  links: string | null = null;
   hasProfilePicture: boolean = false;
 
 
@@ -39,22 +39,33 @@ export class ArtistProfileComponent {
       const file = inputElement.files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.picture = reader.result; // Assign the data URL to the artistImage property
+        console.log('Picture value before update:', this.picture);
+        this.picture = reader.result;
         this.hasProfilePicture = true;
+        console.log('Picture value after update:', this.picture);
+        const base64DataUrl = reader.result as string;
+        console.log('Base64 Data URL:', base64DataUrl);
+        this.picture = base64DataUrl;
+
+        // You can also save the Base64 data URL to a form field in your form.
+        this.profileForm.patchValue({
+          picture: base64DataUrl,
+        });
       };
       reader.readAsDataURL(file);
+
     }
   }
 
   saveProfile() {
     const formData = this.profileForm.value;
     let body = this.data.user;
-    body.artisticName = formData.artisticName;
-    body.igUsername = formData.igUsername;
-    body.picture = formData.picture;
-    body.description = formData.description;
-    body.musicGenre = formData.musicGenre;
-    body.links = formData.links;
+    body.artisticName = formData.artisticName.trim() !== '' ? formData.artisticName : null;
+    body.igUsername = formData.igUsername.trim() !== '' ? formData.igUsername : null;
+    body.picture = formData.picture.trim() !== '' ? formData.picture : null;
+    body.description = formData.description.trim() !== '' ? formData.description : null;
+    body.musicGenre = formData.musicGenre.trim() !== '' ? formData.musicGenre : null;
+    body.links = formData.links.trim() !== '' ? formData.links : null;
     this.registerService.registerProfileArtist(body).subscribe(
       (response) => {
         console.log('response:', response)
