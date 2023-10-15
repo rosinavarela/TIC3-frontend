@@ -29,6 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { RegisterComponent } from './register/register.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ArtistProfileComponent } from './artist-profile/artist-profile.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MenubarComponent,
     LoginComponent,
     RegisterComponent,
+    ArtistProfileComponent,
   ],
   imports: [
     BrowserModule,

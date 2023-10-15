@@ -1,0 +1,71 @@
+<div>
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <mat-dialog-content>
+            <div class="row">
+                <h2>Crear Perfil</h2>
+                <button mat-icon-button class="right-align" matDialogClose>
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col1">
+                    <img [src]="picture" alt="Artist Image"
+                        [ngClass]="{'profile-picture': hasProfilePicture, 'default-image': !hasProfilePicture}">
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Nombre Artístico</mat-label>
+                            <input matInput formControlName="artisticName">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Usuario de Instagram</mat-label>
+                            <input matInput formControlName="igUsername">
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Links</mat-label>
+                            <input matInput formControlName="links">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col1">
+                    <input type="file" accept="image/*" (change)="onImageSelected($event)" #fileInput>
+                </div>
+                <div class="col">
+                    <mat-form-field>
+                        <mat-label>Genre</mat-label>
+                        <mat-select id="artistGenre" formControlName="musicGenre">
+                            <mat-option value="pop">Pop</mat-option>
+                            <mat-option value="rock">Rock</mat-option>
+                            <mat-option value="jazz">Jazz</mat-option>
+                            <mat-option value="clásica">Clásica</mat-option>
+                            <mat-option value="alternativo">Alternativo</mat-option>
+                            <mat-option value="indie">Indie</mat-option>
+                            <mat-option value="cumbia">Cumbia</mat-option>
+                            <mat-option value="rap/trap">Rap/Trap</mat-option>
+                            <mat-option value="otro">Otro</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <p> Todos estos campos pueden ser modificados más tarde</p>
+                <button mat-raised-button color="warn" class="right-align" matDialogClose>Omitir</button>
+                <button type="submit" mat-raised-button color="primary" class="right-align">Continuar</button>
+            </div>
+        </mat-dialog-content>
+    </form>
+</div>

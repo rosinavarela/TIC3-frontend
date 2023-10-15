@@ -135,7 +135,7 @@
                 </div>
             </div>
 
-            <button mat-raised-button class="right-align" color="primary" [disabled]=" !checkControlValidity('email') || !checkControlValidity('password') || !checkControlValidity('password2') || !checkControlValidity('name') || !checkControlValidity('lastName') || !checkControlValidity('id') || !checkControlValidity('phone')"type="submit" (click)="clearInput()">Siguiente</button>
+            <button mat-raised-button class="right-align" color="primary"  [disabled]="isButtonDisabled()" type="submit">Siguiente</button>
         </mat-dialog-content>
     </form>
 </div>
