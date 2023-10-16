@@ -1,0 +1,171 @@
+/* Apply styles to the Angular Material list */
+mat-nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  /* Apply styles to the Angular Material list items */
+mat-list-item {
+    height: 37rem !important;
+    width: 95%;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Use a lighter border color */
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    transition: opacity 0.2s ease;
+    background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+    cursor: auto; /* Set the cursor to the default arrow cursor */
+    pointer-events: none; /* Disable pointer events, removing the ripple effect */
+    --mat-ripple-speed: 0s; /* Set the ripple animation speed to 0s to effectively disable it */
+}
+
+
+/* Styling for the event-container */
+.event-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+/* Styling for the left column */
+.left {
+  flex: 0 0 auto; /* Prevent the left column from growing to fill space */
+  text-align: left; /* Align text and content to the left */
+  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+  padding-left: 30px;
+  align-items: center;
+}
+
+.left h1 {
+  margin: 0; /* Remove any default margins for the h1 element */
+  font-size: 40px; /* Increase the font size of the text */
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.left img {
+  max-width: 100%; /* Adjust the maximum width of the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 20px; /* Adjust space above the image */
+  margin-bottom: 20px; /* Adjust space below the image */
+  border-radius: 1rem;
+  flex-grow: 0; /* Prevent the image from growing to fill the space */
+  max-height: 450px;
+}
+
+/* Styling for the middle column */
+.middle {
+  text-align: left; /* Center text horizontally */
+  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+}
+
+.right {
+  text-align: left; /* Center text horizontally */
+  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+  padding-right: 30px;
+}
+
+/* Styling for the button */
+.artist {
+  display: inline-flex; 
+  align-items: center;
+  text-align: left; /* Align text within the button to the left */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  margin-right: 15px; /* Remove any margin */
+}
+
+/* Style for the content within the button */
+.artist .button-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the image within the button */
+.artist img {
+  max-width: 40px; /* Increase the maximum width of the image */
+  height: auto;
+  margin-right: 5px;
+  border-radius: 50%; /* Make the image circular */
+}
+
+/* Style for the text within the button */
+.artist span {
+  font-size: 17px; /* Increase the font size of the text */
+}
+
+.application-format{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px; 
+  justify-content: space-between !important; /* Add this line to push elements to each end of the container */
+  width: 100%; /* Set the width to 100% to make it expand to the full width */
+
+}
+
+.info-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  white-space: pre-wrap; /* Allow text to wrap to the next line */
+  word-wrap: break-word; /* Wrap long words to the next line */
+}
+
+.info-column p {
+  margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+}
+
+.applications{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.mat-divider{
+  width: 5px; /* Adjust the width of the divider line */
+  margin: 10px 22px; /* Add some spacing above and below the divider */
+}
+
+/*todo esto para sacarle los efectos, lo hice usando el inspect y sobreescribiendo*/
+.mat-mdc-button:hover{
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.mat-mdc-button:focus{
+  background-color: transparent;
+}
+
+.mat-mdc-button .mat-button-focus-overlay {
+  display: none;
+}
+
+.mat-mdc-button, .mat-mdc-outlined-button {
+  --mat-mdc-button-persistent-ripple-color: transparent;
+  --mat-mdc-button-ripple-color: transparent;
+}
+
+
+/*sobre escribir para que no haya hover ni riple en list item*/
+
+.mat-mdc-list-base {
+
+  --mdc-list-list-item-hover-leading-icon-color: #d8efed;
+  --mdc-list-list-item-hover-trailing-icon-color: #d8efed;
+  --mdc-list-list-item-hover-state-layer-color:#d8efed;
+  --mdc-list-list-item-hover-state-layer-opacity: 0;
+  --mdc-list-list-item-focus-state-layer-color: #d8efed;
+  --mdc-list-list-item-focus-state-layer-opacity: 0;
+}
+
+/*para borrar ripple puse disable ripple en el html*/

@@ -1,0 +1,76 @@
+<button mat-icon-button style="float:right; margin: 5px" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+    <header>
+      <h1 class="mat-headline-1">Mi Cuenta</h1>
+    </header>
+    <form class="two-column-form" fxLayout="row">
+
+      <!-- Left Column -->
+      <div class="column1">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nombre" [(ngModel)]="name" name="name"  #nameInput="ngModel" (ngModelChange)="onNameChange()">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Cédula" [(ngModel)]="id" name="id" #idInput="ngModel" (ngModelChange)="onIdChange()">
+          <mat-icon matSuffix>perm_identity</mat-icon>
+        </mat-form-field>
+      </div>
+      <!-- Right Column -->
+      <div class="column2">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Apellido" [(ngModel)]="lastName" name="lastName" #lastNameInput="ngModel" (ngModelChange)="onLastNameChange()">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Telefono" [(ngModel)]="phone" name="phone" #phoneInput="ngModel" (ngModelChange)="onPhoneChange()">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Mail" [(ngModel)]="mail" name="mail" #mailInput="ngModel" (ngModelChange)="onMailChange()">
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+      <button class="password-button" mat-raised-button (click)="changePassword()">
+        Cambiar contraseña
+      </button>
+      <div class="changePassword" *ngIf="showPassword" fxLayout= "row">
+        <!-- Column 1 -->
+        <div class="col1">
+          <mat-form-field class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hidePassword1 ? 'password' : 'text'" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword1 = !hidePassword1">
+              <mat-icon>{{ hidePassword1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <!-- Column 2 -->
+        <div class="col2">
+          <mat-form-field class="full-width">
+            <mat-label>Repetir contraseña</mat-label>
+            <input matInput [type]="hidePassword2 ? 'password2' : 'text'" [(ngModel)]="password2" placeholder="Contraseña" name="password2" #password2Input="ngModel" (ngModelChange)="onPassword2Change()">
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword2 = !hidePassword2">
+              <mat-icon>{{ hidePassword2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>      
+    </form>
+    <div class="notification">
+        <p *ngIf="showNotification">
+          Los campos no han sido modificados, intente nuevamente.
+        </p>
+    </div>
+    <div class="notification">
+      <p *ngIf="showNotification2">
+        Las contraseñas ingresadas no coinciden, intente nuevamente.
+      </p>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="goToPopUp()">Editar</button>
+    </div>
+</mat-dialog-content>
+  

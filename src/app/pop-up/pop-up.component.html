@@ -7,6 +7,12 @@
       <div class="name" *ngIf="isNameChanged" >
         Nombre
       </div>
+      <div class="lastName" *ngIf="isLastNameChanged" >
+        Apellido
+      </div>
+      <div class="id" *ngIf="isIdChanged" >
+        Cédula
+      </div>
       <div class="legalName" *ngIf="isLegalNameChanged">
         Nombre Legal
       </div>
@@ -19,8 +25,14 @@
       <div class="rut" *ngIf="isRutChanged">
         Rut
       </div>
+      <div class="mail" *ngIf="isMailChanged">
+        Mail
+      </div>
       <div class="description" *ngIf="isDescriptionChanged">
         Descripción
+      </div>
+      <div class="password" *ngIf="isPasswordChanged">
+        Contraseña
       </div>
     </div>
     

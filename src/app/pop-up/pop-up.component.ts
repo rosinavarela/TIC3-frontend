@@ -15,14 +15,21 @@ export class PopUpComponent {
   isLocationChanged: boolean;
   isRutChanged: boolean;
   isDescriptionChanged: boolean;
+  isLastNameChanged: boolean;
+  isMailChanged:boolean; 
+  isIdChanged: boolean; 
+  isPasswordChanged:boolean //no paso las dos porque como ya chekeamos si son iguales con una me parece que da
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { isNameChanged: boolean, isLegalNameChanged: boolean, isLocationChanged: boolean, isPhoneChanged: boolean , isRutChanged: boolean, isDescriptionChanged: boolean}) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { isNameChanged: boolean, isLegalNameChanged: boolean, isLocationChanged: boolean, isPhoneChanged: boolean , isRutChanged: boolean, isDescriptionChanged: boolean, isLastNameChanged: boolean, isMailChanged:boolean, isIdChanged: boolean, isPasswordChanged:boolean}) {
     this.isNameChanged = data.isNameChanged;
     this.isLegalNameChanged = data.isLegalNameChanged;
     this.isPhoneChanged = data.isPhoneChanged;
     this.isLocationChanged = data.isLocationChanged;
     this.isRutChanged = data.isRutChanged;
     this.isDescriptionChanged = data.isDescriptionChanged;
-
+    this.isLastNameChanged=data.isLastNameChanged; 
+    this.isMailChanged= data.isMailChanged;
+    this.isIdChanged=data.isIdChanged;
+    this.isPasswordChanged=data.isPasswordChanged;
   }
 }

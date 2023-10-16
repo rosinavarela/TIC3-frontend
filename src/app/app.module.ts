@@ -29,6 +29,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ArtistProfileComponent } from './artist-profile/artist-profile.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BusinessAccountComponent } from './business-account/business-account.component';
+import { ArtistAccountComponent } from './artist-account/artist-account.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 
 
@@ -40,7 +41,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     RegisterComponent,
     ArtistProfileComponent,
     BusinessAccountComponent,
-    PopUpComponent
+    PopUpComponent,
+    ArtistAccountComponent
   ],
   imports: [
     BrowserModule,

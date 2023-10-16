@@ -7,11 +7,14 @@
     <button (click)="navigateToBusinessDashboard()" mat-icon-button>
         <mat-icon>face</mat-icon>
     </button>
+    <button (click)="navigateToArtistDashboard()" mat-icon-button>
+        <mat-icon>brush</mat-icon>
+    </button>
     <!--depende del usuario el boton-->
     <button mat-icon-button (click)="goToPage('Login')" *ngIf="usertype === 'general'">
         <mat-icon>supervisor_account</mat-icon>
     </button>
-    <button mat-icon-button (click)="toggleDropdown()" *ngIf="usertype === 'business'" [matMenuTriggerFor]="menu" #menuTrigger>
+    <button mat-icon-button (click)="toggleDropdown()" *ngIf="usertype === 'business' || usertype === 'artist'" [matMenuTriggerFor]="menu" #menuTrigger>
         <mat-icon>supervisor_account</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
