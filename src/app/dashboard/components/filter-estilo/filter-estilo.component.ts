@@ -24,7 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FilterEstiloComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Blues', 'Country', 'Disco','Pop', 'Rock', 'Soul'];
+  options: string[] = ['Pop', 'Rock', 'Jazz','Clásica', 'Alternativo', 'Indie', 'Cumbia', 'Rap/Trap', 'Otro'];
   filteredOptions!: Observable<string[]>;
 
   ngOnInit() {

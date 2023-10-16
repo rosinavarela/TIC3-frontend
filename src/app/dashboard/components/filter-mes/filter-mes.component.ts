@@ -24,7 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FilterMesComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Enero', 'Febrero', 'Marzo','Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Ocubre', 'Noviembre', 'Diciembre'];
+  options: string[] = ['7 días', '30 días', '60 días'];
   filteredOptions!: Observable<string[]>;
 
   ngOnInit() {

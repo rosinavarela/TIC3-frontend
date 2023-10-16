@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
-    <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (businessSidenavService.isExpanded$ | async)}" mat-icon-button> <!--ojo con esto business-->
+    <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (businessSidenavService.isExpanded$ | async)}" mat-icon-button> 
         <mat-icon>menu</mat-icon>
     </button>
     <span >LiveTune</span>
@@ -7,7 +7,15 @@
     <button (click)="navigateToBusinessDashboard()" mat-icon-button>
         <mat-icon>face</mat-icon>
     </button>
-    <button (click)="goToPage('Login')" mat-icon-button>
+    <!--depende del usuario el boton-->
+    <button mat-icon-button (click)="goToPage('Login')" *ngIf="usertype === 'general'">
         <mat-icon>supervisor_account</mat-icon>
     </button>
+    <button mat-icon-button (click)="toggleDropdown()" *ngIf="usertype === 'business'" [matMenuTriggerFor]="menu" #menuTrigger>
+        <mat-icon>supervisor_account</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="selectOption('account')">Mi Cuenta</button>
+        <button mat-menu-item (click)="selectOption('signout')">Cerrar Sesión</button>
+    </mat-menu>
 </mat-toolbar>

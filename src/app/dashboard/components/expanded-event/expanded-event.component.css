@@ -81,7 +81,6 @@
     font-weight: 700;
 }
 
-
 /*todo esto para sacarle los efectos, lo hice usando el inspect y sobreescribiendo*/
 .mat-mdc-button:hover{
   background-color: transparent;

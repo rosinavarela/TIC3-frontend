@@ -20,16 +20,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardBusinessModule } from './dashboard-business/dashboard-business.module';
-
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { RegisterComponent } from './register/register.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ArtistProfileComponent } from './artist-profile/artist-profile.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { BusinessAccountComponent } from './business-account/business-account.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 @NgModule({
@@ -39,6 +39,8 @@ import { ArtistProfileComponent } from './artist-profile/artist-profile.componen
     LoginComponent,
     RegisterComponent,
     ArtistProfileComponent,
+    BusinessAccountComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ import { ArtistProfileComponent } from './artist-profile/artist-profile.componen
     DashboardModule,
     DashboardBusinessModule,
     MatCheckboxModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

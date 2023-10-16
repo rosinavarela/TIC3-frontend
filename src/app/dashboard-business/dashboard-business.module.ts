@@ -18,6 +18,9 @@ import { ExpandedEventBusinessComponent } from './components-business/expanded-e
 import { CreateEventComponent } from './components-business/create-event/create-event.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, ExpandedEventBusinessComponent, CreateEventComponent], //tuve que poner expanded event para que me agarre el mat
@@ -39,6 +42,9 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
   ]
 })
 export class DashboardBusinessModule { }
