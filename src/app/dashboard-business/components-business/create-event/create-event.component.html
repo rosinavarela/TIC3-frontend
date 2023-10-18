@@ -5,47 +5,47 @@
         </mat-card-header>
 
         <mat-card-content>
-        <form class="form" fxLayout="column">
+        <form class="form" fxLayout="column" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
             
             <div class= "row1" fxLayout="row">
             <mat-form-field class="name">
                 <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Nombre" name="name">
+                <input matInput placeholder="Nombre" name="name" formControlName="name">
             </mat-form-field>
             <mat-form-field class="place">
                 <mat-label>Ubicación</mat-label>
-                <input matInput placeholder="Ubicación" name="place">
+                <input matInput placeholder="Ubicación" name="location" formControlName="location">
             </mat-form-field>
             </div>
     
             <div class= "row2" fxLayout="row">
             <mat-form-field class="date">
                 <mat-label>Fecha</mat-label>
-                <input matInput placeholder="Fecha" name="date" type="date">
+                <input matInput placeholder="Fecha" name="date" type="date" formControlName="date">
             </mat-form-field>
             <mat-form-field class="time">
                 <mat-label>Horario</mat-label>
-                <input matInput placeholder="Horario" name="time" type="time">
+                <input matInput placeholder="Horario" name="time" type="time" formControlName="time">
             </mat-form-field>
             </div>
             
             <div class= "row3" fxLayout="row">
             <mat-form-field class="style">
                 <mat-label>Estilo Musical</mat-label>
-                <input matInput placeholder="Estilo Musical" name="style">
+                <input matInput placeholder="Estilo Musical" name="genre" formControlName="genre">
             </mat-form-field>
             <mat-form-field class="equipment">
                 <mat-label>Equipos</mat-label>
-                <input matInput placeholder="Equipos" name="equipment">
+                <input matInput placeholder="Equipos" name="equipment" formControlName="equipment">
             </mat-form-field>
             </div>
             
-            <mat-checkbox class="payment">
+            <mat-checkbox class="payment" formControlName="payment">
                 Remunerado
             </mat-checkbox>
             <mat-form-field class="description">
                 <mat-label>Descripción</mat-label>
-                <textarea matInput placeholder="Descripción" name="description"></textarea>
+                <textarea matInput placeholder="Descripción" name="description" formControlName="description"></textarea>
             </mat-form-field>
             
             <div class="button" align= "end">
