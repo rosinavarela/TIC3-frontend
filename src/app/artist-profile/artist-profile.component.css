@@ -117,3 +117,8 @@ mat-form-field {
     justify-content: center;
     display: flex;
 }
+
+.col1 input[type="file"]{
+  font-family: "Poppins"; 
+  font-size: 16px; 
+}

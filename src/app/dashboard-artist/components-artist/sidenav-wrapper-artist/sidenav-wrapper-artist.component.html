@@ -1,0 +1,29 @@
+
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav [mode]="(artistSidenavService.isExpanded$ | async) ? 'side' : 'over'" [opened]="artistSidenavService.isExpanded$ | async">
+    <mat-nav-list>
+
+      <mat-list-item [routerLink]="'apply-events'">
+        <mat-icon mat-list-icon >event</mat-icon>
+        <span *ngIf="artistSidenavService.isExpanded$ | async">Postularse a Eventos</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'my-next-events'"> 
+        <mat-icon mat-list-icon>skip_next</mat-icon>
+        <span *ngIf="artistSidenavService.isExpanded$ | async">Mis Próximos Eventos</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'artist-profile'"> 
+        <mat-icon mat-list-icon>face</mat-icon>
+        <span *ngIf="artistSidenavService.isExpanded$ | async">Mi Perfil</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+

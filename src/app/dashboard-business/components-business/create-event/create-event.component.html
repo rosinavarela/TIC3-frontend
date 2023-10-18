@@ -5,51 +5,81 @@
         </mat-card-header>
 
         <mat-card-content>
-        <form class="form" fxLayout="column" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <form class="form" fxLayout="column" [formGroup]="createEventForm" (ngSubmit)="createEvent()">
             
             <div class= "row1" fxLayout="row">
-            <mat-form-field class="name">
-                <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Nombre" name="name" formControlName="name">
-            </mat-form-field>
-            <mat-form-field class="place">
-                <mat-label>Ubicación</mat-label>
-                <input matInput placeholder="Ubicación" name="location" formControlName="location">
-            </mat-form-field>
+                <mat-form-field class="name" >
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" name="name" formControlName="name">
+                    <mat-error *ngIf="createEventForm.get('name')?.hasError('required')">El nombre es requerido</mat-error>
+                </mat-form-field>
             </div>
-    
-            <div class= "row2" fxLayout="row">
-            <mat-form-field class="date">
-                <mat-label>Fecha</mat-label>
-                <input matInput placeholder="Fecha" name="date" type="date" formControlName="date">
-            </mat-form-field>
-            <mat-form-field class="time">
-                <mat-label>Horario</mat-label>
-                <input matInput placeholder="Horario" name="time" type="time" formControlName="time">
-            </mat-form-field>
-            </div>
-            
-            <div class= "row3" fxLayout="row">
-            <mat-form-field class="style">
-                <mat-label>Estilo Musical</mat-label>
-                <input matInput placeholder="Estilo Musical" name="genre" formControlName="genre">
-            </mat-form-field>
-            <mat-form-field class="equipment">
-                <mat-label>Equipos</mat-label>
-                <input matInput placeholder="Equipos" name="equipment" formControlName="equipment">
-            </mat-form-field>
+
+            <div class ="column-container">
+                <div class= "column1" fxLayout="column">
+                    <mat-form-field class="neighbourhood">
+                        <mat-label>Barrio</mat-label>
+                        <input matInput placeholder="Barrio" name="neighbourhood" >
+                    </mat-form-field> 
+                    <mat-form-field class="date">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput [matDatepicker]="picker" readonly [matDatepickerFilter]="dateFilter" formControlName="date">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="createEventForm.get('date')?.hasError('required')">La fecha es requerida</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class= "genre">
+                        <mat-label>Género musical preferente</mat-label>
+                        <mat-select id="artistGenre">
+                            <mat-option value="pop">Pop</mat-option>
+                            <mat-option value="rock">Rock</mat-option>
+                            <mat-option value="jazz">Jazz</mat-option>
+                            <mat-option value="clásica">Clásica</mat-option>
+                            <mat-option value="alternativo">Alternativo</mat-option>
+                            <mat-option value="indie">Indie</mat-option>
+                            <mat-option value="cumbia">Cumbia</mat-option>
+                            <mat-option value="rap/trap">Rap/Trap</mat-option>
+                            <mat-option value="otro">Otro</mat-option>
+                        </mat-select>
+                    </mat-form-field>         
+                </div>
+
+                <div class= "column2" fxLayout="column">
+                    <mat-form-field class="place">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput placeholder="Dirección" name="place">
+                    </mat-form-field>
+                    <mat-form-field class="time">
+                        <mat-label>Horario</mat-label>
+                        <input matInput placeholder="Horario" name="time" type="time" formControlName="time">
+                        <mat-error *ngIf="createEventForm.get('time')?.hasError('required')">La hora es requerida</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="equipment">
+                        <mat-label>Equipos</mat-label>
+                        <input matInput placeholder="Equipos" name="equipment">
+                    </mat-form-field>
+                </div>
             </div>
             
             <mat-checkbox class="payment" formControlName="payment">
                 Remunerado
+                <mat-error *ngIf="createEventForm.get('payment')?.hasError('required')">Este campo es requerido</mat-error>
             </mat-checkbox>
+
+            <div class="upload-picture">
+                <input type="file" accept="image/*" #fileInput id="fileInput" (change)="onFileSelected($event)">
+            </div>
+            <div class="picture-container">
+                <img class="picture" id="previewImage" [src]="selectedImage" alt="Selected Image" *ngIf="imageSelected"/>
+            </div>
+
             <mat-form-field class="description">
                 <mat-label>Descripción</mat-label>
                 <textarea matInput placeholder="Descripción" name="description" formControlName="description"></textarea>
             </mat-form-field>
             
             <div class="button" align= "end">
-                <button mat-raised-button color="primary" type="submit" >Crear</button>
+                <button mat-raised-button color="primary" type="submit">Crear</button>
             </div>
 
         </form>

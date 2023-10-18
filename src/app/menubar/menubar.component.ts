@@ -1,48 +1,69 @@
 // Import necessary Angular modules and components
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { BusinessAccountComponent } from '../business-account/business-account.component';
+import { ArtistAccountComponent } from '../artist-account/artist-account.component';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SidenavService } from 'src/app/services/menubar/sidenav.service'; 
 import { BusinessSidenavService } from 'src/app/services/menubar/business-sidenav.service'; 
-import { ActivatedRoute } from '@angular/router';
+import { ArtistSidenavService } from 'src/app/services/menubar/artist-sidenav.service'; 
+import {NavigationEnd } from '@angular/router';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 
-// Define the HeaderComponent as an Angular component
 @Component({
   selector: 'app-menubar', // The component can be used in templates with the <app-header> tag
   templateUrl: './menubar.component.html', // The HTML template for this component
   styleUrls: ['./menubar.component.css'] // The associated CSS styles for this component
 })
 export class MenubarComponent{
-/*
-  // Constructor method for the HeaderComponent, which injects the Router service
-  constructor(private router: Router) {}
 
-  // goToPage method that allows navigation to a specified route
-  // It takes a 'pageName' argument, which is expected to be a string representing the target route
-  goToPage(pageName: string): void {
-    // Use the Angular Router's 'navigate' method to navigate to the specified route
-    this.router.navigate([`${pageName}`]);
-  }
-*/
-
-  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, private router: Router,private route: ActivatedRoute){}
-  
-  goToPage(pageName: string){
-    //podria hacer un if para ver a que pagina quiere ir
-    this.matDialog.open(LoginComponent,{
-      width:'360px',
-    })
-  }
+  @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger | undefined;
 
   usertype= "general";
 
+  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router){
+    // Subscribe to the NavigationEnd event to detect route changes. Esto es para ver en que ruta esta y asi mover la sidenav acorde
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const currentRoute = event.urlAfterRedirects;
+        console.log("Current Route:", currentRoute);
+
+        // Determine usertype based on the current route
+        if (currentRoute.includes('dashboard-business')) {
+          this.usertype = "business";
+        } 
+        else if (currentRoute.includes('dashboard-artist')){
+          this.usertype = "artist";
+        }
+        else {
+          this.usertype = "general";
+        }
+      }
+    });
+  }
+
+  toggleDropdown(): void {
+    if (this.menuTrigger) {
+        this.menuTrigger.openMenu();
+    }
+  }
+
+  goToPage(pageName: string) {
+    this.matDialog.open(LoginComponent, {
+    width: '360px',
+    });
+  }
+
   navigateToBusinessDashboard() {
     this.router.navigate(['dashboard-business']);
-    this.usertype="business"; //esto lo agregue para que sepa que cambio el tipo de usuario para la sidenav. Pero en realidad en el login este boton no va a estar. Le tendria que pasar alguna variable al menubar. IMPORTANTE: se tiene que fijar en relaidad directamente en que ruta esta porque sino cuando haces refresh vuelve a estar seteado como general y no usa la sidenav bien. 
   }
   
+  navigateToArtistDashboard() {
+    this.router.navigate(['dashboard-artist']);
+  }
+
   toggleSidenav() {
     if (this.usertype=="general"){
       this.sidenavService.toggleSidenav();
@@ -50,6 +71,23 @@ export class MenubarComponent{
     else if (this.usertype=="business"){
       this.businessSidenavService.toggleSidenav();
     }
+    else if (this.usertype=="artist"){
+      this.artistSidenavService.toggleSidenav();
+    }
   }
-
+  
+  selectOption(option: string){
+    if (option=="account"){
+      if (this.usertype=="business"){
+        this.matDialog.open(BusinessAccountComponent, {
+          width: '40%',
+          });
+      }
+      else if (this.usertype=="artist"){
+        this.matDialog.open(ArtistAccountComponent, {
+          width: '40%',
+          });
+      }
+    }
+  }
 }

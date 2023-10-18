@@ -1,0 +1,35 @@
+
+mat-dialog-content{
+  width: 100%;
+  text-align: center;
+}
+
+.column1, .column2 {
+  justify-content: space-between;
+  flex: 1;
+}
+
+.column1{
+  margin-right: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.two-column-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notification{
+  color: red;
+}
+
+

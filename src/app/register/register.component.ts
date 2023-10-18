@@ -54,7 +54,12 @@ export class RegisterComponent {
     return true; // Control not found (assumed valid)
   }
 
+<<<<<<< HEAD
+  /*register() {//descomentar esta funcion. 
+    // Handle the registration logic based on the selected user type and form values
+=======
   register() {
+>>>>>>> 87acef5a88e9e30ff31fc6580847a6c68ebf894b
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
     if (formData.password !== formData.password2) {
@@ -106,7 +111,9 @@ export class RegisterComponent {
     }
 
   }
-  /*register() {
+
+  */
+  register() { //volver a comentar esta funcion, lo cambio rosi para que le ande en la base de datos
     if (this.userType === 'artist') {
       this.matDialog.open(ArtistProfileComponent, {
         width: '900px',
@@ -114,7 +121,7 @@ export class RegisterComponent {
       })
       this.dialogRef.close();
     }
-  }*/
+  }
 
   clearInput() {
     this.registrationForm.get('email')?.setValue('');

@@ -24,7 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FilterLocalComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Aguada', 'Carrasco', 'Centro','Cerro', 'Ciudad Vieja', 'Cordon'];
+  options: string[] = [];
   filteredOptions!: Observable<string[]>;
 
   ngOnInit() {

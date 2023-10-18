@@ -1,0 +1,102 @@
+/* Styling for the event-container */
+.event-container {
+    display: flex;
+    padding: 50px; /* Adjust the padding around the entire container */
+    justify-content: center;
+    width: 75%; /* Set the container width to 50% of the screen width */
+    max-width: 100%; /* Limit the container to 100% of the screen width */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  /* Styling for the left column */
+  .left {
+    flex: 0 0 50%; /* Set the left column to be 50% of the container width */
+    background-color: white;
+    padding: 40px;
+    align-items: center;
+    display: flex; /* Enable flex layout for the left column */
+  }
+  
+  .right h1 {
+    margin: 0; /* Remove any default margins for the h1 element */
+    font-size: 40px; /* Increase the font size of the text */
+    margin-bottom: 20px;
+  }
+  
+  .left img {
+    max-width: 100%; /* Allow the image to take up the entire left column width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Adjust space above the image */
+    margin-bottom: 20px; /* Adjust space below the image */
+    border-radius: 50%; /* Make the image circular */
+  }
+  
+  /* Styling for the right column */
+  .right {
+    flex: 0 0 50%; /* Set the right column to be 50% of the container width */
+    text-align: left; /* Align text and content to the left */
+    padding: 40px;
+    background-color: white;
+  }
+  
+  .info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+  }
+  
+.info-column p {
+    margin-top: 10px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+    margin-bottom: 10px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+}
+  
+.link-button {
+    display: flex; /* Display links in a row */
+    margin-right: 10px; /* Adjust the margin between link buttons as needed */
+    margin-left: 10px; /* Adjust the margin between link buttons as needed */
+}
+
+.link-button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    max-width: 30px; /* Adjust the maximum width as per your preference */
+    max-height: 30px; /* Adjust the maximum height as per your preference */
+    margin-right: 5px; /* Add margin to separate the logo from the text (adjust as needed) */
+}
+
+.button-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+  }
+  
+.button-content span{
+    font-size: 16px;
+}
+
+.instagram{
+    padding: 0px;
+    margin-top: 10px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+    margin-bottom: 10px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+}
+
+.style {
+    display: flex; /* Display its children in a row */
+    flex-direction: row; /* Arrange items horizontally in a row */
+    align-items: center; /* Vertically center the items */
+}
