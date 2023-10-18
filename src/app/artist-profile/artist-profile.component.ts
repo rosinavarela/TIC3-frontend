@@ -17,6 +17,7 @@ export class ArtistProfileComponent {
   description: string | null = null;
   links: string | null = null;
   hasProfilePicture: boolean = false;
+  failureMessage?: string;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private registerService: RegisterService) {
@@ -56,6 +57,14 @@ export class ArtistProfileComponent {
 
     }
   }
+  clearInput() {
+    this.profileForm.get('artisticName')?.setValue('');
+    this.profileForm.get('picture')?.setValue('');
+    this.profileForm.get('igUsername')?.setValue('');
+    this.profileForm.get('description')?.setValue('');
+    this.profileForm.get('links')?.setValue('');    
+  }
+
 
   saveProfile() {
     const formData = this.profileForm.value;
@@ -69,6 +78,16 @@ export class ArtistProfileComponent {
     this.registerService.registerProfileArtist(body).subscribe(
       (response) => {
         console.log('response:', response)
+      },
+      (error) => {
+        console.error('Errorrrrr:', error);
+        if (error.status === 404) {
+          this.failureMessage = error.error.message;
+          this.clearInput();
+        } else if (error.status === 500) {
+          this.failureMessage = 'Ocurrió un error, intente de nuevo';
+          this.clearInput();
+        }
       }
     )
   }

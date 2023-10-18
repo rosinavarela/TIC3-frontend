@@ -16,6 +16,7 @@ export class RegisterComponent {
   userType: string = 'artist'; // Default to 'artist'
   hidePassword1: boolean = true;
   hidePassword2: boolean = true;
+  failureMessage?: string;
 
   constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent> // Inject MatDialogRef
   ) {
@@ -27,6 +28,7 @@ export class RegisterComponent {
       password2: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
+      terms: new FormControl(false, Validators.requiredTrue),
       // Artist-specific fields
       lastName: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
@@ -35,6 +37,7 @@ export class RegisterComponent {
       rut: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
       description: new FormControl(''),
+      webPage: new FormControl(''),
     });
   }
 
@@ -46,37 +49,65 @@ export class RegisterComponent {
     const control = this.registrationForm.get(controlName);
     if (control) {
       const isValid = control.valid;
-      //console.log(`Control '${controlName}' validity:`, isValid);
       return isValid;
     }
     return true; // Control not found (assumed valid)
   }
 
+<<<<<<< HEAD
   /*register() {//descomentar esta funcion. 
     // Handle the registration logic based on the selected user type and form values
+=======
+  register() {
+>>>>>>> 87acef5a88e9e30ff31fc6580847a6c68ebf894b
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
-    let resp: any;
-    if (this.userType === 'artist') {
-      this.registerService.registerArtist(formData).subscribe(
-        (response) => {
-          resp = response;
-          console.log('response:', response);
-          this.matDialog.open(ArtistProfileComponent,{
-            width:'900px',
-            height: '650px',
-            data: resp
-          })
-        }
-      )
-        
-      this.dialogRef.close();
-    }else{
-      this.registerService.registerBusiness(formData).subscribe(
-        (resp) => {
-          console.log('response:', resp)
-        }
-      )
+    if (formData.password !== formData.password2) {
+      // Passwords don't match, handle the error as you like (e.g., show an error message)
+      this.failureMessage = 'Las contraseñas no coinciden';
+    } else {
+      let resp: any;
+      if (this.userType === 'artist') {
+        this.registerService.registerArtist(formData).subscribe(
+          (response) => {
+            resp = response;
+            console.log('response:', response);
+            this.matDialog.open(ArtistProfileComponent, {
+              width: '900px',
+              height: '650px',
+              data: resp
+            })
+          },
+          (error) => {
+            console.error('Errorrrrr:', error);
+            if (error.status === 409) {
+              this.failureMessage = error.error.message;
+              this.clearInput();
+            } else if (error.status === 500) {
+              this.failureMessage = 'Ocurrió un error, intente de nuevo';
+              this.clearInput();
+            }
+          }
+        );
+
+        this.dialogRef.close();
+      } else {
+        this.registerService.registerBusiness(formData).subscribe(
+          (resp) => {
+            console.log('response:', resp)
+          },
+          (error) => {
+            console.error('Errorrrrr:', error);
+            if (error.status === 409) {
+              this.failureMessage = error.error.message;
+              this.clearInput();
+            } else if (error.status === 500) {
+              this.failureMessage = 'Ocurrió un error, intente de nuevo';
+              this.clearInput();
+            }
+          }
+        );
+      }
     }
 
   }
@@ -108,17 +139,18 @@ export class RegisterComponent {
       this.registrationForm.get('location')?.setValue('');
       this.registrationForm.get('legalName')?.setValue('');
       this.registrationForm.get('description')?.setValue('');
+      this.registrationForm.get('webPage')?.setValue('');
     }
   }
 
   isButtonDisabled(): boolean {
-    /* if (this.userType === 'artist') {
-       return !this.checkControlValidity('email') || !this.checkControlValidity('password') || !this.checkControlValidity('password2') || !this.checkControlValidity('name') || !this.checkControlValidity('lastName') || !this.checkControlValidity('id') || !this.checkControlValidity('phone');
-     } else if (this.userType === 'business') {
-       return !this.checkControlValidity('email') || !this.checkControlValidity('password') || !this.checkControlValidity('password2') || !this.checkControlValidity('name') || !this.checkControlValidity('rut') || !this.checkControlValidity('legalName') || !this.checkControlValidity('phone') || !this.checkControlValidity('location') || !this.checkControlValidity('description');
-     }
-     // Return false by default if userType is not 'artist' or 'business'*/
-     return false;
+    if (this.userType === 'artist') {
+      return !this.checkControlValidity('email') || !this.checkControlValidity('password') || !this.checkControlValidity('password2') || !this.checkControlValidity('name') || !this.checkControlValidity('lastName') || !this.checkControlValidity('id') || !this.checkControlValidity('phone') || !this.registrationForm.get('terms')?.value;
+    } else if (this.userType === 'business') {
+      return !this.checkControlValidity('email') || !this.checkControlValidity('password') || !this.checkControlValidity('password2') || !this.checkControlValidity('name') || !this.checkControlValidity('rut') || !this.checkControlValidity('legalName') || !this.checkControlValidity('phone') || !this.checkControlValidity('location') || !this.checkControlValidity('description') || !this.registrationForm.get('terms')?.value;
+    }
+    // Return false by default if userType is not 'artist' or 'business'
+    return false;
   }
 
 
