@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-event',
@@ -55,24 +54,9 @@ export class CreateEventComponent {
 
   createEvent(){
   }
-    eventForm: FormGroup;
-
-  constructor() {
-    this.eventForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
-      neighborhood: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      time: new FormControl('', Validators.required),
-      genre: new FormControl(''),
-      equipment: new FormControl(''),
-      payment: new FormControl(false),
-      description: new FormControl(''),
-    });
-  }
+  
 
 onSubmit() {
-  console.log(this.eventForm.value);
   // You can send this.eventForm.value to your backend API
 }
 }

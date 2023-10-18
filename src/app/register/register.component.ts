@@ -54,12 +54,8 @@ export class RegisterComponent {
     return true; // Control not found (assumed valid)
   }
 
-<<<<<<< HEAD
   /*register() {//descomentar esta funcion. 
     // Handle the registration logic based on the selected user type and form values
-=======
-  register() {
->>>>>>> 87acef5a88e9e30ff31fc6580847a6c68ebf894b
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
     if (formData.password !== formData.password2) {
