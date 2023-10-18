@@ -40,12 +40,9 @@ export class ArtistProfileComponent {
       const file = inputElement.files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
-        console.log('Picture value before update:', this.picture);
         this.picture = reader.result;
         this.hasProfilePicture = true;
-        console.log('Picture value after update:', this.picture);
         const base64DataUrl = reader.result as string;
-        console.log('Base64 Data URL:', base64DataUrl);
         this.picture = base64DataUrl;
 
         // You can also save the Base64 data URL to a form field in your form.
