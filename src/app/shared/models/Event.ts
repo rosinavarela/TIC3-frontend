@@ -15,7 +15,7 @@ export class Event {
         public paid:boolean,
         public artist: string | null = null,
         public picture:string, 
-        public applicationDeadline: Date,
+        public neighborhood: string,
         public description?:string,
         public equipment?:string
     ) {}
