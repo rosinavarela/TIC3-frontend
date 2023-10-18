@@ -6,23 +6,27 @@
       <h1 class="mat-headline-1">Mi Cuenta</h1>
     </header>
     <form class="two-column-form" fxLayout="row">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Nombre" [(ngModel)]="name" name="name"  #nameInput="ngModel" (ngModelChange)="onNameChange()">
-        <mat-icon matSuffix>account_circle</mat-icon>
-      </mat-form-field>
       <!-- Left Column -->
       <div class="column1">
         <mat-form-field class="full-width">
-            <input matInput placeholder="Nombre legal" [(ngModel)]="legalName" name="legalName" #legalNameInput="ngModel" (ngModelChange)="onLegalNameChange()">
-            <mat-icon matSuffix>business</mat-icon>
+          <input matInput placeholder="Nombre" [(ngModel)]="name" name="name"  #nameInput="ngModel" (ngModelChange)="onNameChange()">
+          <mat-icon matSuffix>account_circle</mat-icon>
         </mat-form-field>
         <mat-form-field class="full-width">
             <input matInput placeholder="Telefono" [(ngModel)]="phone" name="phone" #phoneInput="ngModel" (ngModelChange)="onPhoneChange()">
             <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Mail" [(ngModel)]="mail" name="mail" #mailInput="ngModel" (ngModelChange)="onMailChange()">
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
       </div>
       <!-- Right Column -->
       <div class="column2">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nombre legal" [(ngModel)]="legalName" name="legalName" #legalNameInput="ngModel" (ngModelChange)="onLegalNameChange()">
+          <mat-icon matSuffix>business</mat-icon>
+        </mat-form-field>
         <mat-form-field class="full-width">
             <input matInput placeholder="Direccion" [(ngModel)]="location" name="location" #locationInput="ngModel" (ngModelChange)="onLocationChange()">
             <mat-icon matSuffix>location_on</mat-icon>

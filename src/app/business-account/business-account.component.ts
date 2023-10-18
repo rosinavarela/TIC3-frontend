@@ -15,6 +15,7 @@ export class BusinessAccountComponent {
   location: string = 'location';
   rut: string = 'Rut';
   description: string = 'description';
+  mail: string = 'mail';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -29,6 +30,8 @@ export class BusinessAccountComponent {
   initialRut: string;
   isDescriptionChanged = false;
   initialDescription: string;
+  isMailChanged = false;
+  initialMail: string;
 
   onNameChange() {
     if (this.name !== this.initialName) {
@@ -84,6 +87,15 @@ export class BusinessAccountComponent {
     }
   }
 
+  onMailChange() {
+    if (this.mail !== this.initialMail) {
+      this.isMailChanged = true;
+    }
+    else{
+      this.isMailChanged = false;
+    }
+  }
+
   constructor(private matDialog:MatDialog) {
     this.initialName = this.name;
     this.initialLegalName = this.legalName;
@@ -91,16 +103,18 @@ export class BusinessAccountComponent {
     this.initialPhone = this.phone;
     this.initialRut = this.rut;
     this.initialDescription = this.description;
+    this.initialMail = this.mail;
+
   }
 
   showNotification = false;
 
   goToPopUp(){
     
-    if (this.isNameChanged || this.isLegalNameChanged ||this.isLocationChanged || this.isPhoneChanged || this.isRutChanged || this.isDescriptionChanged){
+    if (this.isNameChanged || this.isLegalNameChanged ||this.isLocationChanged || this.isMailChanged || this.isPhoneChanged || this.isRutChanged || this.isDescriptionChanged){
       this.matDialog.open(PopUpComponent, {
         width: '25%',
-        data: {isNameChanged: this.isNameChanged,isLegalNameChanged: this.isLegalNameChanged, isLocationChanged: this.isLocationChanged, isPhoneChanged: this.isPhoneChanged, isRutChanged: this.isRutChanged, isDescriptionChanged: this.isDescriptionChanged}
+        data: {isNameChanged: this.isNameChanged,isLegalNameChanged: this.isLegalNameChanged, isLocationChanged: this.isLocationChanged, isPhoneChanged: this.isPhoneChanged, isMailChanged: this.isMailChanged, isRutChanged: this.isRutChanged, isDescriptionChanged: this.isDescriptionChanged}
       });
       this.showNotification = false;
     }

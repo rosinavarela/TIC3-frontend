@@ -119,11 +119,16 @@ mat-list-item {
   word-wrap: break-word; /* Wrap long words to the next line */
 }
 
-.info-column p {
+.info-column p, .business-info-format p {
   margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing between paragraphs */
 }
 
-.applications{
+.business-info-format{
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+}
+
+.business-info{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -169,3 +174,4 @@ mat-list-item {
 }
 
 /*para borrar ripple puse disable ripple en el html*/
+
