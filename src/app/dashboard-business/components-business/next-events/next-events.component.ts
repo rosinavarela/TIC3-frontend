@@ -64,6 +64,23 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
   styleUrls: ['./next-events.component.css'],
 })
 export class NextEventsComponent {
+  events: Event[] =[];
+
+  constructor(private eventService: EventService){}
+
+  ngOnInit(): void{
+    const id =224;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
+    this.eventService.getUpcomingEventsFromBusiness(id).subscribe(
+      (data: Event[]) => {
+        this.events = data; 
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
+    );
+
+    console.log("Eventos: "+this.events);
+  }
 
 }
 

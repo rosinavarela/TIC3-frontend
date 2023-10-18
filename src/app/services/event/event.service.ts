@@ -7,7 +7,6 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 
- //aca vamos a definir lo que tiene el modelo de comida asi cuando lo llamamos trae todo junto 
 export class EventService {
 
 
@@ -22,20 +21,59 @@ export class EventService {
           eventData.id,
           eventData.name,
           eventData.date,
-          eventData.genre, 
-          eventData.time, 
+          eventData.genre,
+          eventData.time,
           eventData.business.location,
           eventData.date_limit,
           eventData.paid,
           eventData.artist,
           eventData.picture,
-          eventData.applicationDeadline,
+          eventData.neighborhood,
           eventData.description,
           eventData.equipment
         ));
       })
     );
   }
+
+  getUpcomingEventsFromBusiness(id: any): Observable<Event[]> {
+    const url = `${this.baseURL}businesses/${id}/events/upcoming`;
+    return this.http.get<any[]>(url).pipe(
+      map((response: any[]) => {
+        if (Array.isArray(response)) {
+          return response.map(eventData => new Event(
+            eventData.id,
+            eventData.name,
+            eventData.date,
+            eventData.genre,
+            eventData.time,
+            eventData.business.location,
+            eventData.date_limit,
+            eventData.paid,
+            eventData.artist,
+            eventData.picture,
+            eventData.neighborhood,
+            eventData.description,
+            eventData.equipment
+          ));
+        } else {
+          // Handle the case where response is not an array, e.g., return an empty array
+          return [];
+        }
+      })
+    )
+  }
+
+
+  createEvent(data: any): Observable<any> {
+    const headers = {'content-type': 'application/json'}  
+    const body = JSON.stringify(data);
+    console.log(body)
+    const id = data.id;
+    const url = `${this.baseURL}businesses/${id}/events`;
+    return this.http.post(url, body, {'headers':headers})
+  }
+
 }
 /*
 import { Injectable } from '@angular/core';

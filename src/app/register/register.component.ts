@@ -56,8 +56,6 @@ export class RegisterComponent {
 
   /*register() {//descomentar esta funcion. 
     // Handle the registration logic based on the selected user type and form values
-  
-    register() {
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
     if (formData.password !== formData.password2) {

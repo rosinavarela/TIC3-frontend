@@ -55,4 +55,8 @@ export class CreateEventComponent {
   createEvent(){
   }
   
+
+onSubmit() {
+  // You can send this.eventForm.value to your backend API
+}
 }
