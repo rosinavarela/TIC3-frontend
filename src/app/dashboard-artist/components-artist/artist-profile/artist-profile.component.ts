@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ArtistEditProfileComponent } from '../artist-edit-profile/artist-edit-profile.component';
+
 
 @Component({
   selector: 'app-artist-profile',
@@ -15,4 +18,11 @@ export class ArtistProfileComponent {
   instagramTag: string ="cristiano"; 
   instagramLink: string=`https://www.instagram.com/${this.instagramTag}/`;
 
+  constructor(private matDialog:MatDialog){}
+
+  editProfile(){
+    this.matDialog.open(ArtistEditProfileComponent, {
+      width: '60%',
+      });
+  }
 }

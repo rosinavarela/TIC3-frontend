@@ -13,9 +13,9 @@
         <span *ngIf="businessSidenavService.isExpanded$ | async">Crear Evento</span>
       </mat-list-item>
 
-      <mat-list-item [routerLink]="'business-profile'"> 
-        <mat-icon mat-list-icon>face</mat-icon>
-        <span *ngIf="businessSidenavService.isExpanded$ | async">Mi Perfil</span>
+      <mat-list-item [routerLink]="'my-next-business-events'"> 
+        <mat-icon mat-list-icon>skip_next</mat-icon>
+        <span *ngIf="businessSidenavService.isExpanded$ | async">Mis Próximos Eventos</span>
       </mat-list-item>
 
     </mat-nav-list>

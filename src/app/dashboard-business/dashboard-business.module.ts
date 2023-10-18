@@ -20,10 +20,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import {MyNextEventsBusinessComponent} from './components-business/my-next-events-business/my-next-events-business.component';
 
 @NgModule({
-  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, ExpandedEventBusinessComponent, CreateEventComponent], //tuve que poner expanded event para que me agarre el mat
+  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, MyNextEventsBusinessComponent,ExpandedEventBusinessComponent, CreateEventComponent], //tuve que poner expanded event para que me agarre el mat
   imports: [
     CommonModule,
     DashboardBusinessRoutingModule,

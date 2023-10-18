@@ -64,10 +64,10 @@ mat-list-item .location {
 }
 
 /* Add spacing between filter components */
-.filter-container app-filter-ubicacion,
-.filter-container app-filter-mes,
-.filter-container app-filter-local,
-.filter-container app-filter-estilo {
+.filter-container app-filter-ubicacion-artist,
+.filter-container app-filter-mes-artist,
+.filter-container app-filter-local-artist,
+.filter-container app-filter-estilo-artist {
     margin-right: 10px; /* Adjust the spacing as needed */
     align-items: center; /* Vertically center items */
     display: flex; /* Use flexbox for vertical centering */

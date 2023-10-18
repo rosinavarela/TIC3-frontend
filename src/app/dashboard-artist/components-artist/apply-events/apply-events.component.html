@@ -1,1 +1,40 @@
-apply-events
+<div class="filter-container">
+    <span class="filter-text">Aplicar filtros:</span>
+    <app-filter-ubicacion-artist></app-filter-ubicacion-artist>
+    <app-filter-mes-artist></app-filter-mes-artist>
+    <app-filter-local-artist></app-filter-local-artist>
+    <app-filter-estilo-artist></app-filter-estilo-artist>
+</div>
+
+<mat-nav-list>
+    <mat-list-item > <!--aca hacer un for -- (click)="onEventClick(event.id) -->
+        <a>
+            <img src="/assets/images/events/BarArocena.jpeg" alt="Event Image">
+            <div class="content">
+                <div class="date">11/11/1111</div>
+                <div class="name">Concierto en casa</div>
+                <div class="location">Mi casa jaja</div>
+            </div>
+        </a>
+    </mat-list-item>   
+    <mat-list-item> 
+        <a>
+            <img src="/src/assets/images/events/BarArocena.jpeg" alt="Event Image">
+            <div class="content">
+                <div class="date">11/11/1111</div>
+                <div class="name">Concierto en casa</div>
+                <div class="location">Mi casa jaja</div>
+            </div>
+        </a>
+    </mat-list-item>  
+    <mat-list-item> 
+        <a>
+            <img src="/src/assets/images/events/BarArocena.jpeg" alt="Event Image">
+            <div class="content">
+                <div class="date">11/11/1111</div>
+                <div class="name">Concierto en casa</div>
+                <div class="location">Mi casa jaja</div>
+            </div>
+        </a>
+    </mat-list-item>  
+</mat-nav-list>
