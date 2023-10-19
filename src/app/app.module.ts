@@ -31,6 +31,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BusinessAccountComponent } from './business-account/business-account.component';
 import { ArtistAccountComponent } from './artist-account/artist-account.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { PopUpApplicationComponent } from './dashboard-artist/components-artist/pop-up-application/pop-up-application.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ArtistProfileComponent,
     BusinessAccountComponent,
     PopUpComponent,
-    ArtistAccountComponent
+    ArtistAccountComponent,
+    PopUpApplicationComponent
   ],
   imports: [
     BrowserModule,

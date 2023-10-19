@@ -6,6 +6,7 @@ import { SidenavWrapperArtistComponent } from './components-artist/sidenav-wrapp
 import {ExpandApplicationComponent} from './components-artist/expand-application/expand-application.component';
 import { ApplyEventsComponent } from './components-artist/apply-events/apply-events.component';
 import { ArtistEditProfileComponent } from './components-artist/artist-edit-profile/artist-edit-profile.component';
+import { PopUpApplicationComponent } from './components-artist/pop-up-application/pop-up-application.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,7 @@ const routes: Routes = [
       {
         path: 'artist-edit-profile', 
         component: ArtistEditProfileComponent
-      }
+      },
     ]
   },
   {

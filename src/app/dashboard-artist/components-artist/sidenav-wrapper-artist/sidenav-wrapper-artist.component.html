@@ -18,6 +18,11 @@
         <span *ngIf="artistSidenavService.isExpanded$ | async">Mi Perfil</span>
       </mat-list-item>
 
+      <mat-list-item [routerLink]="'expand-application'"> <!--borrar-->
+        <mat-icon mat-list-icon>face</mat-icon>
+        <span *ngIf="artistSidenavService.isExpanded$ | async">Mi Perfil</span>
+      </mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
 

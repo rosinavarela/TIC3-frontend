@@ -26,7 +26,8 @@ const routes: Routes = [
         component: AboutusComponent
       },
       {
-        path: 'expanded-event/:eventId', // Use a parameter to identify the event
+        path: 'expanded-event', // Use a parameter to identify the event 
+        //path: 'expanded-event/:eventId', // Use a parameter to identify the event: VOLVER A ESTO CUANDO SAQUE DE LA SIDENAV
         component: ExpandedEventComponent
       }
     ]

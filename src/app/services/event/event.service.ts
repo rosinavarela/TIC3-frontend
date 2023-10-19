@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Event } from '../../shared/models/Event'
 import { HttpClient } from '@angular/common/http';
@@ -75,6 +76,7 @@ export class EventService {
   }
 
 }
+
 /*
 import { Injectable } from '@angular/core';
 import {Event} from '../../shared/models/Event'

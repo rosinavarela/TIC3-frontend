@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class ApplyEventsComponent{
 
-  onEventClick(eventId: number) {
-    //this.router.navigate(['/expanded-event', eventId]);
+  onEventClick() {//pasarle event-id tmb
+    this.router.navigate(['/expand-application']); 
   }
+
+  constructor(private router: Router){}
 
 }
 
