@@ -54,7 +54,7 @@ export class RegisterComponent {
     return true; // Control not found (assumed valid)
   }
 
-  /*register() {//descomentar esta funcion. 
+  register() {//descomentar esta funcion. 
     // Handle the registration logic based on the selected user type and form values
     const formData = this.registrationForm.value;
     console.log('Registration data:', formData);
@@ -108,7 +108,7 @@ export class RegisterComponent {
 
   }
 
-  */
+  /*
   register() { //volver a comentar esta funcion, lo cambio rosi para que le ande en la base de datos
     if (this.userType === 'artist') {
       this.matDialog.open(ArtistProfileComponent, {
@@ -117,7 +117,7 @@ export class RegisterComponent {
       })
       this.dialogRef.close();
     }
-  }
+  }*/
 
   clearInput() {
     this.registrationForm.get('email')?.setValue('');
