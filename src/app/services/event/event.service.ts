@@ -69,7 +69,8 @@ export class EventService {
     const headers = {'content-type': 'application/json'}  
     const body = JSON.stringify(data);
     console.log(body)
-    const id = data.id;
+    let id = data.id;
+    id = 224;   //cambiar esto cuando hagamos el flow de login!!!!!!!!
     const url = `${this.baseURL}businesses/${id}/events`;
     return this.http.post(url, body, {'headers':headers})
   }

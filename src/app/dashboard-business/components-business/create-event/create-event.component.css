@@ -1,102 +1,122 @@
 /* Add spacing between rows and padding for form fields and labels */
 mat-card-header {
-    margin-top: 15px; /* Add margin between form fields */
-    margin-bottom: 20px; /* Add margin between form fields */
-    justify-content: center;
-  }
-  
-  mat-card-title {
-    font-size: 30px;
-  }
-  
-  .row1 {
-    justify-content: center;
-    width: 100%;
-    display: flex;
-  }
-  
-  /* Use a container for your two columns */
-  .column-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .column1 {
-    flex: 1; /* Fill available horizontal space */
-    margin-right: 20px; /* Add spacing between columns */
-  }
+  margin-top: 15px;
+  /* Add margin between form fields */
+  margin-bottom: 20px;
+  /* Add margin between form fields */
+  justify-content: center;
+}
 
-  mat-form-field{
-      width: 100%;
-  }
-  
-  .column2 {
-    flex: 1; /* Fill available horizontal space */
-  }
-  
-  .form {
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-  }
-  
-  mat-checkbox {
-    margin-bottom: 20px; /* Add margin between form fields */
-  }
-  
-  /* Styling for the "Crear" button */
-  button {
-    margin-top: 20px; /* Add margin to separate the button from the form */
-    padding: 10px 30px; /* Increase padding to make the button wider */
-    font-size: 16px; /* Increase font size */
-  }
-  
-  mat-card {
-    margin: 30px auto; /* Add margin on top and center horizontally */
-    width: 55%; /* Set the desired width */
-    max-width: 100%; /* Add this line to prevent the card from expanding beyond its parent container */
-  }
-  
-  mat-card-content {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-  }
-  
-  .description {
-    margin-right: 0; /* Remove the margin on the right */
-    width: 100%;
-  }
-  
-  .name {
-    width: 100%;
-  }
-  
-  .content {
-    margin: 25px 10px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .upload-picture,
-  .picture {
-    margin-bottom: 20px;
-  }
-  
-  .upload-picture input[type="file"] {
-    font-family: "Poppins";
-    font-size: 16px;
-  }
-  
-  .picture-container {
-    height: auto !important;
-    max-width: 50% !important;
-    width: 100%; /* Add this line */
-  }
-  
-  .picture {
-    max-width: 100%;
-  }
-  
+mat-card-title {
+  font-size: 30px;
+}
+
+.row1 {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+}
+
+/* Use a container for your two columns */
+.column-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.column1 {
+  flex: 1;
+  /* Fill available horizontal space */
+  margin-right: 20px;
+  /* Add spacing between columns */
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.column2 {
+  flex: 1;
+  /* Fill available horizontal space */
+}
+
+.form {
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+}
+
+mat-checkbox {
+  margin-bottom: 20px;
+  /* Add margin between form fields */
+}
+
+/* Styling for the "Crear" button */
+button {
+  margin-top: 20px;
+  /* Add margin to separate the button from the form */
+  padding: 10px 30px;
+  /* Increase padding to make the button wider */
+  font-size: 16px;
+  /* Increase font size */
+}
+
+mat-card {
+  margin: 30px auto;
+  /* Add margin on top and center horizontally */
+  width: 55%;
+  /* Set the desired width */
+  max-width: 100%;
+  /* Add this line to prevent the card from expanding beyond its parent container */
+}
+
+mat-card-content {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.description {
+  margin-right: 0;
+  /* Remove the margin on the right */
+  width: 100%;
+}
+
+.name {
+  width: 100%;
+}
+
+.content {
+  margin: 25px 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-picture,
+.picture,
+.unselect-button {
+  margin-bottom: 20px;
+}
+
+.upload-picture input[type="file"] {
+  font-family: "Poppins";
+  font-size: 16px;
+}
+
+.picture-container {
+  height: auto !important;
+  max-width: 50% !important;
+  width: 100%;
+  /* Add this line */
+}
+
+.picture {
+  max-width: 100%;
+}
+
+.upload-picture.margin-adjust,
+.picture.margin-adjust {
+  margin-bottom: 10px;
+  /* Set your desired margin value when the button is visible */
+}
