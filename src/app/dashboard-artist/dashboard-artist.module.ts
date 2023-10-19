@@ -20,10 +20,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ArtistEditProfileComponent } from './components-artist/artist-edit-profile/artist-edit-profile.component';
+import { FilterUbicacionArtistComponent } from './components-artist/filter-ubicacion-artist/filter-ubicacion-artist.component';
+import { FilterMesArtistComponent } from './components-artist/filter-mes-artist/filter-mes-artist.component';
+import { FilterLocalArtistComponent } from './components-artist/filter-local-artist/filter-local-artist.component';
+import { FilterEstiloArtistComponent } from './components-artist/filter-estilo-artist/filter-estilo-artist.component';
 
 @NgModule({
-  declarations: [SidenavWrapperArtistComponent, MyNextEventsComponent, ArtistProfileComponent, ExpandApplicationComponent, ApplyEventsComponent], //tuve que poner expanded event para que me agarre el mat
+  declarations: [SidenavWrapperArtistComponent, MyNextEventsComponent, ArtistProfileComponent, ExpandApplicationComponent, ApplyEventsComponent, ArtistEditProfileComponent], //tuve que poner expanded event para que me agarre el mat
   imports: [
     CommonModule,
     DashboardArtistRoutingModule,
@@ -44,7 +49,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    MatDialogModule,
+    FilterUbicacionArtistComponent,
+    FilterEstiloArtistComponent,
+    FilterLocalArtistComponent,
+    FilterMesArtistComponent,
   ]
 })
 export class DashboardArtistModule { }

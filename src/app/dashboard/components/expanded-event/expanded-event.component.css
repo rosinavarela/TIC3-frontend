@@ -2,17 +2,18 @@
 /* Styling for the event-container */
 .event-container {
     display: flex;
-    padding: 50px; /* Adjust the padding around the entire container */
     justify-content: center; 
-    padding-left: 150px; /* Adjust the padding around the entire container */
-    padding-right: 150px; /* Adjust the padding around the entire container */
+    margin-left: 150px; /* Adjust the padding around the entire container */
+    margin-right: 150px; /* Adjust the padding around the entire container */
+    margin-top: 20px; /* Adjust the padding around the entire container */
+    background-color:white; /*no pude aplicarlo desde el theme*/
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
   }
   
   /* Styling for the left column */
   .left {
     flex: 0 0 auto; /* Prevent the left column from growing to fill space */
     text-align: left; /* Align text and content to the left */
-    background-color:#d8efed; /*no pude aplicarlo desde el theme*/
     padding: 40px;
     padding-right: 0px;
   }
@@ -34,7 +35,6 @@
   .right {
     text-align: left; /* Center text horizontally */
     padding: 40px;
-    background-color:#d8efed; /*no pude aplicarlo desde el theme*/
   }
   
 /* Styling for the button */
@@ -100,3 +100,21 @@
   --mat-mdc-button-ripple-color: transparent;
 }
 
+.link-button {
+  display: flex; /* Display links in a row */
+  margin-right: 10px; /* Adjust the margin between link buttons as needed */
+  margin-left: 10px; /* Adjust the margin between link buttons as needed */
+}
+
+.link-button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}

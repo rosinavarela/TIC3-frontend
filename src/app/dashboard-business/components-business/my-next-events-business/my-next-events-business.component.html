@@ -1,0 +1,43 @@
+<mat-nav-list>
+    <mat-list-item [disableRipple]="true"> <!--*ngFor="let event of events"-->
+        <div class="event-container" fxLayout="row">
+            
+            <!-- Left Column -->
+            <div class="left" fxFlex="33%" fxLayout="column">
+                <h1>Evento</h1>
+                <img src="/assets/images/logos/foto.jpeg" alt="Event Image" />
+            </div>
+
+            <mat-divider vertical></mat-divider> <!-- Vertical divider between columns -->
+
+            <!-- Middle Column -->
+            <div class="middle" fxFlex="33%" fxLayout="column">
+                <div class="info-column">
+                    <p>Fecha:</p> 
+                    <p>Hora:</p>
+                    <p>Lugar:</p>
+                    <p>Estilo Musical:</p>
+                    <p>Equipos disponibles:</p>
+                    <p>Remunerado:</p>
+                    <p>Descripción: este evento va a ser re divertido, veni a divertirte con nosotros jiji! va a tocar matias valdez en vivo no te lo podes perder!</p>
+                </div>
+            </div>
+
+            <mat-divider vertical></mat-divider> <!-- Vertical divider between columns -->
+
+            <!-- Right Column -->
+            <div class="right" fxFlex="33%" fxLayout="column">
+                <div class="artist-info"> 
+                    <h1>Contacto de Artista:</h1>
+                    <div class="artist-info-format" fxLayout="row">    
+                        <p>Nombre Artístico:</p> 
+                        <p>Nombre:</p> 
+                        <p>Teléfono:</p>
+                        <p>Mail:</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </mat-list-item>
+</mat-nav-list>

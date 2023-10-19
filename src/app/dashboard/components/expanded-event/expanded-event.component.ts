@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ExpandedEventComponent {
 
+  link: string= "wwww.google.com" //aca poner el link del lugar
+
   constructor(private router: Router) { }
 
   goBackToEvent() {
