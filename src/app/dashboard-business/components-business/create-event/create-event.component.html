@@ -19,7 +19,7 @@
                 <div class= "column1" fxLayout="column">
                     <mat-form-field class="neighbourhood">
                         <mat-label>Barrio</mat-label>
-                        <input matInput placeholder="Barrio" name="neighbourhood" >
+                        <input matInput placeholder="Barrio" name="neighborhood" formControlName="neighborhood">
                     </mat-form-field> 
                     <mat-form-field class="date">
                         <mat-label>Fecha</mat-label>
@@ -30,7 +30,7 @@
                     </mat-form-field>
                     <mat-form-field class= "genre">
                         <mat-label>Género musical preferente</mat-label>
-                        <mat-select id="artistGenre">
+                        <mat-select id="genrePreffered" formControlName="genrePreffered">
                             <mat-option value="pop">Pop</mat-option>
                             <mat-option value="rock">Rock</mat-option>
                             <mat-option value="jazz">Jazz</mat-option>
@@ -47,7 +47,7 @@
                 <div class= "column2" fxLayout="column">
                     <mat-form-field class="place">
                         <mat-label>Dirección</mat-label>
-                        <input matInput placeholder="Dirección" name="place">
+                        <input matInput placeholder="Dirección" name="location" formControlName="location">
                     </mat-form-field>
                     <mat-form-field class="time">
                         <mat-label>Horario</mat-label>
@@ -56,19 +56,23 @@
                     </mat-form-field>
                     <mat-form-field class="equipment">
                         <mat-label>Equipos</mat-label>
-                        <input matInput placeholder="Equipos" name="equipment">
+                        <input matInput placeholder="Equipos" name="equipment" formControlName="equipment">
                     </mat-form-field>
                 </div>
             </div>
             
-            <mat-checkbox class="payment" formControlName="payment">
+            <mat-checkbox class="payment" formControlName="paid">
                 Remunerado
-                <mat-error *ngIf="createEventForm.get('payment')?.hasError('required')">Este campo es requerido</mat-error>
+                <!--<mat-error *ngIf="createEventForm.get('payment')?.hasError('required')">Este campo es requerido</mat-error>-->
             </mat-checkbox>
 
-            <div class="upload-picture">
+            <div class="upload-picture" [class.margin-adjust]="imageSelected">
                 <input type="file" accept="image/*" #fileInput id="fileInput" (change)="onFileSelected($event)">
             </div>
+            <div class="unselect-button" *ngIf="imageSelected" align= "start">
+                <button mat-raised-button style="background-color: lightgray; color: black;" (click)="clearSelectedImage()">Eliminar imagen</button>
+            </div>
+
             <div class="picture-container">
                 <img class="picture" id="previewImage" [src]="selectedImage" alt="Selected Image" *ngIf="imageSelected"/>
             </div>
@@ -79,7 +83,8 @@
             </mat-form-field>
             
             <div class="button" align= "end">
-                <button mat-raised-button color="primary" type="submit">Crear</button>
+                <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>
+                <button mat-raised-button color="primary" [disabled]="isButtonDisabled()" type="submit">Crear</button>
             </div>
 
         </form>
