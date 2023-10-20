@@ -10,13 +10,11 @@
 <mat-nav-list>
     <mat-list-item *ngFor="let event of events" (click)="onEventClick(event.id)">
         <a>
-            <img [src]="event.picture" alt="Event Image">
-            <!--<img [src]="event.imageUrl" alt="Event Image">-->
+            <img [src]=" 'data:image/png;base64,'+ event.picture " alt="Event Image">
             <div class="content">
                 <div class="date">{{ event.date | date:'dd/MM/yy'}}</div>
                 <div class="name">{{ event.name }}</div>
                 <div class="location">{{ event.location }}</div>
-                <!--<div class="place">{{ event.place }}</div>-->
             </div>
         </a>
     </mat-list-item>   
