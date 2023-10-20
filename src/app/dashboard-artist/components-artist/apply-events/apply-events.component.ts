@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-apply-events',
@@ -11,12 +12,11 @@ import { Router } from '@angular/router';
 })
 export class ApplyEventsComponent{
 
-  onEventClick() {//pasarle event-id tmb
-    this.router.navigate(['/expand-application']); 
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  onEventClick() {
+    this.router.navigate(['../expand-application'], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
   }
-
-  constructor(private router: Router){}
-
 }
 
 

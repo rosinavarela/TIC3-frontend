@@ -11,16 +11,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   selector: 'app-filter-estilo',
   templateUrl: 'filter-estilo.component.html',
   styleUrls: ['filter-estilo.component.css'],
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    NgFor,
-    AsyncPipe,
-  ],
 })
 export class FilterEstiloComponent implements OnInit {
   myControl = new FormControl('');

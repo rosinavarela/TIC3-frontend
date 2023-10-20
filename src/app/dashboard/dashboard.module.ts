@@ -19,9 +19,12 @@ import { FilterMesComponent } from './components/filter-mes/filter-mes.component
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ExpandedEventComponent } from './components/expanded-event/expanded-event.component';
+import { MatInputModule } from '@angular/material/input';
+import { NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
-  declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent], //tuve que poner expanded event
+  declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent, FilterEstiloComponent], //tuve que poner expanded event
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -37,11 +40,13 @@ import { ExpandedEventComponent } from './components/expanded-event/expanded-eve
     ReactiveFormsModule,
     FormsModule,
     FilterUbicacionComponent,
-    FilterEstiloComponent,
     FilterLocalComponent,
     FilterMesComponent,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule, 
+    MatInputModule,
+    NgFor,
+    AsyncPipe,
   ]
 })
 export class DashboardModule { }
