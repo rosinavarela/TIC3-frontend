@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyNextEventsComponent } from './components-artist/my-next-events/my-next-events.component';
-import { ArtistProfileComponent } from './components-artist/artist-profile/artist-profile.component';
+import { ArtistViewProfileComponent} from './components-artist/artist-view-profile/artist-view-profile.component';
 import { SidenavWrapperArtistComponent } from './components-artist/sidenav-wrapper-artist/sidenav-wrapper-artist.component';
 import {ExpandApplicationComponent} from './components-artist/expand-application/expand-application.component';
 import { ApplyEventsComponent } from './components-artist/apply-events/apply-events.component';
@@ -25,8 +25,8 @@ const routes: Routes = [
         component: MyNextEventsComponent
       },
       {
-        path: 'artist-profile', 
-        component: ArtistProfileComponent
+        path: 'artist-view-profile', 
+        component: ArtistViewProfileComponent
       },
       {
         path: 'expand-application', 
@@ -44,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/apply-events',
+    redirectTo: '/dashboard-artist/apply-events',
     pathMatch: 'full'
   }
 ];

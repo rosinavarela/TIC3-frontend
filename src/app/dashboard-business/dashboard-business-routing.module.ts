@@ -5,6 +5,7 @@ import { SidenavWrapperBusinessComponent } from './components-business/sidenav-w
 import {ExpandedEventBusinessComponent} from './components-business/expanded-event-business/expanded-event-business.component';
 import { CreateEventComponent } from './components-business/create-event/create-event.component';
 import {MyNextEventsBusinessComponent} from './components-business/my-next-events-business/my-next-events-business.component';
+import { ArtistProfileBusinessComponent } from './components-business/artist-profile-business/artist-profile-business.component';
 
 
 const routes: Routes = [
@@ -31,14 +32,18 @@ const routes: Routes = [
         component: ExpandedEventBusinessComponent
       },
       {
-        path: 'create-event', // Use a parameter to identify the event
+        path: 'create-event', 
         component: CreateEventComponent
+      },
+      {
+        path: 'artist-profile-business', 
+        component: ArtistProfileBusinessComponent
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/next-events',
+    redirectTo: '/dashboard-business/next-events',
     pathMatch: 'full'
   }
 ];

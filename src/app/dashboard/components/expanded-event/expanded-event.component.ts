@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-expanded-event',
@@ -11,10 +11,13 @@ export class ExpandedEventComponent {
 
   link: string= "wwww.google.com" //aca poner el link del lugar
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   goBackToEvent() {
-    this.router.navigate(['/event']); // Replace 'event' with the actual route name
+    this.router.navigate(['/dashboard/event'],{ relativeTo: this.route });
   }
 
+  goToArtist(){
+    this.router.navigate(['/dashboard/artist-profile-event'],{ relativeTo: this.route });
+  }
 }
