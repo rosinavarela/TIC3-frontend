@@ -4,6 +4,8 @@ import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FilterEstiloService } from 'src/app/services/filter/filter-estilo.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-event',
@@ -13,7 +15,7 @@ import { FilterEstiloService } from 'src/app/services/filter/filter-estilo.servi
 export class EventComponent implements OnInit{
 
   events: Event[] = [];
-  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer, private filterEstiloService: FilterEstiloService){}
+  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer,private route: ActivatedRoute, private filterEstiloService: FilterEstiloService){}
   selectedEstilo: string | null = null; // To store the selected musical style
 
   ngOnInit(): void {
@@ -33,11 +35,12 @@ export class EventComponent implements OnInit{
       this.applyFilters(undefined,undefined , undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
     });
     
+    
   }
   
   onEventClick(eventId: number) {
     // Navigate to the expanded-event component with the event ID as a parameter
-    this.router.navigate(['/expanded-event', eventId]);
+    this.router.navigate(['/dashboard/expanded-event', eventId],{ relativeTo: this.route });
   }
 
   getImageSource(event: Event): any {

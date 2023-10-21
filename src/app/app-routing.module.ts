@@ -13,12 +13,12 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard-business/dashboard-business.module').then(m => m.DashboardBusinessModule)
   },  
   {
-    path: '',
+    path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {path: 'Login', component: LoginComponent}

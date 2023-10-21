@@ -41,7 +41,7 @@
 .artist {
     display: flex;
     align-items: center;
-    padding: 10px 20px; /* Adjust padding to make the button larger */
+    padding: 30px 0; /* Adjust padding to make the button larger */
     text-align: left; /* Align text within the button to the left */
   }
   

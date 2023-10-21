@@ -4,11 +4,11 @@ import { ArtistEditProfileComponent } from '../artist-edit-profile/artist-edit-p
 
 
 @Component({
-  selector: 'app-artist-profile',
-  templateUrl: './artist-profile.component.html',
-  styleUrls: ['./artist-profile.component.css']
+  selector: 'app-artist-view-profile',
+  templateUrl: './artist-view-profile.component.html',
+  styleUrls: ['./artist-view-profile.component.css']
 })
-export class ArtistProfileComponent {
+export class ArtistViewProfileComponent {
   links: string[] = [ //lista de links
     'http://www.google.com',
     'http://www.example.com',

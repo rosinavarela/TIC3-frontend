@@ -4,6 +4,7 @@ import { EventComponent } from './components/event/event.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SidenavWrapperComponent } from './components/sidenav-wrapper/sidenav-wrapper.component';
 import {ExpandedEventComponent} from './components/expanded-event/expanded-event.component';
+import { ArtistProfileEventComponent } from './components/artist-profile-event/artist-profile-event.component';
 
 
 const routes: Routes = [
@@ -28,12 +29,16 @@ const routes: Routes = [
       {
         path: 'expanded-event/:eventId', // Use a parameter to identify the event
         component: ExpandedEventComponent
+      },
+      {
+        path: 'artist-profile-event', 
+        component: ArtistProfileEventComponent
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/event',
+    redirectTo: '/dashboard/event',
     pathMatch: 'full'
   }
 ];

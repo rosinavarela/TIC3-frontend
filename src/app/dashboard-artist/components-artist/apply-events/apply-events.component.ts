@@ -15,7 +15,7 @@ export class ApplyEventsComponent{
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   onEventClick() {
-    this.router.navigate(['../expand-application'], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
+    this.router.navigate(['/dashboard-artist/expand-application'], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
   }
 }
 

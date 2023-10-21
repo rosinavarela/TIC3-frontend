@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardArtistRoutingModule } from './dashboard-artist-routing.module';
-import { ArtistProfileComponent } from './components-artist/artist-profile/artist-profile.component';
+import { ArtistViewProfileComponent } from './components-artist/artist-view-profile/artist-view-profile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -28,7 +28,7 @@ import { FilterLocalArtistComponent } from './components-artist/filter-local-art
 import { FilterEstiloArtistComponent } from './components-artist/filter-estilo-artist/filter-estilo-artist.component';
 
 @NgModule({
-  declarations: [SidenavWrapperArtistComponent, MyNextEventsComponent, ArtistProfileComponent, ExpandApplicationComponent, ApplyEventsComponent, ArtistEditProfileComponent], //tuve que poner expanded event para que me agarre el mat
+  declarations: [SidenavWrapperArtistComponent, MyNextEventsComponent, ArtistViewProfileComponent, ExpandApplicationComponent, ApplyEventsComponent, ArtistEditProfileComponent], //tuve que poner expanded event para que me agarre el mat
   imports: [
     CommonModule,
     DashboardArtistRoutingModule,

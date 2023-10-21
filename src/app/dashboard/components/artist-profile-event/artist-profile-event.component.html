@@ -1,0 +1,56 @@
+
+<div class= "container" fxLayout="column">
+    <div class="profile-container" fxLayout="row">
+            
+        <!-- Left Column -->
+        <div class="left" fxFlex="50%" fxLayout="column" >
+            <img src="/assets/images/logos/default-profile.webp" alt="Event Image" />
+        </div>
+
+        <!-- Right Column -->
+        <div class="right" fxFlex="50%" fxLayout="column">
+            <div align="end">
+                <button mat-flat-button class="back-button" color="primary" style="margin-left: auto;" (click)="goBackToExpandedEvent(1)"> <!--le puse un numero porq sino no anda-->
+                    <mat-icon>arrow_back</mat-icon> Regresar
+                </button>
+            </div>
+            <div class="info-column">
+                <h1>Valegon</h1> <!--nombre artistico-->
+                <div class="style" fxLayout= "row">
+                    <mat-icon matSuffix>music_note</mat-icon>
+                    <p>Jazz</p> <!--estilo musical-->
+                </div>
+                <p>Me gusta mucho cantar y tocar el bajo. Soy valegon y te invito a mirar mi perfil de ig!</p>             
+                <a [href]="instagramLink" target="_blank">
+                    <button mat-button class="instagram">
+                        <div class="button-content">
+                            <img class="logo" src="/assets/images/logos/instagram-logo.webp" alt="Instagram" />
+                            <span>{{instagramTag}}</span>
+                        </div>
+                    </button>
+                </a>
+                <div class= "links">
+                    <p>Links:</p> <!--este no suplantarlo-->
+                    <div *ngFor="let link of links; let i = index" fxLayout="row">
+                        <button mat-button class="link-button">
+                            <a [href]="link" target="_blank">
+                                <mat-icon>link</mat-icon>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class= "video-container">
+        <video controls class="video">
+            <source src="/assets/videos/sing.mp4" type="video/mp4">
+            Tu navegador no soporta este video
+        </video>
+    </div>
+
+</div>
