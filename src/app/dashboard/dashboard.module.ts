@@ -22,6 +22,7 @@ import { ExpandedEventComponent } from './components/expanded-event/expanded-eve
 import { MatInputModule } from '@angular/material/input';
 import { NgFor } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
+import { FilterEstiloService } from '../services/filter/filter-estilo.service';
 
 @NgModule({
   declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent, FilterEstiloComponent], //tuve que poner expanded event
@@ -46,7 +47,8 @@ import { AsyncPipe } from '@angular/common';
     MatButtonModule, 
     MatInputModule,
     NgFor,
-    AsyncPipe,
-  ]
+    AsyncPipe
+  ],
+  providers: [FilterEstiloService]
 })
 export class DashboardModule { }

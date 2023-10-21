@@ -3,6 +3,7 @@ import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FilterEstiloService } from 'src/app/services/filter/filter-estilo.service';
 
 @Component({
   selector: 'app-event',
@@ -12,7 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class EventComponent implements OnInit{
 
   events: Event[] = [];
-  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer){}
+  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer, private filterEstiloService: FilterEstiloService){}
+  selectedEstilo: string | null = null; // To store the selected musical style
 
   ngOnInit(): void {
     // this.events=this.eventservice.getEvents(); //llama a la funcion getall de los servicios
@@ -25,6 +27,11 @@ export class EventComponent implements OnInit{
         console.error('Error fetching events:', error);
       }
     );
+
+    this.filterEstiloService.estiloSelected.subscribe((style: string | null) => {
+      this.selectedEstilo = style;
+      this.applyFilters(undefined,undefined , undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
+    });
     
   }
   
@@ -40,6 +47,20 @@ export class EventComponent implements OnInit{
     let objectURL = 'data:image/png;base64,' + event.picture;
     let thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(objectURL);
     return thumbnail;
+  }
+
+  applyFilters(neighborhood?: string, timeWindow?: number, business?: string, genre?: string){
+    console.log('filtradooooooo');
+    // Call the service function to retrieve filtered events
+    this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre).subscribe(
+      (data) => {
+        this.events = data;
+        console.log('Eventos filtrados: ', this.events);
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
+    );
   }
 }
 

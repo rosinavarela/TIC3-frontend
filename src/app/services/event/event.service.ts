@@ -20,78 +20,24 @@ export class EventService {
     return this.http.get<any[]>(this.baseURL + 'events').pipe(
       map((response: any[]) => {
         console.log(response);
-        /*return response.map(eventData => {
-          if (eventData.picture !==null) {
-            console.log('event.picture', eventData.picture);
-            console.log('event.picture.data', eventData.picture.data);
-            return new Event(
-              eventData.id,
-              eventData.name,
-              eventData.date,
-              eventData.genre,
-              eventData.time,
-              eventData.location,
-              eventData.paid,
-              eventData.artist,
-              eventData.picture.data, // Updated with base64 image data
-              eventData.neighborhood,
-              eventData.description,
-              eventData.equipment
-            );
-          }else{
-            return new Event(
-              eventData.id,
-              eventData.name,
-              eventData.date,
-              eventData.genre,
-              eventData.time,
-              eventData.location,
-              eventData.paid,
-              eventData.artist,
-              eventData.picture, // Updated with base64 image data
-              eventData.neighborhood,
-              eventData.description,
-              eventData.equipment
-            );
-          }
-          
-        });*/
+        
 
         return response.map(eventData => new Event(
           eventData.id,
           eventData.name,
           eventData.date,
-          eventData.genre,
+          eventData.genrePreffered,
           eventData.time,
           eventData.location,
           eventData.paid,
           eventData.artist,
-          eventData.picture, 
+          eventData.picture,
           eventData.neighborhood,
           eventData.description,
           eventData.equipment
         ));
-      
-        /*return response.map(eventData => {
-          if(eventData.picture !== null){
-            const base64Picture = this.bufferToBase64(eventData.picture.data); // Convert Buffer to base64
-            eventData.picture = base64Picture; // Replace the Buffer with base64 image data
-          }
-          return new Event(
-            eventData.id,
-            eventData.name,
-            eventData.date,
-            eventData.genre,
-            eventData.time,
-            eventData.location,
-            eventData.paid,
-            eventData.artist,
-            eventData.picture, // Updated with base64 image data
-            eventData.neighborhood,
-            eventData.description,
-            eventData.equipment
-          );
-        });*/
+
+        
       })
     );
   }
@@ -110,7 +56,7 @@ export class EventService {
             eventData.id,
             eventData.name,
             eventData.date,
-            eventData.genre,
+            eventData.genrePreffered,
             eventData.time,
             eventData.location,
             eventData.paid,
@@ -130,13 +76,61 @@ export class EventService {
 
 
   createEvent(data: any): Observable<any> {
-    const headers = {'content-type': 'application/json'}  
+    const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(data);
     console.log(body)
     let id = data.id;
     id = 224;   //cambiar esto cuando hagamos el flow de login!!!!!!!!
     const url = `${this.baseURL}businesses/${id}/events`;
-    return this.http.post(url, body, {'headers':headers})
+    return this.http.post(url, body, { 'headers': headers })
+  }
+
+
+  getFilteredEvents(neighborhood?: string, timeWindow?: number, business?: string, genre?: string): Observable<Event[]> {
+    // Construct the query parameters based on your filter criteria
+    const queryParams: any = {};
+    if (neighborhood) {
+      queryParams.neighborhood = neighborhood;
+    }
+
+    if (timeWindow) {
+      queryParams.timeWindow = timeWindow;
+    }
+
+    if (business) {
+      queryParams.business = business;
+    }
+
+    if (genre) {
+      queryParams.genre = genre;
+    }
+
+    // Make the HTTP GET request to your API and map the response to your Event model
+    return this.http.get<any[]>(`${this.baseURL}events/filter`, { params: queryParams }).pipe(
+      map((data: any[]) => {
+        if (Array.isArray(data)) {
+          return data.map((eventData: any) => {
+            return new Event(
+              eventData.id,
+              eventData.name,
+              new Date(eventData.date),
+              eventData.genrePreffered,
+              eventData.time,
+              eventData.location,
+              eventData.paid,
+              eventData.artist,
+              eventData.picture,
+              eventData.neighborhood,
+              eventData.description,
+              eventData.equipment
+            );
+          });
+        } else {
+          // Handle the case where response is not an array, e.g., return an empty array
+          return [];
+        }
+      })
+    );
   }
 
 }
