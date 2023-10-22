@@ -6,7 +6,7 @@ import { NgFor, AsyncPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FilterEstiloService } from 'src/app/services/filter/filter-estilo.service';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-filter-estilo',
@@ -19,7 +19,7 @@ export class FilterEstiloComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
   selectedOption: string | null = null;
 
-  constructor(private filterEstiloService: FilterEstiloService) { }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -36,7 +36,7 @@ export class FilterEstiloComponent implements OnInit {
 
   onOptionSelected(event: any): void {
     this.selectedOption = event.option.value.toLowerCase();
-    console.log('Selected Option:', this.selectedOption);
-    this.filterEstiloService.updateEstiloSelected(this.selectedOption);
+    console.log('Selected Genre:', this.selectedOption);
+    this.filterService.updateEstiloSelected(this.selectedOption);
   }
 }

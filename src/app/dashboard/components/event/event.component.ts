@@ -3,7 +3,7 @@ import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FilterEstiloService } from 'src/app/services/filter/filter-estilo.service';
+import { FilterService } from 'src/app/services/filter/filter.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -15,8 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 export class EventComponent implements OnInit{
 
   events: Event[] = [];
-  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer,private route: ActivatedRoute, private filterEstiloService: FilterEstiloService){}
-  selectedEstilo: string | null = null; // To store the selected musical style
+  constructor(private eventservice: EventService, private router: Router, public sanitizer: DomSanitizer,private route: ActivatedRoute, private filterService: FilterService){}
+  selectedEstilo: string | null = null;
+  selectedLocal: string | null = null;
 
   ngOnInit(): void {
     // this.events=this.eventservice.getEvents(); //llama a la funcion getall de los servicios
@@ -30,9 +31,15 @@ export class EventComponent implements OnInit{
       }
     );
 
-    this.filterEstiloService.estiloSelected.subscribe((style: string | null) => {
+    this.filterService.estiloSelected.subscribe((style: string | null) => {
       this.selectedEstilo = style;
-      this.applyFilters(undefined,undefined , undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
+      this.applyFilters(undefined,undefined , this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
+      this.selectedEstilo = null;
+    });
+    this.filterService.localSelected.subscribe((local: string | null) => {
+      this.selectedLocal = local;
+      this.applyFilters(undefined,undefined , this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
+      this.selectedLocal = null;
     });
     
     
@@ -53,8 +60,6 @@ export class EventComponent implements OnInit{
   }
 
   applyFilters(neighborhood?: string, timeWindow?: number, business?: string, genre?: string){
-    console.log('filtradooooooo');
-    // Call the service function to retrieve filtered events
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre).subscribe(
       (data) => {
         this.events = data;

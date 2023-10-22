@@ -74,7 +74,6 @@ export class EventService {
     )
   }
 
-
   createEvent(data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(data);
@@ -85,9 +84,14 @@ export class EventService {
     return this.http.post(url, body, { 'headers': headers })
   }
 
+  getBusinessNames(): Observable<string[]> {
+    return this.http.get<{ businessesNames: { name: string }[] }>(`${this.baseURL}businesses/names`).pipe(
+      map((response) => response.businessesNames.map((business) => business.name))
+    );
+  }
+
 
   getFilteredEvents(neighborhood?: string, timeWindow?: number, business?: string, genre?: string): Observable<Event[]> {
-    // Construct the query parameters based on your filter criteria
     const queryParams: any = {};
     if (neighborhood) {
       queryParams.neighborhood = neighborhood;
@@ -105,7 +109,6 @@ export class EventService {
       queryParams.genre = genre;
     }
 
-    // Make the HTTP GET request to your API and map the response to your Event model
     return this.http.get<any[]>(`${this.baseURL}events/filter`, { params: queryParams }).pipe(
       map((data: any[]) => {
         if (Array.isArray(data)) {

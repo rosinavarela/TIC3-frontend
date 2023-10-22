@@ -23,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgFor } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
 import { ArtistProfileEventComponent } from './components/artist-profile-event/artist-profile-event.component';
-import { FilterEstiloService } from '../services/filter/filter-estilo.service';
+import { FilterService } from '../services/filter/filter.service';
 
 @NgModule({
   declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent, FilterEstiloComponent, ArtistProfileEventComponent], //tuve que poner expanded event
@@ -50,6 +50,6 @@ import { FilterEstiloService } from '../services/filter/filter-estilo.service';
     NgFor,
     AsyncPipe
   ],
-  providers: [FilterEstiloService]
+  providers: [FilterService]
 })
 export class DashboardModule { }
