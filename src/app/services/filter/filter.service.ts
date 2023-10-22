@@ -9,11 +9,18 @@ export class FilterService {
   private localSelectedSource = new BehaviorSubject<string | null>(null);
   localSelected = this.localSelectedSource.asObservable();
 
+  private timeSelectedSource = new BehaviorSubject<number | null>(null);
+  timeSelected = this.timeSelectedSource.asObservable();
+
   updateEstiloSelected(style: string | null) {
     this.estiloSelectedSource.next(style);
   }
 
   updateLocalSelected(local: string | null) {
     this.localSelectedSource.next(local);
+  }
+
+  updateTimeSelected(time: number | null) {
+    this.timeSelectedSource.next(time);
   }
 }
