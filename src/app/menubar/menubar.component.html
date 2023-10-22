@@ -2,7 +2,10 @@
     <button class="menu-button" (click)="toggleSidenav()" [ngClass]="{'rotated': (businessSidenavService.isExpanded$ | async)}" mat-icon-button> 
         <mat-icon>menu</mat-icon>
     </button>
-    <span >LiveTune</span>
+    <div class="logo-container"> <!-- Wrap text and image in a div -->
+        <span>LiveTune</span>
+        <img src="/assets/images/logos/logo.jpeg" alt="LiveTune Logo" class="logo-image">
+    </div>    
     <span class="example-spacer"></span>
     <button (click)="navigateToBusinessDashboard()" mat-icon-button>
         <mat-icon>face</mat-icon>
