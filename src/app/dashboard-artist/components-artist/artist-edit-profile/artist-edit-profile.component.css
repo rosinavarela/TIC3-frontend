@@ -65,9 +65,26 @@ mat-form-field {
     display: flex;
 }
 
-.col1 input[type="file"]{
-  font-family: "Poppins"; 
-  font-size: 16px; 
+.upload-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* Align items to the start (left side) */
+}
+
+.unselect-button {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center the button */
+}
+
+/* If you want to adjust the margin when the button is visible, you can add a margin to it */
+.unselect-button button {
+  padding: 10px;
+}
+
+.upload-picture input[type="file"] {
+  font-family: "Poppins";
+  font-size: 16px;
+  margin-bottom: 10px
 }
 
 .buttons {

@@ -99,6 +99,26 @@ mat-card-content {
   margin-bottom: 20px;
 }
 
+.upload-picture {
+  display: flex;
+  align-items: center; /* Vertically center the items in the container */
+  justify-content: space-between; /* Create space between the buttons */
+}
+
+.unselect-button {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center the button */
+  margin-left: 10px; /* Add margin to the left of the button to place it next to the input */
+
+}
+
+/* If you want to adjust the margin when the button is visible, you can add a margin to it */
+.unselect-button button {
+  margin-left: 10px; /* Adjust the margin as needed */
+  padding: 10px;
+}
+
+
 .upload-picture input[type="file"] {
   font-family: "Poppins";
   font-size: 16px;

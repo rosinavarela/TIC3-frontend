@@ -68,9 +68,12 @@
 
             <div class="upload-picture" [class.margin-adjust]="imageSelected">
                 <input type="file" accept="image/*" #fileInput id="fileInput" (change)="onFileSelected($event)">
-            </div>
-            <div class="unselect-button" *ngIf="imageSelected" align= "start">
-                <button mat-raised-button style="background-color: lightgray; color: black;" (click)="clearSelectedImage()">Eliminar imagen</button>
+                <div class="unselect-button" *ngIf="imageSelected" align= "start">
+                    <button mat-raised-button color="white" (click)="clearSelectedImage()">
+                        <mat-icon matSuffix>delete</mat-icon>
+                        Eliminar imagen
+                    </button>
+                </div>
             </div>
 
             <div class="picture-container">

@@ -5,7 +5,8 @@
     <div class="logo-container"> <!-- Wrap text and image in a div -->
         <span>LiveTune</span>
         <img src="/assets/images/logos/logo.jpeg" alt="LiveTune Logo" class="logo-image">
-    </div>    
+    </div>  
+    <!--borrar-->  
     <span class="example-spacer"></span>
     <button (click)="navigateToBusinessDashboard()" mat-icon-button>
         <mat-icon>face</mat-icon>
@@ -13,6 +14,34 @@
     <button (click)="navigateToArtistDashboard()" mat-icon-button>
         <mat-icon>brush</mat-icon>
     </button>
+
+    <div class="notifications">
+        <button (click)="badgeViewed()" mat-icon-button *ngIf="usertype === 'artist'" [matMenuTriggerFor]="notificationMenu" #notificationMenuTrigger>
+            <mat-icon matBadgeColor="warn" [matBadge]= "unseenNotifications" [matBadgeHidden]="badgeHidden" >notifications</mat-icon>
+        </button>
+        <div class="notifications-dropdown">
+            <mat-menu #notificationMenu>
+                <div class="menu-item-header">
+                    <h1 >
+                        Notificaciones
+                    </h1>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="menu-item"> <!--hacer un for de esta funcion (incluido matdivider) y borrar los items de abajo-->
+                    <p>
+                        <span>Has sido seleccionado para el evento: </span>
+                        <span class= "name-event">nombre evento</span>
+                    </p>   
+                    <p>Encuentra más información en Mis Próximos Eventos</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="menu-item">Item 2</div>
+                <mat-divider></mat-divider>
+                <div class="menu-item">Item 3</div>
+            </mat-menu>
+        </div>
+    </div>
+
     <!--depende del usuario el boton-->
     <button mat-icon-button (click)="goToPage('Login')" *ngIf="usertype === 'general'">
         <mat-icon>supervisor_account</mat-icon>

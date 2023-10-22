@@ -32,6 +32,8 @@ import { BusinessAccountComponent } from './business-account/business-account.co
 import { ArtistAccountComponent } from './artist-account/artist-account.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { PopUpApplicationComponent } from './dashboard-artist/components-artist/pop-up-application/pop-up-application.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { PopUpApplicationComponent } from './dashboard-artist/components-artist/
     DashboardBusinessModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatBadgeModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

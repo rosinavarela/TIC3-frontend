@@ -23,3 +23,27 @@
     /*filter: invert(1); /* Invert the colors, turning black to white */
 }
 
+.menu-item {
+    padding: 8px 16px; /* Add padding for better spacing */
+    cursor: default; /* Set the cursor to the default arrow cursor */
+    background-color: transparent; /* Set the background to transparent to remove hover effect */
+}
+
+ .mat-mdc-menu-item .menu-item{
+    cursor: default; /* Set the cursor to the default arrow cursor */
+    background-color: transparent; /* Set the background to transparent to remove hover effect */
+}
+
+.mat-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.12); /* Customize the divider appearance */
+    margin: 0px 5%; /* Add spacing above and below the divider */
+}
+
+.name-event{
+    font-weight: bold;
+}
+
+.menu-item-header{
+    display: flex;
+    justify-content: center;
+}

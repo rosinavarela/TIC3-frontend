@@ -35,8 +35,16 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col1">
-                    <input type="file" accept="image/*" #fileInput>
+                <div class= "col1">
+                    <div class= "upload-picture">
+                        <input type="file" accept="image/*" #fileInput (change)="onImageSelected($event)"> 
+                        <div class="unselect-button" *ngIf="hasProfilePicture" align= "start">
+                            <button mat-raised-button color="white" (click)="clearSelectedImage()">
+                                <mat-icon matSuffix>delete</mat-icon>
+                                Eliminar imagen
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <mat-form-field>

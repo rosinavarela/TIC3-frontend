@@ -12,6 +12,16 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   selector: 'app-filter-estilo',
   templateUrl: 'filter-estilo.component.html',
   styleUrls: ['filter-estilo.component.css'],
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
+    AsyncPipe,
+  ],
 })
 export class FilterEstiloComponent implements OnInit {
   myControl = new FormControl('');

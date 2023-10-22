@@ -89,5 +89,13 @@ export class ArtistProfileComponent {
     )
   }
 
+  clearSelectedImage() {
+    this.picture = '';
+    this.hasProfilePicture = false;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  }
 
 }

@@ -32,4 +32,17 @@ export class ArtistEditProfileComponent {
     });
   }
 
+  clearSelectedImage() {
+    this.picture = '';
+    this.hasProfilePicture = false;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  }
+
+  onImageSelected(event: Event): void {
+    this.hasProfilePicture = true;
+  }
+
 }

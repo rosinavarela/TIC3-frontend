@@ -20,6 +20,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 export class MenubarComponent{
 
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger | undefined;
+  @ViewChild('notificationMenuTrigger') notificationMenuTrigger: MatMenuTrigger | undefined;
+
 
   usertype= "general";
 
@@ -47,6 +49,12 @@ export class MenubarComponent{
   toggleDropdown(): void {
     if (this.menuTrigger) {
         this.menuTrigger.openMenu();
+    }
+  }
+
+  toggleNotificationDropdown(): void {
+    if (this.notificationMenuTrigger) {
+        this.notificationMenuTrigger.openMenu();
     }
   }
 
@@ -90,4 +98,33 @@ export class MenubarComponent{
       }
     }
   }
+
+  notifications: string[] = ['notification1', 'notification2', 'notification3'];
+  //aca tendria que haber un for que se fije si la notificacion fue vista y cuente cuantas no fueron vistas con el atributo seen. 
+  // ese numero lo pasa a unseenNotifications y ademas llama a la funcion badgeVisibility()
+  //esta funcion se tiene que llamar en el constructor?? o algo asi onda cuando abris la pagina deberia pasar todo esto para que se 
+  //actualicen los datos
+
+  unseenNotifications: number = 5;
+
+  badgeHidden=false; //esto tiene que estar true si no tiene notificaciones
+
+  badgeVisibility(){
+    if (this.unseenNotifications==0){
+      this.badgeHidden=true;
+    }
+    else{
+      this.badgeHidden=false;
+    }
+  }
+
+  badgeViewed(){
+    this.badgeHidden= true; 
+    this.unseenNotifications=0;
+    //aca tendria que haber una funcion que le ponga a todas las notis del array seen
+    console.log('Toggle notifications funcionaaaa');
+    this.toggleNotificationDropdown();
+  }
+  
 }
+

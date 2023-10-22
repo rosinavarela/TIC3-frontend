@@ -26,7 +26,7 @@ import { ArtistProfileEventComponent } from './components/artist-profile-event/a
 import { FilterService } from '../services/filter/filter.service';
 
 @NgModule({
-  declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent, FilterEstiloComponent, ArtistProfileEventComponent], //tuve que poner expanded event
+  declarations: [SidenavWrapperComponent, EventComponent, AboutusComponent, ExpandedEventComponent, ArtistProfileEventComponent], //tuve que poner expanded event
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -44,6 +44,7 @@ import { FilterService } from '../services/filter/filter.service';
     FilterUbicacionComponent,
     FilterLocalComponent,
     FilterMesComponent,
+    FilterEstiloComponent,
     MatCardModule,
     MatButtonModule, 
     MatInputModule,
