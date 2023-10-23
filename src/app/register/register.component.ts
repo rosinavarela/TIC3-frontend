@@ -73,6 +73,7 @@ export class RegisterComponent {
               height: '650px',
               data: resp
             })
+            this.dialogRef.close();
           },
           (error) => {
             console.error('Errorrrrr:', error);
@@ -86,11 +87,11 @@ export class RegisterComponent {
           }
         );
 
-        this.dialogRef.close();
       } else {
         this.registerService.registerBusiness(formData).subscribe(
           (resp) => {
             console.log('response:', resp)
+            this.dialogRef.close();
           },
           (error) => {
             console.error('Errorrrrr:', error);

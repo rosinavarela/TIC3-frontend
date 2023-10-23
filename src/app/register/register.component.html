@@ -149,8 +149,9 @@
             </div>
             <div class="row">
                 <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>
-                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()"
-                    type="submit">Siguiente</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()" type="submit">Siguiente</button>
             </div>
         </mat-dialog-content>
     </form>
