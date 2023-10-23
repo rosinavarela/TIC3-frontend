@@ -12,6 +12,9 @@ export class FilterService {
   private timeSelectedSource = new BehaviorSubject<number | null>(null);
   timeSelected = this.timeSelectedSource.asObservable();
 
+  private ubicacionSelectedSource = new BehaviorSubject<string | null>(null);
+  ubicacionSelected = this.ubicacionSelectedSource.asObservable();
+
   updateEstiloSelected(style: string | null) {
     this.estiloSelectedSource.next(style);
   }
@@ -22,5 +25,9 @@ export class FilterService {
 
   updateTimeSelected(time: number | null) {
     this.timeSelectedSource.next(time);
+  }
+
+  updateUbicacionSelected(ubicacion: string | null) {
+    this.ubicacionSelectedSource.next(ubicacion);
   }
 }

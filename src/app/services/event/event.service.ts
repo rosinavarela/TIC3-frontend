@@ -90,6 +90,14 @@ export class EventService {
     );
   }
 
+  getNeighborhoodOfEvents(): Observable<string[]> {
+    return this.http.get<any>(`${this.baseURL}events/neighborhoods`).pipe(
+      map((response) => {
+        return response.neighborhoods.map((neighborhood: any) => neighborhood.neighborhood);
+      })
+    );
+  }
+
 
   getFilteredEvents(neighborhood?: string, timeWindow?: number, business?: string, genre?: string): Observable<Event[]> {
     const queryParams: any = {};
