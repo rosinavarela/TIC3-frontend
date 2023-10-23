@@ -20,15 +20,26 @@ mat-list-item {
     transition: opacity 0.2s ease;
 }
 
+mat-list-item .image-container {
+  max-height: 50%; /* Maximum height for the image container */
+  display: flex;
+  align-items: center; /* Center the image horizontally */
+  justify-content: center; /* Center the image vertically */
+  background-color: red;
+}
+
 mat-list-item img {
-    height: 70%; /* Adjust the height as needed */
-    width: 100%; /* Ensure the image maintains its aspect ratio */
-    border-radius: 0.7rem;
+  max-width: 100%; /* Maximum width for the image */
+  max-height: 100%; /* Allow the image to occupy the entire height of the container */
+  width: auto; /* Reset the width to auto to maintain aspect ratio */
+  height: auto; /* Reset the height to auto to maintain aspect ratio */
+  border-radius: 0.7rem;
+  object-fit: contain; /* Maintain aspect ratio and fit within the container */
 }
 
 mat-list-item .content {
-    height: 30%; /* Adjust the height as needed */
-    width: 100%; /* Ensure the image maintains its aspect ratio */
+    max-height: 30%; /* Adjust the height as needed */
+    max-width: 100%; /* Ensure the image maintains its aspect ratio */
     overflow: auto; /* Add scrollbars if necessary for overflow content */
     word-wrap: break-word; /* Allow text to break/wrap to the next line when needed */
     white-space: normal; /* Allow text to wrap within the container */
