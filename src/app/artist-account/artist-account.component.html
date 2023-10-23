@@ -41,9 +41,9 @@
         <div class="col1">
           <mat-form-field class="full-width">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hidePassword1 ? 'password' : 'text'" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
-            <button mat-icon-button matSuffix type="button" (click)="hidePassword1 = !hidePassword1">
-              <mat-icon>{{ hidePassword1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+            <input matInput [type]="passwordInputType1" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
+            <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
+              <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
             </button>
           </mat-form-field>
         </div>
@@ -51,13 +51,13 @@
         <div class="col2">
           <mat-form-field class="full-width">
             <mat-label>Repetir contraseña</mat-label>
-            <input matInput [type]="hidePassword2 ? 'password2' : 'text'" [(ngModel)]="password2" placeholder="Contraseña" name="password2" #password2Input="ngModel" (ngModelChange)="onPassword2Change()">
-            <button mat-icon-button matSuffix type="button" (click)="hidePassword2 = !hidePassword2">
-              <mat-icon>{{ hidePassword2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+            <input matInput [type]="passwordInputType2" [(ngModel)]="password2" placeholder="Contraseña" name="password2" #password2Input="ngModel" (ngModelChange)="onPassword2Change()">
+            <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility2()">
+              <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
           </mat-form-field>
         </div>
-      </div>      
+      </div>   
     </form>
     <div class="notification">
         <p *ngIf="showNotification">

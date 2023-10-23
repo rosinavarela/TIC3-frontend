@@ -82,3 +82,8 @@ mat-list-item .location {
     font-weight: 900;
     padding-bottom: 20px; /*lo tuve que centrar asi*/
 }
+
+.remove-filters{
+  margin-bottom: 20px; /*lo tuve que centrar asi*/
+  margin-right: 20px;
+}

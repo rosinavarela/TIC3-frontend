@@ -2,6 +2,7 @@
 mat-dialog-content{
   width: 100%;
   text-align: center;
+  height: 100%;
 }
 
 .column1, .column2 {
@@ -30,6 +31,25 @@ mat-dialog-content{
 
 .notification{
   color: red;
+}
+
+.changePassword {
+  display: flex;
+  justify-content: space-between; /* Space evenly between columns */
+  width: 100%;
+}
+
+.col1, .col2 {
+  flex: 1; /* Equal width columns */  
+  display: flex;
+}
+
+.col1 {
+  margin-right: 20px; /* Add margin between columns if desired */
+}
+
+.password-button{
+  margin-bottom: 20px;
 }
 
 
