@@ -25,7 +25,7 @@ import { FilterService } from 'src/app/services/filter/filter.service';
 })
 export class FilterEstiloComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Pop', 'Rock', 'Jazz', 'Clásica', 'Alternativo', 'Indie', 'Cumbia', 'Rap/Trap', 'Otro'];
+  options: string[] = ['Ninguno','Pop', 'Rock', 'Jazz', 'Clásica', 'Alternativo', 'Indie', 'Cumbia', 'Rap/Trap', 'Otro'];
   filteredOptions!: Observable<string[]>;
   selectedOption: string | null = null;
 
@@ -45,7 +45,11 @@ export class FilterEstiloComponent implements OnInit {
   }
 
   onOptionSelected(event: any): void {
-    this.selectedOption = event.option.value.toLowerCase();
+    if (event.option.value === 'Ninguno') {
+      this.selectedOption = '';
+    } else {
+      this.selectedOption = event.option.value.toLowerCase();
+    }
     console.log('Selected Genre:', this.selectedOption);
     this.filterService.updateEstiloSelected(this.selectedOption);
   }

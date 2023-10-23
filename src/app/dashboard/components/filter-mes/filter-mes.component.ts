@@ -25,7 +25,7 @@ import { FilterService } from 'src/app/services/filter/filter.service';
 })
 export class FilterMesComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['7 días', '30 días', '60 días'];
+  options: string[] = ['Ninguno','7 días', '30 días', '60 días'];
   filteredOptions!: Observable<string[]>;
   selectedOption: number | null = null;
 
@@ -52,6 +52,8 @@ export class FilterMesComponent implements OnInit {
       this.selectedOption = 2;
     }else if (event.option.value === '60 días'){
       this.selectedOption = 3;
+    } else if (event.option.value === 'Ninguno') {
+      this.selectedOption = null;
     }
     console.log('Selected time:', this.selectedOption);
     this.filterService.updateTimeSelected(this.selectedOption);
