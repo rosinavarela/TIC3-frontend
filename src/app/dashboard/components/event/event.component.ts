@@ -19,6 +19,7 @@ export class EventComponent implements OnInit {
   selectedEstilo: string | null = null;
   selectedLocal: string | null = null;
   selectedTime: number | null = null;
+  selectedUbicacion: string | null = null;
 
   ngOnInit(): void {
     // this.events=this.eventservice.getEvents(); //llama a la funcion getall de los servicios
@@ -34,18 +35,19 @@ export class EventComponent implements OnInit {
 
     this.filterService.estiloSelected.subscribe((style: string | null) => {
       this.selectedEstilo = style;
-      this.applyFilters(undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
-      this.selectedEstilo = null;
+      this.applyFilters(this.selectedUbicacion !== null ? this.selectedUbicacion : undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
     });
     this.filterService.localSelected.subscribe((local: string | null) => {
       this.selectedLocal = local;
-      this.applyFilters(undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
-      this.selectedLocal = null;
+      this.applyFilters(this.selectedUbicacion !== null ? this.selectedUbicacion : undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
     });
     this.filterService.timeSelected.subscribe((time: number | null) => {
       this.selectedTime = time;
-      this.applyFilters(undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
-      this.selectedTime = null;
+      this.applyFilters(this.selectedUbicacion !== null ? this.selectedUbicacion : undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
+    });
+    this.filterService.ubicacionSelected.subscribe((ubicacion: string | null) => {
+      this.selectedUbicacion = ubicacion;
+      this.applyFilters(this.selectedUbicacion !== null ? this.selectedUbicacion : undefined, this.selectedTime !== null ? this.selectedTime : undefined, this.selectedLocal !== null ? this.selectedLocal : undefined, this.selectedEstilo !== null ? this.selectedEstilo : undefined);
     });
 
 

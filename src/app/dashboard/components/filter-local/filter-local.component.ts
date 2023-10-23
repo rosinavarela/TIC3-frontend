@@ -33,13 +33,14 @@ export class FilterLocalComponent implements OnInit {
   constructor(private eventService: EventService, private filterService: FilterService){}
 
   ngOnInit() {
+    this.options = ['Ninguno'];
     this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
+      startWith('Ninguno'),
       map(value => this._filter(value || '')),
     );
     this.eventService.getBusinessNames().subscribe(
       (data: string[]) => {
-        this.options = data;
+        this.options = this.options.concat(data);
         console.log('Business Names:', data);
       },
       (error) => {
@@ -55,7 +56,11 @@ export class FilterLocalComponent implements OnInit {
   }
 
   onOptionSelected(event: any): void {
-    this.selectedOption = event.option.value;
+    if (event.option.value === 'Ninguno') {
+      this.selectedOption = '';
+    } else {
+      this.selectedOption = event.option.value;
+    }
     console.log('Selected Local:', this.selectedOption);
     this.filterService.updateLocalSelected(this.selectedOption);
   }

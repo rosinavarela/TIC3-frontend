@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {NgFor, AsyncPipe} from '@angular/common';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { EventService } from 'src/app/services/event/event.service';
 import { FilterService } from 'src/app/services/filter/filter.service';
 
@@ -30,21 +30,24 @@ export class FilterUbicacionComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
   selectedOption: string | null = null;
 
-  constructor(private eventService: EventService, private filterService: FilterService){}
+  constructor(private eventService: EventService, private filterService: FilterService) { }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+    this.options = ['Ninguno'];
+    
     this.eventService.getNeighborhoodOfEvents().subscribe(
       (data: string[]) => {
-        this.options = data;
+        this.options = this.options.concat(data);
         console.log('Neighborhoods:', data);
       },
       (error) => {
         console.error('Error fetching neighborhoods:', error);
       }
+    );
+  
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
     );
   }
 
@@ -55,7 +58,11 @@ export class FilterUbicacionComponent implements OnInit {
   }
 
   onOptionSelected(event: any): void {
-    this.selectedOption = event.option.value;
+    if (event.option.value === 'Ninguno') {
+      this.selectedOption = '';
+    } else {
+      this.selectedOption = event.option.value;
+    }
     console.log('Selected Ubicacion:', this.selectedOption);
     this.filterService.updateUbicacionSelected(this.selectedOption);
   }
