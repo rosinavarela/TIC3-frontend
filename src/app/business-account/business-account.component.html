@@ -52,7 +52,7 @@
         <!-- Column 1 -->
         <div class="col1">
           <mat-form-field class="full-width">
-            <mat-label>Contraseña</mat-label>
+            <mat-label>Nueva contraseña</mat-label>
             <input matInput [type]="passwordInputType1" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
             <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
               <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            

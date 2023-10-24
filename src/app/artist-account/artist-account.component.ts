@@ -104,6 +104,7 @@ export class ArtistAccountComponent {
 
   constructor(private matDialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
     //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser artist
+    this.fetchAritist(1);//aca hay que poner data.id en vez de 1!!!!!
     this.initialName = this.name;
     this.initialLastName = this.lastName;
     this.initialId = this.id;
@@ -141,10 +142,23 @@ export class ArtistAccountComponent {
 
   //se fija si se cambiaron campos
   checkChanges(){
+    const dialogData = {
+      type: 'artist',
+      isNameChanged: this.isNameChanged,
+      isPhoneChanged: this.isPhoneChanged,
+      isMailChanged: this.isMailChanged,
+      isPasswordChanged: this.isPasswordChanged,
+      id: this.id,
+      phone: this.phone,
+      name: this.name,
+      mail: this.mail,
+      password: this.password,
+      lastName: this.lastName,
+    };
     if (this.isNameChanged || this.isLastNameChanged || this.isIdChanged || this.isPhoneChanged || this.isMailChanged || this.isPasswordChanged ||this.isPassword2Changed){
       this.matDialog.open(PopUpComponent, {
         width: '25%',
-        data: {isNameChanged: this.isNameChanged,isLastNameChanged: this.isLastNameChanged, isIdChanged: this.isIdChanged, isPhoneChanged: this.isPhoneChanged, isMailChanged: this.isMailChanged, isPasswordChanged: this.isPasswordChanged}
+        data: dialogData,
       });
       this.showNotification = false;
     }
@@ -172,6 +186,7 @@ export class ArtistAccountComponent {
     this.userArtistService.getArtisytById(id).subscribe(
       (artistData) => {
         console.log('Business data:', artistData);
+        this.id = artistData.id;
         this.name = artistData.name;
         this.lastName = artistData.lastName;
         this.phone = artistData.phone;

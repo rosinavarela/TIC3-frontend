@@ -21,8 +21,8 @@ export class BusinessAccountComponent {
   mail: string = '';
   rating: number = 0;
   webPage: string ='';
-  password: string = 'password';
-  password2: string = 'password';
+  password: string = '';
+  password2: string = '';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -182,6 +182,7 @@ export class BusinessAccountComponent {
 
   checkChanges(){  
     const dialogData = {
+      type: 'business',
       isNameChanged: this.isNameChanged,
       isLegalNameChanged: this.isLegalNameChanged,
       isLocationChanged: this.isLocationChanged,
@@ -190,6 +191,7 @@ export class BusinessAccountComponent {
       isRutChanged: this.isRutChanged,
       isDescriptionChanged: this.isDescriptionChanged,
       isWebPageChanged: this.isWebPageChanged,
+      isPasswordChanged: this.isPasswordChanged,
       rut: this.rut,
       phone: this.phone,
       name: this.name,
