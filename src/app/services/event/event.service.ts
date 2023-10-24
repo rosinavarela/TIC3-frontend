@@ -77,6 +77,35 @@ export class EventService {
     )
   }
 
+  getUpcomingEventsFromBusiness(id: any): Observable<Event[]> {
+    const url = `${this.baseURL}businesses/${id}/events/upcoming`;
+    return this.http.get<any[]>(url).pipe(
+      map((response: any[]) => {
+        console.log(response);
+        if (Array.isArray(response)) {
+          return response.map((eventData: any) => {
+            return new Event(
+            eventData.id,
+            eventData.name,
+            eventData.date,
+            eventData.genrePreffered,
+            eventData.time,
+            eventData.location,
+            eventData.paid,
+            eventData.artist,
+            eventData.picture,
+            eventData.neighborhood,
+            eventData.description,
+            eventData.equipment,
+          )});
+        } else {
+          // Handle the case where response is not an array, e.g., return an empty array
+          return [];
+        }
+      })
+    )
+  }
+
   createEvent(data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(data);
