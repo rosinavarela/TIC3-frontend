@@ -56,10 +56,7 @@ mat-form-field {
 }
 
 .failure-message {
-  padding-left: 15px;
-  padding-right: 15px;
   color: red;
-  text-align: right;
-  justify-content: space-between;
-  margin-left: auto;
+  text-align: center; /* Center horizontally */
+  margin: 10px 0; /* Add space above and below the message */
 }

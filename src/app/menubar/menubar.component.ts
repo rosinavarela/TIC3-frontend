@@ -88,7 +88,7 @@ export class MenubarComponent{
     if (option=="account"){
       if (this.usertype=="business"){
         this.matDialog.open(BusinessAccountComponent, {
-          width: '40%',
+          width:'40%',
           });
       }
       else if (this.usertype=="artist"){
@@ -122,7 +122,6 @@ export class MenubarComponent{
     this.badgeHidden= true; 
     this.unseenNotifications=0;
     //aca tendria que haber una funcion que le ponga a todas las notis del array seen
-    console.log('Toggle notifications funcionaaaa');
     this.toggleNotificationDropdown();
   }
   

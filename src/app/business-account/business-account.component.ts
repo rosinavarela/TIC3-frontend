@@ -21,6 +21,8 @@ export class BusinessAccountComponent {
   mail: string = '';
   rating: number = 0;
   webPage: string ='';
+  password: string = 'password';
+  password2: string = 'password';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -39,6 +41,14 @@ export class BusinessAccountComponent {
   initialMail: string;
   isWebPageChanged = false;
   initialWebPage: string;
+  isPasswordChanged = false;
+  initialPassword: string;
+  isPassword2Changed = false;
+  initialPassword2: string;
+
+
+  hidePassword1: boolean = true;
+  hidePassword2: boolean = true;
 
   onNameChange() {
     if (this.name !== this.initialName) {
@@ -111,6 +121,24 @@ export class BusinessAccountComponent {
     }
   }
 
+  onPasswordChange() {
+    if (this.password !== this.initialPassword) {
+      this.isPasswordChanged = true;
+    }
+    else{
+      this.isPasswordChanged = false;
+    }
+  }
+
+  onPassword2Change() {
+    if (this.password2 !== this.initialPassword2) {
+      this.isPassword2Changed = true;
+    }
+    else{
+      this.isPassword2Changed = false;
+    }
+  }
+
   constructor(private matDialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userBusinessService: UserBusinessService) {
     //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser business
     this.fetchBusiness(224);  //poner en vez de 224 data.id!!!!
@@ -123,12 +151,36 @@ export class BusinessAccountComponent {
     this.initialDescription = this.description;
     this.initialMail = this.mail;
     this.initialWebPage = this.webPage;
+    this.initialPassword= this.password;
+    this.initialPassword2= this.password2;
+  }
 
+  showPassword = false;
+  
+  changePassword(){
+    this.showPassword = true;
   }
 
   showNotification = false;
+  showNotification2 = false;
 
-  goToPopUp() {
+  goToPopUp(){
+    if(this.isPasswordChanged ||this.isPassword2Changed){
+      if(this.password != this.password2){
+        this.showNotification2 = true;
+      }
+      else{
+        this.showNotification2 = false;
+        this.checkChanges();
+      }
+    }
+    else{
+      this.checkChanges();
+      this.showNotification2 = false;
+    }
+  }
+
+  checkChanges(){  
     const dialogData = {
       isNameChanged: this.isNameChanged,
       isLegalNameChanged: this.isLegalNameChanged,
@@ -147,10 +199,9 @@ export class BusinessAccountComponent {
       mail: this.mail,
       rating: this.rating,
       webPage: this.webPage,
+      password: this.password
     };
-
-    if (this.isNameChanged || this.isLegalNameChanged || this.isLocationChanged || this.isMailChanged || this.isPhoneChanged 
-      || this.isRutChanged || this.isDescriptionChanged || this.isWebPageChanged) {
+    if (this.isNameChanged || this.isLegalNameChanged ||this.isLocationChanged || this.isMailChanged || this.isPhoneChanged || this.isRutChanged || this.isDescriptionChanged || this.isPasswordChanged ||this.isPassword2Changed || this.isWebPageChanged){
       this.matDialog.open(PopUpComponent, {
         width: '25%',
         data: dialogData,
@@ -163,6 +214,19 @@ export class BusinessAccountComponent {
     }
   }
 
+  passwordInputType1: string = 'password';
+  passwordInputType2: string = 'password';
+
+
+  togglePasswordVisibility1() {
+    this.passwordInputType1 = this.passwordInputType1 === 'password' ? 'text' : 'password';
+    this.hidePassword1 = !this.hidePassword1;
+  }
+
+  togglePasswordVisibility2() {
+    this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
+    this.hidePassword2 = !this.hidePassword2;
+  }
   fetchBusiness(id: number): void {
     this.userBusinessService.getBusinessById(id).subscribe(
       (businessData) => {

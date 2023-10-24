@@ -154,6 +154,20 @@ export class ArtistAccountComponent {
     }
   }
 
+  passwordInputType1: string = 'password';
+  passwordInputType2: string = 'password';
+
+
+  togglePasswordVisibility1() {
+    this.passwordInputType1 = this.passwordInputType1 === 'password' ? 'text' : 'password';
+    this.hidePassword1 = !this.hidePassword1;
+  }
+
+  togglePasswordVisibility2() {
+    this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
+    this.hidePassword2 = !this.hidePassword2;
+  }
+
   fetchAritist(id: number): void {
     this.userArtistService.getArtisytById(id).subscribe(
       (artistData) => {

@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
+import {Application} from '../../../shared/models/Application';
 import { Router } from '@angular/router';
 import { RippleGlobalOptions } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
@@ -26,8 +27,9 @@ export class NextEventsComponent {
 
   ngOnInit(): void{
     const id =224;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
-    this.eventService.getUpcomingEventsFromBusiness(id).subscribe(
+    this.eventService.getUnassignedEventsFromBusiness(id).subscribe(
       (data: Event[]) => {
+        console.log("eventsUnassigned:", data)
         this.events = data; 
       },
       (error) => {

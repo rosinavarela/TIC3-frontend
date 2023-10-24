@@ -73,6 +73,7 @@ export class RegisterComponent {
               height: '650px',
               data: resp
             })
+            this.dialogRef.close();
           },
           (error) => {
             console.error('Errorrrrr:', error);
@@ -86,11 +87,11 @@ export class RegisterComponent {
           }
         );
 
-        this.dialogRef.close();
       } else {
         this.registerService.registerBusiness(formData).subscribe(
           (resp) => {
             console.log('response:', resp)
+            this.dialogRef.close();
           },
           (error) => {
             console.error('Errorrrrr:', error);
@@ -151,4 +152,17 @@ export class RegisterComponent {
   }
 
 
+  passwordInputType1: string = 'password';
+  passwordInputType2: string = 'password';
+
+
+  togglePasswordVisibility1() {
+    this.passwordInputType1 = this.passwordInputType1 === 'password' ? 'text' : 'password';
+    this.hidePassword1 = !this.hidePassword1;
+  }
+
+  togglePasswordVisibility2() {
+    this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
+    this.hidePassword2 = !this.hidePassword2;
+  }
 }

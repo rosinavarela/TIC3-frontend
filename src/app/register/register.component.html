@@ -32,10 +32,9 @@
                 <div class="col">
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
-                        <input matInput [type]="hidePassword1 ? 'password' : 'text'" formControlName="password"
-                            placeholder="Password">
-                        <button mat-icon-button matSuffix type="button" (click)="hidePassword1 = !hidePassword1">
-                            <mat-icon>{{ hidePassword1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        <input matInput [type]="passwordInputType1" formControlName="password" placeholder="Password">
+                        <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
+                            <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
                         </button>
                     </mat-form-field>
                 </div>
@@ -43,10 +42,9 @@
                 <div class="col">
                     <mat-form-field>
                         <mat-label>Repetir contraseña</mat-label>
-                        <input matInput [type]="hidePassword2 ? 'password2' : 'text'" formControlName="password2"
-                            placeholder="Password">
-                        <button mat-icon-button matSuffix type="button" (click)="hidePassword2 = !hidePassword2">
-                            <mat-icon>{{ hidePassword2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        <input matInput [type]="passwordInputType2" formControlName="password2" placeholder="Password">
+                        <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility2()">
+                            <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>            
                         </button>
                     </mat-form-field>
                 </div>
@@ -151,8 +149,9 @@
             </div>
             <div class="row">
                 <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>
-                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()"
-                    type="submit">Siguiente</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()" type="submit">Siguiente</button>
             </div>
         </mat-dialog-content>
     </form>

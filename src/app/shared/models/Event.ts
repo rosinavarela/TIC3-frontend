@@ -1,9 +1,10 @@
 /*aca vamos a definir el modelo de comida*/
 
 import { DatePipe, Time } from "@angular/common";
+import { Application } from "./Application";
 
 export class Event { 
-    
+
     constructor(
         public id: number,
         public name:string,
@@ -16,7 +17,8 @@ export class Event {
         public picture:string | null, 
         public neighborhood: string,
         public description?:string,
-        public equipment?:string
+        public equipment?:string,
+        public applications?: Application[]
     ) {}
         
 /*makes this file accesible from other files*/

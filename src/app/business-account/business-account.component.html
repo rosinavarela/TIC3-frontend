@@ -45,11 +45,41 @@
         <textarea matInput [(ngModel)]="description" name="description" #descriptionInput="ngModel" (ngModelChange)="onDescriptionChange()"></textarea>
         <mat-icon matSuffix>description</mat-icon>
       </mat-form-field>
+      <button class="password-button" mat-raised-button (click)="changePassword()">
+        Cambiar contraseña
+      </button>
+      <div class="changePassword" *ngIf="showPassword" fxLayout= "row">
+        <!-- Column 1 -->
+        <div class="col1">
+          <mat-form-field class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="passwordInputType1" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
+            <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
+              <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
+            </button>
+          </mat-form-field>
+        </div>
+        <!-- Column 2 -->
+        <div class="col2">
+          <mat-form-field class="full-width">
+            <mat-label>Repetir contraseña</mat-label>
+            <input matInput [type]="passwordInputType2" [(ngModel)]="password2" placeholder="Contraseña" name="password2" #password2Input="ngModel" (ngModelChange)="onPassword2Change()">
+            <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility2()">
+              <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>   
     </form>
     <div class="notification">
         <p *ngIf="showNotification">
           Los campos no han sido modificados, intente nuevamente.
         </p>
+    </div>
+    <div class="notification">
+      <p *ngIf="showNotification2">
+        Las contraseñas ingresadas no coinciden, intente nuevamente.
+      </p>
     </div>
     <div class="actions">
       <button mat-raised-button color="primary" (click)="goToPopUp()">Editar</button>
