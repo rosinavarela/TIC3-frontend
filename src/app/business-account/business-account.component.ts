@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserBusinessService } from '../services/user/user-business.service';
 
 @Component({
   selector: 'app-business-account',
@@ -8,14 +10,17 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
   styleUrls: ['./business-account.component.css']
 })
 export class BusinessAccountComponent {
+
   //aca irian los datos iniciales, antes de modificar, que hay que traer del backend
-  name: string = 'Name'; 
-  legalName: string = 'LegalName';
-  phone: string = 'Phone';
-  location: string = 'location';
-  rut: string = 'Rut';
-  description: string = 'description';
-  mail: string = 'mail';
+  name: string = '';
+  legalName: string = '';
+  phone: string = '';
+  location: string = '';
+  rut: number = 0;
+  description: string = '';
+  mail: string = '';
+  rating: number = 0;
+  webPage: string ='';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -27,17 +32,19 @@ export class BusinessAccountComponent {
   isPhoneChanged = false;
   initialPhone: string;
   isRutChanged = false;
-  initialRut: string;
+  initialRut: number;
   isDescriptionChanged = false;
   initialDescription: string;
   isMailChanged = false;
   initialMail: string;
+  isWebPageChanged = false;
+  initialWebPage: string;
 
   onNameChange() {
     if (this.name !== this.initialName) {
       this.isNameChanged = true;
     }
-    else{
+    else {
       this.isNameChanged = false;
     }
   }
@@ -46,7 +53,7 @@ export class BusinessAccountComponent {
     if (this.legalName !== this.initialLegalName) {
       this.isLegalNameChanged = true;
     }
-    else{
+    else {
       this.isLegalNameChanged = false;
     }
   }
@@ -55,7 +62,7 @@ export class BusinessAccountComponent {
     if (this.location !== this.initialLocation) {
       this.isLocationChanged = true;
     }
-    else{
+    else {
       this.isLocationChanged = false;
     }
   }
@@ -64,7 +71,7 @@ export class BusinessAccountComponent {
     if (this.phone !== this.initialPhone) {
       this.isPhoneChanged = true;
     }
-    else{
+    else {
       this.isPhoneChanged = false;
     }
   }
@@ -73,7 +80,7 @@ export class BusinessAccountComponent {
     if (this.rut !== this.initialRut) {
       this.isRutChanged = true;
     }
-    else{
+    else {
       this.isRutChanged = false;
     }
   }
@@ -82,7 +89,7 @@ export class BusinessAccountComponent {
     if (this.description !== this.initialDescription) {
       this.isDescriptionChanged = true;
     }
-    else{
+    else {
       this.isDescriptionChanged = false;
     }
   }
@@ -91,12 +98,23 @@ export class BusinessAccountComponent {
     if (this.mail !== this.initialMail) {
       this.isMailChanged = true;
     }
-    else{
+    else {
       this.isMailChanged = false;
     }
   }
+  onWebPageChange() {
+    if (this.webPage !== this.initialWebPage) {
+      this.isWebPageChanged = true;
+    }
+    else {
+      this.isWebPageChanged = false;
+    }
+  }
 
-  constructor(private matDialog:MatDialog) {
+  constructor(private matDialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userBusinessService: UserBusinessService) {
+    //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser business
+    this.fetchBusiness(224);  //poner en vez de 224 data.id!!!!
+
     this.initialName = this.name;
     this.initialLegalName = this.legalName;
     this.initialLocation = this.location;
@@ -104,17 +122,38 @@ export class BusinessAccountComponent {
     this.initialRut = this.rut;
     this.initialDescription = this.description;
     this.initialMail = this.mail;
+    this.initialWebPage = this.webPage;
 
   }
 
   showNotification = false;
 
-  goToPopUp(){
-    
-    if (this.isNameChanged || this.isLegalNameChanged ||this.isLocationChanged || this.isMailChanged || this.isPhoneChanged || this.isRutChanged || this.isDescriptionChanged){
+  goToPopUp() {
+    const dialogData = {
+      isNameChanged: this.isNameChanged,
+      isLegalNameChanged: this.isLegalNameChanged,
+      isLocationChanged: this.isLocationChanged,
+      isPhoneChanged: this.isPhoneChanged,
+      isMailChanged: this.isMailChanged,
+      isRutChanged: this.isRutChanged,
+      isDescriptionChanged: this.isDescriptionChanged,
+      isWebPageChanged: this.isWebPageChanged,
+      rut: this.rut,
+      phone: this.phone,
+      name: this.name,
+      legalName: this.legalName,
+      location: this.location,
+      description: this.description,
+      mail: this.mail,
+      rating: this.rating,
+      webPage: this.webPage,
+    };
+
+    if (this.isNameChanged || this.isLegalNameChanged || this.isLocationChanged || this.isMailChanged || this.isPhoneChanged 
+      || this.isRutChanged || this.isDescriptionChanged || this.isWebPageChanged) {
       this.matDialog.open(PopUpComponent, {
         width: '25%',
-        data: {isNameChanged: this.isNameChanged,isLegalNameChanged: this.isLegalNameChanged, isLocationChanged: this.isLocationChanged, isPhoneChanged: this.isPhoneChanged, isMailChanged: this.isMailChanged, isRutChanged: this.isRutChanged, isDescriptionChanged: this.isDescriptionChanged}
+        data: dialogData,
       });
       this.showNotification = false;
     }
@@ -122,6 +161,26 @@ export class BusinessAccountComponent {
       // Fields have not been modified, show the notification
       this.showNotification = true;
     }
+  }
+
+  fetchBusiness(id: number): void {
+    this.userBusinessService.getBusinessById(id).subscribe(
+      (businessData) => {
+        console.log('Business data:', businessData);
+        this.name = businessData.name;
+        this.legalName = businessData.legalName;
+        this.location = businessData.location;
+        this.phone = businessData.phone;
+        this.description = businessData.description;
+        this.rut = businessData.rut;
+        this.rating = businessData.rating;
+        this.webPage = businessData.webPage;
+        this.mail = businessData.user.email;
+      },
+      (error) => {
+        console.error('Error fetching business:', error);
+      }
+    );
   }
 
 }

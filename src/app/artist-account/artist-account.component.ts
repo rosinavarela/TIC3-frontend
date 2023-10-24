@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { UserArtistService } from '../services/user/user-artist.service';
 
 @Component({
   selector: 'app-artist-account',
@@ -9,13 +10,13 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 })
 export class ArtistAccountComponent {
   //aca irian los datos iniciales, antes de modificar, que hay que traer del backend
-  name: string = 'Name'; 
-  lastName: string = 'Last name';
-  id: string = 'cedula';
-  phone: string = 'Phone';
-  mail: string = 'mail';
-  password: string = 'password';
-  password2: string = 'password';
+  name: string = ''; 
+  lastName: string = '';
+  id: string = '';
+  phone: string = '';
+  mail: string = '';
+  password: string = '';
+  password2: string = '';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -101,7 +102,8 @@ export class ArtistAccountComponent {
     }
   }
 
-  constructor(private matDialog:MatDialog) {
+  constructor(private matDialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
+    //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser artist
     this.initialName = this.name;
     this.initialLastName = this.lastName;
     this.initialId = this.id;
@@ -150,6 +152,22 @@ export class ArtistAccountComponent {
       // Fields have not been modified, show the notification
       this.showNotification = true;
     }
+  }
+
+  fetchAritist(id: number): void {
+    this.userArtistService.getArtisytById(id).subscribe(
+      (artistData) => {
+        console.log('Business data:', artistData);
+        this.name = artistData.name;
+        this.lastName = artistData.lastName;
+        this.phone = artistData.phone;
+        this.mail = artistData.user.email;
+        
+      },
+      (error) => {
+        console.error('Error fetching business:', error);
+      }
+    );
   }
 }
 

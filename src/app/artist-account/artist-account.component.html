@@ -14,7 +14,7 @@
           <mat-icon matSuffix>account_circle</mat-icon>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Cédula" [(ngModel)]="id" name="id" #idInput="ngModel" (ngModelChange)="onIdChange()">
+          <input matInput placeholder="Cédula" [(ngModel)]="id" [readonly]="true" name="id" #idInput="ngModel" (ngModelChange)="onIdChange()">
           <mat-icon matSuffix>perm_identity</mat-icon>
         </mat-form-field>
       </div>
