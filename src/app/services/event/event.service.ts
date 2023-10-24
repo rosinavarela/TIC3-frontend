@@ -47,12 +47,14 @@ export class EventService {
     return `${buffer.toString('base64')}`;
   }
 
-  getUpcomingEventsFromBusiness(id: any): Observable<Event[]> {//REVISAR
-    const url = `${this.baseURL}businesses/${id}/events/upcoming`;
+  getUnassignedEventsFromBusiness(id: any): Observable<Event[]> {//REVISAR
+    const url = `${this.baseURL}businesses/${id}/events/unassigned`;
     return this.http.get<any[]>(url).pipe(
       map((response: any[]) => {
+        console.log(response);
         if (Array.isArray(response)) {
-          return response.map(eventData => new Event(
+          return response.map((eventData: any) => {
+            return new Event(
             eventData.id,
             eventData.name,
             eventData.date,
@@ -64,8 +66,9 @@ export class EventService {
             eventData.picture,
             eventData.neighborhood,
             eventData.description,
-            eventData.equipment
-          ));
+            eventData.equipment,
+            eventData.applications
+          )});
         } else {
           // Handle the case where response is not an array, e.g., return an empty array
           return [];
