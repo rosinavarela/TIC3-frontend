@@ -5,6 +5,9 @@ import {Event} from '../../../shared/models/Event';
 import {Application} from '../../../shared/models/Application';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { PopUpArtistComponent } from '../pop-up-artist/pop-up-artist.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-next-events',
@@ -14,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NextEventsComponent {
   events: Event[] =[];
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog) { }
 
   ngOnInit(): void{
     const id =224;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
@@ -32,7 +35,12 @@ export class NextEventsComponent {
   }
 
   goToArtist(){
-    this.router.navigate(['/dashboard-business/artist-profile-business'],{ relativeTo: this.route });
+    this.matDialog.open(PopUpArtistComponent,{
+      width:'550px',
+      height: '300px'
+    })
   }
+
+  
 }
 

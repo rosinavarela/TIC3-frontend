@@ -53,7 +53,7 @@
                             </div>
                         </div>                   
                     </ul>
-                    <div class="no-applications"><!--*ngIf="event.applications.length === 0 -- no anda"-->
+                    <div class="no-applications" *ngIf="event.applications?.length === 0"> 
                         <span>Aun no hay postulaciones</span>
                     </div>     
                 </div>

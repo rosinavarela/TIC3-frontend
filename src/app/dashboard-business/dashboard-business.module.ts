@@ -22,9 +22,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MyNextEventsBusinessComponent} from './components-business/my-next-events-business/my-next-events-business.component';
 import { ArtistProfileBusinessComponent } from './components-business/artist-profile-business/artist-profile-business.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpArtistComponent } from './components-business/pop-up-artist/pop-up-artist.component';
 
 @NgModule({
-  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, MyNextEventsBusinessComponent,ExpandedEventBusinessComponent, CreateEventComponent, ArtistProfileBusinessComponent], //tuve que poner expanded event para que me agarre el mat
+  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, MyNextEventsBusinessComponent,ExpandedEventBusinessComponent, CreateEventComponent, ArtistProfileBusinessComponent, PopUpArtistComponent], //tuve que poner expanded event para que me agarre el mat
   imports: [
     CommonModule,
     DashboardBusinessRoutingModule,
@@ -45,6 +47,7 @@ import { ArtistProfileBusinessComponent } from './components-business/artist-pro
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule
 
   ]
 })

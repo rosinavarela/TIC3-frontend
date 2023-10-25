@@ -1,0 +1,73 @@
+.message-box {
+  overflow-y: auto; /* Show a vertical scroll bar if content exceeds the max-height */
+  flex-grow: 1; 
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start; /* Align text to the start (left) of the container */
+  justify-content: center; /* Center content vertically */
+  padding: 10px; /* Add padding to increase spacing */
+
+}
+
+.message {
+  text-align: left; /* Align text within the message box to the left */
+  max-height: 100%; /* Allow the message box to grow and occupy remaining height */
+  overflow-y: auto; /* Show a vertical scroll bar if content exceeds the max-height */
+  width: 100%;
+}
+
+.button-container {
+  width: 100%;
+}
+
+.close-button {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right */
+  margin: 5px;
+}
+
+/* Styling for the button */
+.artist {
+  display: flex; 
+  align-items: center;
+  text-align: left; /* Align text within the button to the left */
+  overflow-wrap: break-word;
+  height: auto;
+  width: 100%;
+}
+
+/* Style for the content within the button */
+.artist .button-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the image within the button */
+.artist img {
+  max-width: 70px; /* Increase the maximum width of the image */
+  height: auto;
+  margin-right: 5px;
+  border-radius: 50%; /* Maake the image circular */
+}
+
+/* Style for the text within the button */
+.artist span {
+  font-size: 40px; /* Increase the font size of the text */
+  line-height: 1.2; /* Adjust line height to separate lines */
+}
+
+mat-dialog-content {
+  width: 100%;
+  text-align: center;
+  height: 100%; /* Ensure the dialog container takes up the entire height */
+  flex-grow: 1; 
+  flex-direction: column;
+  display: flex;
+}
+
+.message-title{
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
