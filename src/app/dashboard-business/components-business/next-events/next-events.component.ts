@@ -4,16 +4,7 @@ import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import {Application} from '../../../shared/models/Application';
 import { Router } from '@angular/router';
-import { RippleGlobalOptions } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
-
-const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto para desactivar el efecto cuando apretas
-  disabled: true,
-  animation: {
-    enterDuration: 0,
-    exitDuration: 0
-  }
-};
 
 @Component({
   selector: 'app-next-events',

@@ -60,3 +60,11 @@ mat-form-field {
   text-align: center; /* Center horizontally */
   margin: 10px 0; /* Add space above and below the message */
 }
+
+.terms{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center; /* Vertically center items */
+  width:100%;
+}

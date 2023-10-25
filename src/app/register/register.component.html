@@ -145,7 +145,10 @@
                 </div>
             </div>
             <div class="row">
-                <mat-checkbox formControlName="terms">He leído y acepto los términos y condiciones</mat-checkbox>
+                <div class= "terms">
+                    <mat-checkbox formControlName="terms">He leído y acepto los términos y condiciones</mat-checkbox>
+                    <button mat-raised-button >Términos y condiciones</button>
+                </div>
             </div>
             <div class="row">
                 <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>

@@ -18,7 +18,15 @@
                     <p>Lugar:{{ event.location }}</p>
                     <p>Estilo Musical: {{ event.genrePreffered }}</p>
                     <p>Equipos disponibles: {{ event.equipment }}</p>
-                    <p>Remunerado: {{ event.paid }}</p>
+                    <p>
+                        Remunerado:
+                        <ng-container *ngIf="event.paid">
+                            ✓
+                        </ng-container>
+                        <ng-container *ngIf="!event.paid">
+                            ✕                     
+                        </ng-container>
+                    </p>
                     <p>Descripción: {{ event.description }}</p>
                 </div>
             </div>
@@ -43,8 +51,11 @@
                                     <mat-icon>check</mat-icon>
                                 </button>
                             </div>
-                        </div>
+                        </div>                   
                     </ul>
+                    <div class="no-applications"><!--*ngIf="event.applications.length === 0 -- no anda"-->
+                        <span>Aun no hay postulaciones</span>
+                    </div>     
                 </div>
             </div>
 
