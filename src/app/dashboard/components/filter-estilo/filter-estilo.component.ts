@@ -50,7 +50,6 @@ export class FilterEstiloComponent implements OnInit {
     } else {
       this.selectedOption = event.option.value.toLowerCase();
     }
-    console.log('Selected Genre:', this.selectedOption);
     this.filterService.updateEstiloSelected(this.selectedOption);
   }
 }

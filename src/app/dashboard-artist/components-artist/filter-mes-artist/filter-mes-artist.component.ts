@@ -6,6 +6,7 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-filter-mes-artist',
@@ -24,8 +25,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FilterMesArtistComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['7 días', '30 días', '60 días'];
+  options: string[] = ['Ninguno','7 días', '30 días', '60 días'];
   filteredOptions!: Observable<string[]>;
+  selectedOption: number | null = null;
+
+  constructor(private filterService: FilterService) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -38,5 +42,19 @@ export class FilterMesArtistComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  onOptionSelected(event: any): void {
+
+    if(event.option.value === '7 días'){
+      this.selectedOption = 1;
+    } else if (event.option.value === '30 días'){
+      this.selectedOption = 2;
+    }else if (event.option.value === '60 días'){
+      this.selectedOption = 3;
+    } else if (event.option.value === 'Ninguno') {
+      this.selectedOption = null;
+    }
+    this.filterService.updateTimeSelected(this.selectedOption);
   }
 }

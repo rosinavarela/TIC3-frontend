@@ -8,46 +8,18 @@
 </div>
 
 <mat-nav-list>
-    <mat-list-item (click)="onEventClick()"> 
+    <mat-list-item *ngFor="let event of events" (click)="onEventClick()"> 
         <div class="container" fxLayout="column">
             <div class="image-container">
                 <img src="/assets/images/events/prueba.jpeg" alt="Event Image">
             </div>
             <div class="content">
                 <div class= "text-container">
-                    <div class="date">11/11/1111</div>
-                    <div class="name">Concierto en casa</div>
-                    <div class="location">Mi casa jaja</div>
+                    <div class="date">{{ event.date | date:'dd/MM/yy'}}</div>
+                    <div class="name">{{ event.name }}</div>
+                    <div class="location">{{ event.location }}</div>
                 </div>
             </div>
         </div>
     </mat-list-item>   
-    <mat-list-item (click)="onEventClick()"> 
-        <div class="container" fxLayout="column">
-            <div class="image-container">
-                <img src="/assets/images/logos/foto.jpeg" alt="Event Image">
-            </div>
-            <div class="content">
-                <div class= "text-container">
-                    <div class="date">11/11/1111</div>
-                    <div class="name">Concierto en casa</div>
-                    <div class="location">Mi casa jaja</div>
-                </div>
-            </div>
-        </div>
-    </mat-list-item>  
-    <mat-list-item (click)="onEventClick()"> 
-        <div class="container" fxLayout="column">
-            <div class="image-container">
-                <img src="/assets/images/events/prueba2.avif" alt="Event Image">
-            </div>
-            <div class="content">
-                <div class= "text-container">
-                    <div class="date">11/11/1111</div>
-                    <div class="name">Concierto en casaaaaaa como estas pero yo estoy bien jiji lolol</div>
-                    <div class="location">Mi casa jaja</div>
-                </div>
-            </div>
-        </div>
-    </mat-list-item>  
 </mat-nav-list>

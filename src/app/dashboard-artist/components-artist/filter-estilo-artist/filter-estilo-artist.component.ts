@@ -6,6 +6,7 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-filter-estilo-artist',
@@ -24,8 +25,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FilterEstiloArtistComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Pop', 'Rock', 'Jazz','Clásica', 'Alternativo', 'Indie', 'Cumbia', 'Rap/Trap', 'Otro'];
+  options: string[] = ['Ninguno', 'Pop', 'Rock', 'Jazz','Clásica', 'Alternativo', 'Indie', 'Cumbia', 'Rap/Trap', 'Otro'];
   filteredOptions!: Observable<string[]>;
+  selectedOption: string | null = null;
+
+  constructor(private filterService: FilterService) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -38,5 +42,14 @@ export class FilterEstiloArtistComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  onOptionSelected(event: any): void {
+    if (event.option.value === 'Ninguno') {
+      this.selectedOption = '';
+    } else {
+      this.selectedOption = event.option.value.toLowerCase();
+    }
+    this.filterService.updateEstiloSelected(this.selectedOption);
   }
 }
