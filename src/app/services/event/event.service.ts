@@ -131,7 +131,7 @@ export class EventService {
   }
 
 
-  getFilteredEvents(neighborhood?: string, timeWindow?: number, business?: string, genre?: string): Observable<Event[]> {
+  getFilteredEvents(neighborhood?: string, timeWindow?: number, business?: string, genre?: string, unassigned?: string): Observable<Event[]> {
     const queryParams: any = {};
     if (neighborhood) {
       queryParams.neighborhood = neighborhood;
@@ -147,6 +147,9 @@ export class EventService {
 
     if (genre) {
       queryParams.genre = genre;
+    }
+    if (unassigned) {
+      queryParams.unassigned = unassigned;
     }
 
     return this.http.get<any[]>(`${this.baseURL}events/filter`, { params: queryParams }).pipe(
