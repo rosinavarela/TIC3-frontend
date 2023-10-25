@@ -5,45 +5,49 @@
     <app-filter-mes-artist></app-filter-mes-artist>
     <app-filter-local-artist></app-filter-local-artist>
     <app-filter-estilo-artist></app-filter-estilo-artist>
-    <button mat-raised-button class="remove-filters">
-        <mat-icon matSuffix>
-            delete
-        </mat-icon>
-        Eliminar Filtros
-    </button>
 </div>
 
 <mat-nav-list>
-    <mat-list-item (click)="onEventClick()"> <!--aca hacer un for-->
-        <a>
-            <img src="/assets/images/events/BarArocena.jpeg" alt="Event Image">
-            <div class="content">
-                <div class="date">11/11/1111</div>
-                <div class="name">Concierto en casa</div>
-                <div class="location">Mi casa jaja</div>
+    <mat-list-item (click)="onEventClick()"> 
+        <div class="container" fxLayout="column">
+            <div class="image-container">
+                <img src="/assets/images/events/prueba.jpeg" alt="Event Image">
             </div>
-        </a>
+            <div class="content">
+                <div class= "text-container">
+                    <div class="date">11/11/1111</div>
+                    <div class="name">Concierto en casa</div>
+                    <div class="location">Mi casa jaja</div>
+                </div>
+            </div>
+        </div>
     </mat-list-item>   
-    <mat-list-item> 
-        <a>
+    <mat-list-item (click)="onEventClick()"> 
+        <div class="container" fxLayout="column">
             <div class="image-container">
                 <img src="/assets/images/logos/foto.jpeg" alt="Event Image">
             </div>
             <div class="content">
-                <div class="date">11/11/1111</div>
-                <div class="name">Concierto en casa</div>
-                <div class="location">Mi casa jaja</div>
+                <div class= "text-container">
+                    <div class="date">11/11/1111</div>
+                    <div class="name">Concierto en casa</div>
+                    <div class="location">Mi casa jaja</div>
+                </div>
             </div>
-        </a>
+        </div>
     </mat-list-item>  
-    <mat-list-item> 
-        <a>
-            <img src="/assets/images/events/BarArocena.jpeg" alt="Event Image">
-            <div class="content">
-                <div class="date">11/11/1111</div>
-                <div class="name">Concierto en casa</div>
-                <div class="location">Mi casa jaja</div>
+    <mat-list-item (click)="onEventClick()"> 
+        <div class="container" fxLayout="column">
+            <div class="image-container">
+                <img src="/assets/images/events/prueba2.avif" alt="Event Image">
             </div>
-        </a>
+            <div class="content">
+                <div class= "text-container">
+                    <div class="date">11/11/1111</div>
+                    <div class="name">Concierto en casaaaaaa como estas pero yo estoy bien jiji lolol</div>
+                    <div class="location">Mi casa jaja</div>
+                </div>
+            </div>
+        </div>
     </mat-list-item>  
 </mat-nav-list>
