@@ -51,8 +51,8 @@ export class ApplyEventsComponent implements OnInit {
     );
   }
 
-  onEventClick() {
-    this.router.navigate(['/dashboard-artist/expand-application'], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
+  onEventClick(eventId: number) {
+    this.router.navigate(['/dashboard-artist/expand-application', eventId], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
   }
 }
 

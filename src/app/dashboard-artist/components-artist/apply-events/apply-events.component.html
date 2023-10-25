@@ -8,7 +8,7 @@
 </div>
 
 <mat-nav-list>
-    <mat-list-item *ngFor="let event of events" (click)="onEventClick()"> 
+    <mat-list-item *ngFor="let event of events" (click)="onEventClick(event.id)"> 
         <div class="container" fxLayout="column">
             <div class="image-container">
                 <img src="/assets/images/events/prueba.jpeg" alt="Event Image">
