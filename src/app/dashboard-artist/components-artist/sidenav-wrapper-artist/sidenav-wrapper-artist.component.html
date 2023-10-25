@@ -13,7 +13,7 @@
         <span *ngIf="artistSidenavService.isExpanded$ | async">Mis Próximos Eventos</span>
       </mat-list-item>
 
-      <mat-list-item [routerLink]="'artist-view-profile'"> 
+      <mat-list-item [routerLink]="'artist-view-profile'" [queryParams]="{ artistId: artistId}"> 
         <mat-icon mat-list-icon>face</mat-icon>
         <span *ngIf="artistSidenavService.isExpanded$ | async">Mi Perfil</span>
       </mat-list-item>

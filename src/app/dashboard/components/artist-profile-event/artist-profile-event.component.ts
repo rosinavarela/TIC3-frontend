@@ -18,7 +18,7 @@ export class ArtistProfileEventComponent implements OnInit{
   ];
 
   instagramTag: string ="cristiano"; 
-  instagramLink: string=`https://www.instagram.com/${this.instagramTag}/`;
+  instagramLink: string='';
   artistId: number =0;
   eventId: string ='';
   artisticName: string='';
@@ -35,6 +35,7 @@ export class ArtistProfileEventComponent implements OnInit{
     });
     this.fetchAritist(this.artistId);
     
+    
   }
 
   fetchAritist(id: number): void {
@@ -46,7 +47,7 @@ export class ArtistProfileEventComponent implements OnInit{
         this.description=artistData.description;
         this.instagramTag=artistData.igUsername;
         this.links=artistData.links;
-
+        this.instagramLink = `https://www.instagram.com/${this.instagramTag}/`
         
       },
       (error) => {

@@ -9,6 +9,7 @@ import { ArtistSidenavService} from 'src/app/services/menubar/artist-sidenav.ser
 })
 
 export class SidenavWrapperArtistComponent {
+  artistId: number = 1; // FIXME: cambiar esto cuando hagamos el flujo del login!!!! 
   constructor(public artistSidenavService: ArtistSidenavService) { }
 }
 
