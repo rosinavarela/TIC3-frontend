@@ -41,7 +41,6 @@ export class FilterLocalComponent implements OnInit {
     this.eventService.getBusinessNames().subscribe(
       (data: string[]) => {
         this.options = this.options.concat(data);
-        console.log('Business Names:', data);
       },
       (error) => {
         console.error('Error fetching business names:', error);
@@ -61,7 +60,6 @@ export class FilterLocalComponent implements OnInit {
     } else {
       this.selectedOption = event.option.value;
     }
-    console.log('Selected Local:', this.selectedOption);
     this.filterService.updateLocalSelected(this.selectedOption);
   }
 }

@@ -63,7 +63,6 @@ export class FilterUbicacionComponent implements OnInit {
     } else {
       this.selectedOption = event.option.value;
     }
-    console.log('Selected Ubicacion:', this.selectedOption);
     this.filterService.updateUbicacionSelected(this.selectedOption);
   }
 }

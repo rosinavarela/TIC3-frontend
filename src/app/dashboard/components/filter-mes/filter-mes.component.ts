@@ -55,7 +55,6 @@ export class FilterMesComponent implements OnInit {
     } else if (event.option.value === 'Ninguno') {
       this.selectedOption = null;
     }
-    console.log('Selected time:', this.selectedOption);
     this.filterService.updateTimeSelected(this.selectedOption);
   }
 }

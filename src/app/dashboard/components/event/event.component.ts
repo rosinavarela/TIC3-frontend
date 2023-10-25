@@ -67,11 +67,10 @@ export class EventComponent implements OnInit {
     return thumbnail;
   }
 
-  applyFilters(neighborhood?: string, timeWindow?: number, business?: string, genre?: string) {
-    this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre).subscribe(
+  applyFilters(neighborhood?: string, timeWindow?: number, business?: string, genre?: string, unassigned?: string) {
+    this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
       (data) => {
         this.events = data;
-        console.log('Eventos filtrados: ', this.events);
       },
       (error) => {
         console.error('Error fetching events:', error);
