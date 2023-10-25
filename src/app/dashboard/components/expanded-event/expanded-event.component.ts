@@ -26,7 +26,6 @@ export class ExpandedEventComponent {
     this.eventService.getEventById(eventId).subscribe(
       (data: any) => {
         this.event = data;
-        console.log('Event:', this.event);
         // Calculate the image source and store it in eventImageSource
       this.eventImageSource = this.getImageSource(this.event);
       },
@@ -81,6 +80,6 @@ export class ExpandedEventComponent {
   }
 
   goToArtist() {
-    this.router.navigate(['/dashboard/artist-profile-event'], { relativeTo: this.route });
+    this.router.navigate(['/dashboard/artist-profile-event',this.event.id,this.event.artist.id], { relativeTo: this.route });
   }
 }

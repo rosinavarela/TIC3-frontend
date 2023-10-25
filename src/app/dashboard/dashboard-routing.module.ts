@@ -31,7 +31,7 @@ const routes: Routes = [
         component: ExpandedEventComponent
       },
       {
-        path: 'artist-profile-event', 
+        path: 'artist-profile-event/:eventId/:artistId', 
         component: ArtistProfileEventComponent
       }
     ]
