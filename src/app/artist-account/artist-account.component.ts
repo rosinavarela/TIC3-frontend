@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { UserArtistService } from '../services/user/user-artist.service';
 
 @Component({
   selector: 'app-artist-account',
@@ -9,13 +10,13 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 })
 export class ArtistAccountComponent {
   //aca irian los datos iniciales, antes de modificar, que hay que traer del backend
-  name: string = 'Name'; 
-  lastName: string = 'Last name';
-  id: string = 'cedula';
-  phone: string = 'Phone';
-  mail: string = 'mail';
-  password: string = 'password';
-  password2: string = 'password';
+  name: string = ''; 
+  lastName: string = '';
+  id: string = '';
+  phone: string = '';
+  mail: string = '';
+  password: string = '';
+  password2: string = '';
 
   //esta parte es para ver si el nombre cambio para poder ponerlo en el popup
   isNameChanged = false;
@@ -101,7 +102,9 @@ export class ArtistAccountComponent {
     }
   }
 
-  constructor(private matDialog:MatDialog) {
+  constructor(private matDialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
+    //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser artist
+    this.fetchAritist(1);//aca hay que poner data.id en vez de 1!!!!!
     this.initialName = this.name;
     this.initialLastName = this.lastName;
     this.initialId = this.id;
@@ -139,10 +142,23 @@ export class ArtistAccountComponent {
 
   //se fija si se cambiaron campos
   checkChanges(){
+    const dialogData = {
+      type: 'artist',
+      isNameChanged: this.isNameChanged,
+      isPhoneChanged: this.isPhoneChanged,
+      isMailChanged: this.isMailChanged,
+      isPasswordChanged: this.isPasswordChanged,
+      id: this.id,
+      phone: this.phone,
+      name: this.name,
+      mail: this.mail,
+      password: this.password,
+      lastName: this.lastName,
+    };
     if (this.isNameChanged || this.isLastNameChanged || this.isIdChanged || this.isPhoneChanged || this.isMailChanged || this.isPasswordChanged ||this.isPassword2Changed){
       this.matDialog.open(PopUpComponent, {
         width: '25%',
-        data: {isNameChanged: this.isNameChanged,isLastNameChanged: this.isLastNameChanged, isIdChanged: this.isIdChanged, isPhoneChanged: this.isPhoneChanged, isMailChanged: this.isMailChanged, isPasswordChanged: this.isPasswordChanged}
+        data: dialogData,
       });
       this.showNotification = false;
     }
@@ -164,6 +180,23 @@ export class ArtistAccountComponent {
   togglePasswordVisibility2() {
     this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
     this.hidePassword2 = !this.hidePassword2;
+  }
+
+  fetchAritist(id: number): void {
+    this.userArtistService.getArtisytById(id).subscribe(
+      (artistData) => {
+        console.log('Business data:', artistData);
+        this.id = artistData.id;
+        this.name = artistData.name;
+        this.lastName = artistData.lastName;
+        this.phone = artistData.phone;
+        this.mail = artistData.user.email;
+        
+      },
+      (error) => {
+        console.error('Error fetching business:', error);
+      }
+    );
   }
 }
 

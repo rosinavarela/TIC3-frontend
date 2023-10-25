@@ -34,6 +34,9 @@
       <div class="password" *ngIf="isPasswordChanged">
         Contraseña
       </div>
+      <div class="webPage" *ngIf="isWebPageChanged">
+        Página web
+      </div>
     </div>
     
     <mat-dialog-actions class="button-container">
@@ -41,7 +44,7 @@
         <button mat-raised-button color="primary" matDialogClose>Cancelar</button>
       </div>
       <div class="edit">
-        <button mat-raised-button color="primary" >Editar</button>
+        <button mat-raised-button color="primary" (click)="editar()">Editar</button>
       </div>
     </mat-dialog-actions>
 

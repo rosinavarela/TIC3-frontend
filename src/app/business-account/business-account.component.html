@@ -32,10 +32,14 @@
             <mat-icon matSuffix>location_on</mat-icon>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Rut" [(ngModel)]="rut" name="rut" #rutInput="ngModel" (ngModelChange)="onRutChange()">
+            <input matInput placeholder="Rut" [(ngModel)]="rut" [readonly]="true" name="rut" #rutInput="ngModel" (ngModelChange)="onRutChange()">
             <mat-icon matSuffix>account_balance</mat-icon>
         </mat-form-field>
       </div>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Página web" [(ngModel)]="webPage" name="webPage" #webPageInput="ngModel" (ngModelChange)="onWebPageChange()">
+        <mat-icon matSuffix>link</mat-icon>
+    </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Descripción</mat-label>
         <textarea matInput [(ngModel)]="description" name="description" #descriptionInput="ngModel" (ngModelChange)="onDescriptionChange()"></textarea>
@@ -48,7 +52,7 @@
         <!-- Column 1 -->
         <div class="col1">
           <mat-form-field class="full-width">
-            <mat-label>Contraseña</mat-label>
+            <mat-label>Nueva contraseña</mat-label>
             <input matInput [type]="passwordInputType1" [(ngModel)]="password" placeholder="Contraseña" name="password" #passwordInput="ngModel" (ngModelChange)="onPasswordChange()">
             <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
               <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
