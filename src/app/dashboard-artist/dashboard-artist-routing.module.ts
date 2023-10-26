@@ -29,7 +29,7 @@ const routes: Routes = [
         component: ArtistViewProfileComponent
       },
       {
-        path: 'expand-application', 
+        path: 'expand-application/:eventId', 
         component: ExpandApplicationComponent
       },
       {

@@ -179,9 +179,14 @@ export class EventService {
     );
   }
 
-  getEventById(eventId: number): Observable<any> {
+  getEventById(eventId: string): Observable<any> {
     const url = `${this.baseURL}events/${eventId}`;
     return this.http.get<any>(url);
+  }
+
+  getUpcomingEventsFromArtist(id: any): Observable<any[]> {
+    const url = `${this.baseURL}artists/${id}/events/upcoming`;
+    return this.http.get<any[]>(url);
   }
 
 }

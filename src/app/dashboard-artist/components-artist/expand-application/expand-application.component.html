@@ -4,8 +4,8 @@
         
     <!-- Left Column -->
     <div class="left" fxFlex="50%" fxLayout="column" >
-        <h1>Evento</h1>
-        <img src="/assets/images/logos/foto.jpeg" alt="Event Image" />
+        <h1>{{event.name}}</h1>
+        <img src="eventImageSource || '/assets/images/logos/foto.jpeg'" alt="Event Image" *ngIf="event.picture !== null" />
         <div class="apply-button-container">
             <button mat-flat-button class="apply-to-event-button" color="primary" (click)="applyEvent()">
                 Postularse
@@ -21,14 +21,21 @@
             </button>
         </div>
         <div class="info-column">
-            <p>Fecha</p>
-            <p>Hora</p>
-            <p>Barrio</p>
-            <p>Dirección</p>
-            <p>Estilo Musical Preferente</p>
-            <p>Equipos</p>
-            <p>Remunerado</p>
-            <p>Descripción: este evento va a aaaaa a a a aaa a a a a a a !</p>
+            <p>Fecha: {{event.date | date:'dd/MM/yy'}}</p>
+            <p>Hora: {{formatTime(event.time)}}</p>
+            <p>Barrio: {{event.neighborhood}}</p>
+            <p>Dirección: {{event.location}}</p>
+            <p>Estilo Musical Preferente: {{event.genrePreffered}}</p>
+            <p>Equipos: {{event.equuipment}}</p>
+            <p>Remunerado:
+                <ng-container *ngIf="event.paid">
+                    ✓
+                </ng-container>
+                <ng-container *ngIf="!event.paid">
+                    ✕                     
+                </ng-container>
+            </p>
+            <p>Descripción: {{event.description}}</p>
         </div>
     </div>
 </div>
