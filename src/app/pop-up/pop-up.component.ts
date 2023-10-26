@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserBusinessService } from '../services/user/user-business.service';
 import { UserArtistService } from '../services/user/user-artist.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pop-up',
@@ -38,7 +39,7 @@ export class PopUpComponent {
   type: string;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userBusinessService: UserBusinessService, private userArtistService: UserArtistService, public dialogRef: MatDialogRef<PopUpComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userBusinessService: UserBusinessService, private userArtistService: UserArtistService, public dialogRef: MatDialogRef<PopUpComponent>, private matDialog:MatDialog, private snackBar: MatSnackBar) {
     this.isNameChanged = data.isNameChanged;
     this.isLegalNameChanged = data.isLegalNameChanged;
     this.isPhoneChanged = data.isPhoneChanged;
@@ -96,30 +97,40 @@ export class PopUpComponent {
     }
     
     this.dialogRef.close();
+    this.matDialog.closeAll()
   }
 
   updateBusiness(id: number, businessData: any): void {
     this.userBusinessService.updateBusiness(id, businessData).subscribe(
       (updatedBusiness) => {
         // Handle the updated business data
-        console.log('Business updated:', updatedBusiness);
+        this.snackBar.open('Datos actualizados', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
       },
       (error) => {
         console.error('Error updating business:', error);
+        this.snackBar.open('Ocurrió un error', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
       }
     );
   }
 
   updateArtist(id: number, artistData: any): void {
-    /*this.userArtistService.updateArtist(id, artistData).subscribe(
+    this.userArtistService.updateArtistAccount(id, artistData).subscribe(
       (updatedArtist) => {
         // Handle the updated business data
-        console.log('Business updated:', updatedArtist);
+        this.snackBar.open('Datos actualizados', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
       },
       (error) => {
         console.error('Error updating artist:', error);
+        this.snackBar.open('Ocurrió un error', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
       }
-    );*/
-    console.log('Artist updated test');
+    );
   }
 }

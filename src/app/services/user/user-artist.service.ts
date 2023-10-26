@@ -13,14 +13,20 @@ export class UserArtistService {
 
   constructor(private http: HttpClient) { }
 
-  getArtisytById(id: number): Observable<any> {
+  getArtistById(id: number): Observable<any> {
     const url = `${this.baseURL}artists/${id}`;
     
     return this.http.get(url);
   }
 
-  updateArtist(id: number, artistData: any): Observable<any> {
-    const url = `${this.baseURL}artists/${id}`;
+  getArtistAccount(id: number): Observable<any> {
+    const url = `${this.baseURL}artists/${id}/account`;
+    
+    return this.http.get(url);
+  }
+
+  updateArtistAccount(id: number, artistData: any): Observable<any> {
+    const url = `${this.baseURL}artists/${id}/account`;
     
     return this.http.put(url, artistData);
   }
