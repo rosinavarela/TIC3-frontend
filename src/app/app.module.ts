@@ -34,6 +34,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 import { PopUpApplicationComponent } from './dashboard-artist/components-artist/pop-up-application/pop-up-application.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TermsComponent } from './terms/terms.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BusinessAccountComponent,
     PopUpComponent,
     ArtistAccountComponent,
-    PopUpApplicationComponent
+    PopUpApplicationComponent,
+    TermsComponent,
   ],
   imports: [
     BrowserModule,

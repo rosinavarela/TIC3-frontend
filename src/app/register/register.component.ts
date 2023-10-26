@@ -4,6 +4,7 @@ import { RegisterService } from '../services/register/register.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ArtistProfileComponent } from '../artist-profile/artist-profile.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TermsComponent } from '../terms/terms.component';
 
 @Component({
   selector: 'app-register-form',
@@ -164,5 +165,12 @@ export class RegisterComponent {
   togglePasswordVisibility2() {
     this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
     this.hidePassword2 = !this.hidePassword2;
+  }
+
+  goToTerms(){
+    this.matDialog.open(TermsComponent,{
+      width:'700px',
+      height: '500px'
+    })
   }
 }
