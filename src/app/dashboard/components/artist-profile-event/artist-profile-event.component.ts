@@ -39,7 +39,7 @@ export class ArtistProfileEventComponent implements OnInit{
   }
 
   fetchAritist(id: number): void {
-    this.userArtistService.getArtisytById(id).subscribe(
+    this.userArtistService.getArtistById(id).subscribe(
       (artistData) => {
         this.artisticName = artistData.artisticName;
         this.picture= artistData.picture;

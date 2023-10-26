@@ -183,9 +183,8 @@ export class ArtistAccountComponent {
   }
 
   fetchAritist(id: number): void {
-    this.userArtistService.getArtisytById(id).subscribe(
+    this.userArtistService.getArtistAccount(id).subscribe(
       (artistData) => {
-        console.log('Business data:', artistData);
         this.id = artistData.id;
         this.name = artistData.name;
         this.lastName = artistData.lastName;
