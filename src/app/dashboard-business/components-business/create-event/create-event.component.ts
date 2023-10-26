@@ -12,7 +12,7 @@ export class CreateEventComponent {
   imageSelected: boolean = false;
   selectedImage: string | undefined;
   failureMessage?: string;
-  
+
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const previewImage = document.getElementById('previewImage') as HTMLImageElement;
@@ -58,7 +58,7 @@ export class CreateEventComponent {
       name: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
       time: new FormControl('', Validators.required),
-      paid: new FormControl('', Validators.required),
+      paid: new FormControl(''),
       location: new FormControl('', Validators.required),
       neighborhood: new FormControl('', Validators.required),
       description: new FormControl(''),
