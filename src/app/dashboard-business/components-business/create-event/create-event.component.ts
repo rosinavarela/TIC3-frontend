@@ -12,7 +12,7 @@ export class CreateEventComponent {
   imageSelected: boolean = false;
   selectedImage: string | undefined;
   failureMessage?: string;
-
+  
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const previewImage = document.getElementById('previewImage') as HTMLImageElement;
@@ -103,9 +103,14 @@ export class CreateEventComponent {
     this.createEventForm.get('equipment')?.setValue('');
     this.createEventForm.get('genrePreffered')?.patchValue(null);
     */
+    
     this.clearSelectedImage();
     this.createEventForm.markAsPristine(); // Mark the form as pristine
     this.createEventForm.markAsUntouched(); // Mark the form as untouched
+    Object.keys(this.createEventForm.controls).forEach((key) => { //para resetear los errores
+      const control = this.createEventForm.controls[key];
+      control.setErrors(null);
+  });
   }
 
   clearSelectedImage() {

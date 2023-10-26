@@ -20,6 +20,7 @@
                     <mat-form-field class="neighbourhood">
                         <mat-label>Barrio</mat-label>
                         <input matInput placeholder="Barrio" name="neighborhood" formControlName="neighborhood">
+                        <mat-error *ngIf="createEventForm.get('neighborhood')?.hasError('required')">El barrio es requerido</mat-error>
                     </mat-form-field> 
                     <mat-form-field class="date">
                         <mat-label>Fecha</mat-label>
@@ -48,6 +49,7 @@
                     <mat-form-field class="place">
                         <mat-label>Dirección</mat-label>
                         <input matInput placeholder="Dirección" name="location" formControlName="location">
+                        <mat-error *ngIf="createEventForm.get('location')?.hasError('required')">La ubicación es requerida</mat-error>
                     </mat-form-field>
                     <mat-form-field class="time">
                         <mat-label>Horario</mat-label>
