@@ -10,7 +10,7 @@ mat-nav-list {
   
   /* Apply styles to the Angular Material list items */
 mat-list-item {
-    height: 37rem !important;
+    height: 32rem !important;
     width: 95%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
     border-radius: 1rem;
@@ -23,7 +23,6 @@ mat-list-item {
     --mat-ripple-speed: 0s; /* Set the ripple animation speed to 0s to effectively disable it */
 }
 
-
 /* Styling for the event-container */
 .event-container {
   display: flex;
@@ -34,11 +33,18 @@ mat-list-item {
 
 /* Styling for the left column */
 .left {
-  flex: 0 0 auto; /* Prevent the left column from growing to fill space */
-  text-align: left; /* Align text and content to the left */
+  flex-direction: column ;
+  max-width: 35%;
   background-color:#d8efed; /*no pude aplicarlo desde el theme*/
-  padding-left: 30px;
+  justify-content: center;  
   align-items: center;
+  display: flex; /* Make the left column a flex container */
+  width: max-content; /* Set the width to max-content */
+  flex-grow: 0;
+  flex-shrink: 1;
+  padding: 0;
+  overflow: hidden; /* Hide any overflowed text */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .left h1 {
@@ -46,33 +52,56 @@ mat-list-item {
   font-size: 40px; /* Increase the font size of the text */
   margin-bottom: 10px;
   margin-top: 10px;
+  line-height: 40px;
+  text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflowed text */
+  width: 100%;
+}
+
+.image-container {
+  max-height: 400px; /* Maximum height for the image container */
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: flex;
+  align-items: center; /* Center the image horizontally */
+  justify-content: center; /* Center the image vertically */
+  background-color: black;
+  border-radius: 1rem;
+  margin:0px;
+  margin-bottom:10px;
+  margin-top: 20px; /* Adjust space above the image */
+  width: max-content; /* Set the width to max-content */
 }
 
 .left img {
   max-width: 100%; /* Adjust the maximum width of the image */
+  max-height: 100%; /* Allow the image to occupy the entire height of the container */
   height: auto; /* Maintain aspect ratio */
-  margin-top: 20px; /* Adjust space above the image */
-  margin-bottom: 20px; /* Adjust space below the image */
+  width: auto; /* Reset the width to auto to maintain aspect ratio */
+  object-fit: contain; /* Scale the image to fit inside the container while maintaining aspect ratio */
+  margin:0;
+  padding:0;
   border-radius: 1rem;
-  flex-grow: 0; /* Prevent the image from growing to fill the space */
-  max-height: 450px;
 }
 
 /* Styling for the middle column */
 .middle {
   text-align: left; /* Center text horizontally */
   background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+  min-width: 20%;
+  max-width: 100%;
 }
 
 .right {
   text-align: left; /* Center text horizontally */
   background-color:#d8efed; /*no pude aplicarlo desde el theme*/
-  padding-right: 30px;
+  max-width: 100%;
 }
 
 /* Styling for the button */
 .artist {
-  display: inline-flex; 
+  display: flex; 
   align-items: center;
   text-align: left; /* Align text within the button to the left */
   margin: 0; /* Remove any margin */
@@ -97,6 +126,9 @@ mat-list-item {
 /* Style for the text within the button */
 .artist span {
   font-size: 17px; /* Increase the font size of the text */
+  overflow: hidden; /* Hide the overflowed text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Display ellipsis for overflowed text */
 }
 
 .application-format{
@@ -104,9 +136,10 @@ mat-list-item {
   flex-direction: row;
   align-items: center;
   margin-top: 15px; 
-  justify-content: space-between !important; /* Add this line to push elements to each end of the container */
   width: 100%; /* Set the width to 100% to make it expand to the full width */
-
+  margin-left: 0px;  
+  justify-content: space-between; /* Add space between buttons */
+  flex-wrap: wrap;
 }
 
 .info-column{
@@ -117,10 +150,8 @@ mat-list-item {
   height: 100%;
   white-space: pre-wrap; /* Allow text to wrap to the next line */
   word-wrap: break-word; /* Wrap long words to the next line */
-}
+  font-weight: 300;
 
-.info-column p {
-  margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing between paragraphs */
 }
 
 .applications{
@@ -129,9 +160,11 @@ mat-list-item {
   justify-content: center;
   align-items: flex-start;
   height: 100%;
+  padding: 0; /* Remove any default padding */
+  margin: 0; /* Remove any default margin */
 }
 
-.mat-divider{
+mat-divider{
   width: 5px; /* Adjust the width of the divider line */
   margin: 10px 22px; /* Add some spacing above and below the divider */
 }
@@ -159,7 +192,6 @@ mat-list-item {
 /*sobre escribir para que no haya hover ni riple en list item*/
 
 .mat-mdc-list-base {
-
   --mdc-list-list-item-hover-leading-icon-color: #d8efed;
   --mdc-list-list-item-hover-trailing-icon-color: #d8efed;
   --mdc-list-list-item-hover-state-layer-color:#d8efed;
@@ -172,4 +204,69 @@ mat-list-item {
 
 .no-applications{
   color: grey;
+}
+
+.for{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  flex-direction: row;
+  list-style-type: none; /* Remove the default list styling */
+  padding: 0; /* Remove any default padding */
+  margin: 0; /* Remove any default margin */
+}
+
+/*style del texto*/
+
+.name{
+  text-transform: uppercase;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust the spacing between rows */
+  font-size: 18px; /* Adjust the font size for most text */
+  white-space: pre-wrap; /* Allow text to wrap to the next line */
+  word-wrap: break-word; /* Wrap long words to the next line */
+  margin: 10px;
+  padding: 2px;
+  max-width: 300px;
+}
+
+.info-row-text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 10px;
+  padding: 2px;
+  overflow: auto; /* Add overflow to create a scrollbar for long text */
+  max-width: 300px;
+}
+
+/* Optional: Set a fixed height to limit the scrollable area */
+.info-row-text p {
+  max-height: 50px;
+  max-width: 100%; /* Allow text to take up the full width and break into multiple lines */
+  margin: 0px;
+  padding: 0px;
+}
+
+.info-row p {
+  margin: 0px;
+  padding: 0px;
+}
+
+mat-icon {
+  margin-right: 10px; /* Add some spacing between icons and text */
+  vertical-align: middle; /* Vertically align the icon */
+}
+
+.info-row-text .bold{
+  font-weight: 900;
+  text-transform: uppercase;
+
 }

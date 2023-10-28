@@ -109,7 +109,7 @@ mat-card-content {
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Vertically center the button */
   margin-left: 10px; /* Add margin to the left of the button to place it next to the input */
-
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* If you want to adjust the margin when the button is visible, you can add a margin to it */

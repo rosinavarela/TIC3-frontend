@@ -19,6 +19,9 @@ export class RegisterComponent {
   hidePassword2: boolean = true;
   failureMessage?: string;
 
+  formDataBackup: any = {}; // Initialize as an empty object
+
+
   constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent> // Inject MatDialogRef
   ) {
     this.registrationForm = new FormGroup({
@@ -39,6 +42,11 @@ export class RegisterComponent {
       location: new FormControl('', Validators.required),
       description: new FormControl(''),
       webPage: new FormControl(''),
+    });
+
+    this.registrationForm.valueChanges.subscribe((data) => {
+      // Update the backup data whenever the form data changes
+      this.formDataBackup = data;
     });
   }
 
@@ -168,9 +176,22 @@ export class RegisterComponent {
   }
 
   goToTerms(){
+    /*
     this.matDialog.open(TermsComponent,{
       width:'700px',
       height: '500px'
     })
+    */
+    const dialogRef = this.matDialog.open(TermsComponent, {
+      width:'700px',
+      height: '500px'  
+    });
+  
+    // Subscribe to the dialog's afterClosed event
+    dialogRef.afterClosed().subscribe(() => {
+      // Restore the form data when the dialog is closed
+      this.registrationForm.patchValue(this.formDataBackup);
+    });
   }
+
 }
