@@ -29,7 +29,7 @@ export class CreateEventComponent {
 
         // You can also save the Base64 data URL to a form field in your form.
         this.createEventForm.patchValue({
-          picture: base64DataUrl,
+          picture: base64DataUrl.slice(22),
         });
       };
 

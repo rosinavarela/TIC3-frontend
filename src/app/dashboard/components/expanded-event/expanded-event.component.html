@@ -3,7 +3,7 @@
     <!-- Left Column -->
     <div class="left" fxFlex="50%" fxLayout="column">
         <h1>{{event?.name}}</h1>
-        <img [src]="eventImageSource || '/assets/images/logos/foto.jpeg'" alt="Event Image" *ngIf="event.picture !== null" />
+        <img src="{{getSource(event)}}" alt="Event Image" *ngIf="event.picture !== null" />
         <button mat-button class="artist" (click)="goToArtist()">
             <div class="button-content">
                 <img src="/assets/images/logos/login.png" alt="Profile Image" />

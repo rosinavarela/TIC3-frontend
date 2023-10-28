@@ -16,6 +16,15 @@ export class ExpandedEventComponent {
     picture: of('/assets/images/logos/foto.jpeg'),
   };
   eventImageSource: string = '';
+  imagePath: string = '../../../assets/images/logos/foto.jpeg';
+  
+  getSource(event: any){
+    if(event.picture){
+      return event.picture;
+    } else{
+      return this.imagePath;
+    }
+  }
 
   constructor(private router: Router, private route: ActivatedRoute, private eventService: EventService) { }
 
