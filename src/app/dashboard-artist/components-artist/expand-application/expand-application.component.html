@@ -5,13 +5,13 @@
     <!-- Left Column -->
     <div class="left" fxFlex="50%" fxLayout="column" >
         <h1>{{event.name}}</h1>
-        <img src="eventImageSource || '/assets/images/logos/foto.jpeg'" alt="Event Image" *ngIf="event.picture !== null" />
+        <img src="{{getSource()}}" alt="Event Image"/>
         <div class="apply-button-container">
             <button mat-flat-button class="apply-to-event-button" color="primary" (click)="applyEvent()">
                 Postularse
             </button>
         </div>
-    </div>
+    </div> 
 
     <!-- Right Column -->
     <div class="right" fxFlex="50%" fxLayout="column">

@@ -29,7 +29,7 @@ export class CreateEventComponent {
 
         // You can also save the Base64 data URL to a form field in your form.
         this.createEventForm.patchValue({
-          picture: base64DataUrl,
+          picture: base64DataUrl.slice(22),
         });
       };
 
@@ -58,7 +58,7 @@ export class CreateEventComponent {
       name: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
       time: new FormControl('', Validators.required),
-      paid: new FormControl('', Validators.required),
+      paid: new FormControl(''),
       location: new FormControl('', Validators.required),
       neighborhood: new FormControl('', Validators.required),
       description: new FormControl(''),
@@ -103,9 +103,14 @@ export class CreateEventComponent {
     this.createEventForm.get('equipment')?.setValue('');
     this.createEventForm.get('genrePreffered')?.patchValue(null);
     */
+    
     this.clearSelectedImage();
     this.createEventForm.markAsPristine(); // Mark the form as pristine
     this.createEventForm.markAsUntouched(); // Mark the form as untouched
+    Object.keys(this.createEventForm.controls).forEach((key) => { //para resetear los errores
+      const control = this.createEventForm.controls[key];
+      control.setErrors(null);
+  });
   }
 
   clearSelectedImage() {

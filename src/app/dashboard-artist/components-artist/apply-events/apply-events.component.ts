@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from 'src/app/services/filter/filter.service';
 
-@Component({
+@Component({ 
   selector: 'app-apply-events',
   templateUrl: './apply-events.component.html',
   styleUrls: ['./apply-events.component.css'],
@@ -17,6 +17,16 @@ export class ApplyEventsComponent implements OnInit {
   selectedLocal: string | null = null;
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
+
+  imagePath: string = "../../../assets/images/events/BarArocena.jpeg"
+
+  getSource(event: Event){
+    if(event.picture && event.picture !== ""){
+      return event.picture;
+    } else{
+      return this.imagePath;
+    }
+  }
 
   constructor(private router: Router, private route: ActivatedRoute, private eventservice: EventService, private filterService: FilterService) { }
 
@@ -44,6 +54,7 @@ export class ApplyEventsComponent implements OnInit {
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
       (data) => {
         this.events = data;
+        console.log(this.events)
       },
       (error) => {
         console.error('Error fetching events:', error);

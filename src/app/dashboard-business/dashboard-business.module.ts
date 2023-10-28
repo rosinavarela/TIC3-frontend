@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardBusinessRoutingModule } from './dashboard-business-routing.module';
-import { BusinessProfileComponent } from './components-business/business-profile/business-profile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -14,7 +13,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { ExpandedEventBusinessComponent } from './components-business/expanded-event-business/expanded-event-business.component';
 import { CreateEventComponent } from './components-business/create-event/create-event.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
@@ -26,7 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpArtistComponent } from './components-business/pop-up-artist/pop-up-artist.component';
 
 @NgModule({
-  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, BusinessProfileComponent, MyNextEventsBusinessComponent,ExpandedEventBusinessComponent, CreateEventComponent, ArtistProfileBusinessComponent, PopUpArtistComponent], //tuve que poner expanded event para que me agarre el mat
+  declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, MyNextEventsBusinessComponent, CreateEventComponent, ArtistProfileBusinessComponent, PopUpArtistComponent], //tuve que poner expanded event para que me agarre el mat
   imports: [
     CommonModule,
     DashboardBusinessRoutingModule,

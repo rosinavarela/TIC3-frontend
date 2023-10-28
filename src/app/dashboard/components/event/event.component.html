@@ -11,7 +11,7 @@
     <mat-list-item *ngFor="let event of events" (click)="onEventClick(event.id)">
         <div class="container" fxLayout="column">
             <div class="image-container">
-                <img [src]=" 'data:image/png;base64,'+ event.picture " alt="Event Image">
+                <img src={{getSource(event)}} alt="Event Image">
             </div>
             <div class="content">
                 <div class= "text-container">

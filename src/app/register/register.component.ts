@@ -4,6 +4,7 @@ import { RegisterService } from '../services/register/register.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ArtistProfileComponent } from '../artist-profile/artist-profile.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TermsComponent } from '../terms/terms.component';
 
 @Component({
   selector: 'app-register-form',
@@ -17,6 +18,9 @@ export class RegisterComponent {
   hidePassword1: boolean = true;
   hidePassword2: boolean = true;
   failureMessage?: string;
+
+  formDataBackup: any = {}; // Initialize as an empty object
+
 
   constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent> // Inject MatDialogRef
   ) {
@@ -38,6 +42,11 @@ export class RegisterComponent {
       location: new FormControl('', Validators.required),
       description: new FormControl(''),
       webPage: new FormControl(''),
+    });
+
+    this.registrationForm.valueChanges.subscribe((data) => {
+      // Update the backup data whenever the form data changes
+      this.formDataBackup = data;
     });
   }
 
@@ -165,4 +174,24 @@ export class RegisterComponent {
     this.passwordInputType2 = this.passwordInputType2 === 'password' ? 'text' : 'password';
     this.hidePassword2 = !this.hidePassword2;
   }
+
+  goToTerms(){
+    /*
+    this.matDialog.open(TermsComponent,{
+      width:'700px',
+      height: '500px'
+    })
+    */
+    const dialogRef = this.matDialog.open(TermsComponent, {
+      width:'700px',
+      height: '500px'  
+    });
+  
+    // Subscribe to the dialog's afterClosed event
+    dialogRef.afterClosed().subscribe(() => {
+      // Restore the form data when the dialog is closed
+      this.registrationForm.patchValue(this.formDataBackup);
+    });
+  }
+
 }

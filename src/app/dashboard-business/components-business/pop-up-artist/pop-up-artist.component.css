@@ -5,8 +5,7 @@
   display: flex;
   align-items: flex-start; /* Align text to the start (left) of the container */
   justify-content: center; /* Center content vertically */
-  padding: 10px; /* Add padding to increase spacing */
-
+  padding: 10px;
 }
 
 .message {
@@ -18,12 +17,12 @@
 
 .button-container {
   width: 100%;
+  margin: 0px;
 }
 
 .close-button {
   display: flex;
   justify-content: flex-end; /* Align the button to the right */
-  margin: 5px;
 }
 
 /* Styling for the button */
@@ -34,6 +33,7 @@
   overflow-wrap: break-word;
   height: auto;
   width: 100%;
+  padding: 0;
 }
 
 /* Style for the content within the button */
@@ -70,4 +70,22 @@ mat-dialog-content {
   font-weight: 700;
   display: flex;
   justify-content: center;
+}
+
+.mat-mdc-button:hover{
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.mat-mdc-button:focus{
+  background-color: transparent;
+}
+
+.mat-mdc-button .mat-button-focus-overlay {
+  display: none;
+}
+
+.mat-mdc-button, .mat-mdc-outlined-button {
+  --mat-mdc-button-persistent-ripple-color: transparent;
+  --mat-mdc-button-ripple-color: transparent;
 }

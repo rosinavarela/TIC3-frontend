@@ -20,6 +20,15 @@ export class EventComponent implements OnInit {
   selectedLocal: string | null = null;
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
+  imagePath: string = "../../../assets/images/events/BarArocena.jpeg"
+
+  getSource(event: Event){
+    if(event.picture){
+      return event.picture;
+    } else{
+      return this.imagePath;
+    }
+  }
 
   ngOnInit(): void {
     // this.events=this.eventservice.getEvents(); //llama a la funcion getall de los servicios
@@ -58,14 +67,14 @@ export class EventComponent implements OnInit {
     this.router.navigate(['/dashboard/expanded-event', eventId], { relativeTo: this.route });
   }
 
-  getImageSource(event: Event): any {
+  /*getImageSource(event: Event): any {
     const imageSrc = `${event.picture}`;
     //console.log('Image Source:', imageSrc);
     console.log('Image Source:', event.picture);
     let objectURL = 'data:image/png;base64,' + event.picture;
     let thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(objectURL);
     return thumbnail;
-  }
+  }*/
 
   applyFilters(neighborhood?: string, timeWindow?: number, business?: string, genre?: string, unassigned?: string) {
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
