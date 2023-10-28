@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserArtistService } from 'src/app/services/user/user-artist.service';
 
 @Component({
   selector: 'app-artist-edit-profile',
@@ -15,21 +16,25 @@ export class ArtistEditProfileComponent {
   igUsername: string | null = "Usuario";
   description: string | null = "no tengo";
   links: string | null = "google.com";
+  musicGenre: string = "";
   hasProfilePicture: boolean = false;
   failureMessage?: string;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
     //console.log('Data received in ArtistProfileComponent:', data);
     // You can access data.response here.
-    this.profileForm = new FormGroup({
+   this.fetchAritist(data.id);
+   this.profileForm = new FormGroup({
       artisticName: new FormControl(''),
       picture: new FormControl(''),
       igUsername: new FormControl(''),
       description: new FormControl(''),
       links: new FormControl(''),
-      musicGenre: new FormControl(''),
+      musicGenre: new FormControl(this.musicGenre),
     });
+
+    
   }
 
   clearSelectedImage() {
@@ -43,6 +48,23 @@ export class ArtistEditProfileComponent {
 
   onImageSelected(event: Event): void {
     this.hasProfilePicture = true;
+  }
+
+  fetchAritist(id: number): void {
+    this.userArtistService.getArtistById(id).subscribe(
+      (artistData) => {
+        this.artisticName = artistData.artisticName;
+        this.picture = artistData.picture;
+        this.igUsername = artistData.igUsername;
+        this.description = artistData.description;
+        this.links = artistData.links;
+        this.musicGenre = artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();
+        
+      },
+      (error) => {
+        console.error('Error fetching business:', error);
+      }
+    );
   }
 
 }

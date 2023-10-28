@@ -37,7 +37,7 @@ export class ArtistViewProfileComponent implements OnInit{
   }
 
   fetchAritist(id: number): void {
-    this.userArtistService.getArtisytById(id).subscribe(
+    this.userArtistService.getArtistById(id).subscribe(
       (artistData) => {
         this.artisticName = artistData.artisticName;
         this.picture= artistData.picture;
@@ -55,8 +55,12 @@ export class ArtistViewProfileComponent implements OnInit{
   }
 
   editProfile(){
+    const dialogData = {
+      id: this.artistId,
+    }
     this.matDialog.open(ArtistEditProfileComponent, {
       width: '60%',
+      data: dialogData,
       });
   }
 }
