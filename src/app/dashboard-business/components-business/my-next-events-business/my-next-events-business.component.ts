@@ -20,13 +20,13 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
   styleUrls: ['./my-next-events-business.component.css'],
 })
 export class MyNextEventsBusinessComponent {
-  events: Event[] =[];
+  events: any[] =[];
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) { }
 
   imagePath: string = "../../../assets/images/logos/logo.jpeg"
 
-  getSource(event: Event){
+  getSource(event: any){
     if(event.picture){
       return event.picture;
     } else{

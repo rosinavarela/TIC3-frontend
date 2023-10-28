@@ -77,7 +77,7 @@ export class EventService {
     )
   }
 
-  getUpcomingEventsFromBusiness(id: any): Observable<Event[]> {
+  getUpcomingEventsFromBusiness(id: any): Observable<any[]> {
     const url = `${this.baseURL}businesses/${id}/events/upcoming`;
     return this.http.get<any[]>(url).pipe(
       map((response: any[]) => {

@@ -30,10 +30,10 @@
                 <div class="artist-info"> 
                     <h1>Contacto de Artista:</h1>
                     <div class="artist-info-format" fxLayout="row">    
-                        <p>Nombre Artístico:</p> 
-                        <p>Nombre:</p> 
-                        <p>Teléfono:</p>
-                        <p>Mail:</p>
+                        <p>Nombre Artístico: {{ event?.artist?.artisticName }}</p> 
+                        <p>Nombre: {{ event?.artist?.name }}</p> 
+                        <p>Teléfono: {{ event?.artist?.phone }}</p>
+                        <p>Mail: {{ event?.artist?.user?.email }}</p>
                     </div>
                 </div>
             </div>
