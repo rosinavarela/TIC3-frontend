@@ -1,39 +1,68 @@
-<div class="event-container" fxLayout="row">
+<div class= "container">
 
-    <!-- Left Column -->
-    <div class="left" fxFlex="50%" fxLayout="column">
-        <h1>{{event?.name}}</h1>
-        <img src="{{getSource(event)}}" alt="Event Image" *ngIf="event.picture !== null" />
-        <button mat-button class="artist" (click)="goToArtist()">
-            <div class="button-content">
-                <img src="/assets/images/logos/login.png" alt="Profile Image" />
-                <span>{{event?.artist?.artisticName}}</span>
+    <div class="event-container" fxLayout="row">
+
+        <!-- Left Column -->
+        <div class="left" fxFlex="50%" fxLayout="column">
+            <h1 class="name">{{event?.name}}</h1>
+            <div class= "image-container">
+                <img src="{{getSource(event)}}" alt="Event Image" *ngIf="event.picture !== null" />
             </div>
-        </button>
-    </div>
-
-    <!-- Right Column -->
-    <div class="right" fxFlex="50%" fxLayout="column">
-        <div align="end">
-            <button mat-flat-button class="back-button" style="margin-left: auto;" (click)="goBackToEvent()">
-                <mat-icon>arrow_back</mat-icon> Regresar
+            <button mat-button class="artist" (click)="goToArtist()">
+                <div class="button-content">
+                    <img src="/assets/images/logos/login.png" alt="Profile Image" />
+                    <span>{{event?.artist?.artisticName}}</span>
+                </div>
             </button>
         </div>
-        <div class="info-column">
-            <p>Lugar: {{event?.business?.name}}</p>
-            <p>Fecha: {{event?.date | date:'dd/MM/yy'}}</p>
-            <p>Hora: {{formatTime(event?.time)}}</p>
-            <p>Ubicación: {{event?.location}}</p>
-            <p>Estilo Musical: {{event?.genrePreffered}}</p>
-            <p>Descripción: {{event?.description}}</p>
-            <div class="link" fxLayout="row">
-                Link:
-                <button mat-button class="link-button">
-                    <a [href]="link" target="_blank">
-                        <mat-icon>link</mat-icon>
-                    </a>
+
+        <!-- Right Column -->
+        <div class="right" fxFlex="50%" fxLayout="column">
+            <div align="end">
+                <button mat-flat-button class="back-button" color="primary" style="margin-left: auto;" (click)="goBackToEvent()">
+                    <mat-icon>arrow_back</mat-icon> Regresar
                 </button>
+            </div>
+            <div class="info-column">
+                <div class="info-row">
+                    <mat-icon class="business-icon">business</mat-icon> <!-- Date icon -->
+                    <p>{{event?.business?.name}}</p>
+                </div>
+                <div class="info-row">
+                    <mat-icon class="location-icon">location_on</mat-icon> <!-- Location icon -->
+                    <p>{{event?.neighborhood}} - {{event?.location}}</p>
+                </div>
+                <div class="info-row">
+                    <mat-icon class="date-icon">event</mat-icon> <!-- Date icon -->
+                    <p>{{event?.date | date:'dd/MM/yy'}}</p>
+                </div>
+                <div class="info-row">
+                    <mat-icon class="time-icon">access_time</mat-icon> <!-- Time icon -->
+                    <p>{{formatTime(event?.time)}}</p>
+                </div>  
+                <div class="info-row" *ngIf="event?.genrePreffered">
+                    <mat-icon class="style-icon">music_note</mat-icon> <!-- Music icon -->
+                    <p>{{event?.genrePreffered}}</p>
+                </div>  
+                <div class="info-row" >  <!-- *ngIf="event?.link" -->
+                    <mat-icon class="style-icon">link</mat-icon> <!-- Music icon -->
+                    <div class="link" fxLayout="row">
+                        Link:
+                        <button mat-button class="link-button">
+                            <a [href]="link" target="_blank">
+                                <mat-icon>link</mat-icon>
+                            </a>
+                        </button>
+                    </div>
+                </div>    
+                <div class="info-row-text" *ngIf="event?.description">
+                    <p class="description">
+                        <span class= "bold">Descripción: </span>
+                        <span>{{ event?.description }}</span>
+                    </p>
+                </div>    
             </div>
         </div>
     </div>
+
 </div>

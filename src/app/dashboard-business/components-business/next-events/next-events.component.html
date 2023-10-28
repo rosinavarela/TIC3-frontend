@@ -21,7 +21,7 @@
                     </div>
                     <div class="info-row">
                         <mat-icon class="time-icon">access_time</mat-icon> <!-- Time icon -->
-                        <p class="time">{{ event.time }}</p>
+                        <p class="time">{{ formatTime(event?.time?.toString() || null)}}</p>
                     </div>
                     <div class="info-row">
                         <mat-icon class="location-icon">location_on</mat-icon> <!-- Location icon -->
@@ -29,7 +29,7 @@
                     </div>
                     <div class="info-row" *ngIf="event?.genrePreffered">
                         <mat-icon class="style-icon">music_note</mat-icon> <!-- Music icon -->
-                        <p class="style">Estilo Musical: {{ event.genrePreffered }}</p>
+                        <p class="style">{{ event.genrePreffered }}</p>
                     </div>
                     <div class="info-row">
                         <mat-icon class="payment-icon">attach_money</mat-icon> <!-- Payment icon -->
