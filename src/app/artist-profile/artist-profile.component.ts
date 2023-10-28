@@ -11,7 +11,7 @@ import { RegisterService } from '../services/register/register.service';
 export class ArtistProfileComponent {
 
   profileForm: FormGroup;
-  picture: string | ArrayBuffer | null = "/assets/images/logos/foto.jpeg";
+  picture: string | ArrayBuffer | null = "/assets/images/logos/default-profile.webp";
   artisticName: string | null = null;
   igUsername: string | null = null;
   description: string | null = null;
@@ -90,7 +90,7 @@ export class ArtistProfileComponent {
   }
 
   clearSelectedImage() {
-    this.picture = '';
+    this.picture = "/assets/images/logos/default-profile.webp";
     this.hasProfilePicture = false;
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     if (fileInput) {
