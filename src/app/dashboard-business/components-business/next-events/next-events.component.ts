@@ -19,6 +19,16 @@ export class NextEventsComponent {
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog) { }
 
+  imagePath: string = "../../../assets/images/logos/logo.jpeg"
+
+  getSource(event: Event){
+    if(event.picture && event.picture !== ""){
+      return event.picture;
+    } else{
+      return this.imagePath;
+    }
+  }
+
   ngOnInit(): void{
     const id =224;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
     this.eventService.getUnassignedEventsFromBusiness(id).subscribe(

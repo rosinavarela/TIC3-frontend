@@ -20,6 +20,16 @@ export class ExpandApplicationComponent {
   eventId: string = '';
   artistId: number = 1;
 
+  imagePath: string = "../../../assets/images/logos/logo.jpeg"
+
+  getSource(){
+    if(this.event.picture && this.event.picture !== ""){
+      return this.event.picture;
+    } else{
+      return this.imagePath;
+    }
+  }
+
   constructor(private router: Router, private matDialog:MatDialog,private route: ActivatedRoute, private eventService: EventService){ }
 
   ngOnInit() {
