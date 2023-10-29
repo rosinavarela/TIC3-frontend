@@ -4,8 +4,10 @@
             
             <!-- Left Column -->
             <div class="left" fxFlex="33%" fxLayout="column">
-                <h1>{{ event.name }}</h1>
-                <img src="{{getSource(event)}}" alt="Event Image" />
+                <h1 class="name">{{ event.name }}</h1>
+                <div class= "image-container">
+                    <img src="{{getSource(event)}}" alt="Event Image" />
+                </div>
             </div>
 
             <mat-divider vertical></mat-divider> <!-- Vertical divider between columns -->
@@ -13,13 +15,41 @@
             <!-- Middle Column -->
             <div class="middle" fxFlex="33%" fxLayout="column">
                 <div class="info-column">
-                    <p>Fecha: {{ event.date }} </p> 
-                    <p>Hora: {{ event.time }}</p>
-                    <p>Lugar: {{ event.location }}</p>
-                    <p>Estilo Musical: {{ event.genrePreffered }}</p>
-                    <p>Equipos disponibles: {{ event.equipment }}</p>
-                    <p>Remunerado: {{ event.paid }}</p>
-                    <p>Descripción: {{ event.description }}</p>
+                    <div class="info-row">
+                        <mat-icon class="date-icon">event</mat-icon> <!-- Date icon -->
+                        <p class="date">{{ event.date | date:'dd/MM/yy' }}</p>
+                    </div>
+                    <div class="info-row">
+                        <mat-icon class="time-icon">access_time</mat-icon> <!-- Time icon -->
+                        <p class="time">{{ formatTime(event?.time?.toString() || null)}}</p>
+                    </div>
+                    <div class="info-row">
+                        <mat-icon class="location-icon">location_on</mat-icon> <!-- Location icon -->
+                        <p class="neighbourhood-place">{{ event.neighborhood }} - {{ event.location }}</p>
+                    </div>
+                    <div class="info-row" *ngIf="event?.genrePreffered">
+                        <mat-icon class="style-icon">music_note</mat-icon> <!-- Music icon -->
+                        <p class="style">{{ event.genrePreffered }}</p>
+                    </div>
+                    <div class="info-row">
+                        <mat-icon class="payment-icon">attach_money</mat-icon> <!-- Payment icon -->
+                        <p class="payment">Remunerado:
+                            <ng-container *ngIf="event.paid"> ✓ </ng-container>
+                            <ng-container *ngIf="!event.paid"> ✕ </ng-container>
+                        </p>
+                    </div>                    
+                    <div class="info-row-text" *ngIf="event?.equipment">
+                        <p class="equipment">
+                            <span class= "bold">Equipos disponibles: </span>
+                            <span>{{ event.equipment }}</span>
+                        </p>
+                    </div>
+                    <div class="info-row-text" *ngIf="event?.description">
+                        <p class="description">
+                            <span class= "bold">Descripción: </span>
+                            <span>{{ event.description }}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -28,12 +58,24 @@
             <!-- Right Column -->
             <div class="right" fxFlex="33%" fxLayout="column">
                 <div class="artist-info"> 
-                    <h1>Contacto de Artista:</h1>
+                    <h1>Contacto del Artista:</h1>
                     <div class="artist-info-format" fxLayout="row">    
-                        <p>Nombre Artístico: {{ event?.artist?.artisticName }}</p> 
-                        <p>Nombre: {{ event?.artist?.name }}</p> 
-                        <p>Teléfono: {{ event?.artist?.phone }}</p>
-                        <p>Mail: {{ event?.artist?.user?.email }}</p>
+                        <div class="info-row" *ngIf="event?.artisticName">
+                            <mat-icon class="art-icon">brush</mat-icon> 
+                            <p>{{ event?.artist?.artisticName }}</p> 
+                        </div>
+                        <div class="info-row">
+                            <mat-icon class="person-icon">person</mat-icon> 
+                            <p>{{ event?.artist?.name }} - {{ event?.artist?.lastName }}</p> 
+                        </div>
+                        <div class="info-row">
+                            <mat-icon class="phone-icon">phone</mat-icon> 
+                            <p>{{ event?.artist?.phone }}</p>
+                        </div>
+                        <div class="info-row">
+                            <mat-icon class="mal-icon">email</mat-icon> 
+                            <p>{{ event?.artist?.user?.email }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
