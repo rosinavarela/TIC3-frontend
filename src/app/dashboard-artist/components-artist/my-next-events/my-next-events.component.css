@@ -1,177 +1,191 @@
 /* Apply styles to the Angular Material list */
 mat-nav-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  /* Apply styles to the Angular Material list items */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Apply styles to the Angular Material list items */
 mat-list-item {
-    height: 37rem !important;
-    width: 95%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
-    border-radius: 1rem;
-    margin: 1rem;
-    display: flex;
-    transition: opacity 0.2s ease;
-    background-color:#d8efed; /*no pude aplicarlo desde el theme*/
-    cursor: auto; /* Set the cursor to the default arrow cursor */
-    pointer-events: none; /* Disable pointer events, removing the ripple effect */
-    --mat-ripple-speed: 0s; /* Set the ripple animation speed to 0s to effectively disable it */
+  height: 37rem !important;
+  width: 95%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
+  border-radius: 1rem;
+  margin: 1rem;
+  display: flex;
+  transition: opacity 0.2s ease;
+  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+  cursor: auto; /* Set the cursor to the default arrow cursor */
+  pointer-events: none; /* Disable pointer events, removing the ripple effect */
+  --mat-ripple-speed: 0s; /* Set the ripple animation speed to 0s to effectively disable it */
 }
 
 
 /* Styling for the event-container */
 .event-container {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 2px;
-  padding-top: 2px;
+display: flex;
+justify-content: center;
+padding-bottom: 2px;
+padding-top: 2px;
+height: 100%;
 }
 
 /* Styling for the left column */
 .left {
-  flex: 0 0 auto; /* Prevent the left column from growing to fill space */
-  text-align: left; /* Align text and content to the left */
-  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
-  padding-left: 30px;
-  align-items: center;
+flex-direction: column ;
+max-width: 40%;
+background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+justify-content: center;  
+align-items: center;
+display: flex; /* Make the left column a flex container */
+width: max-content; /* Set the width to max-content */
+flex-grow: 0;
+flex-shrink: 1;
+padding: 0;
+overflow: hidden; /* Hide any overflowed text */
+white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .left h1 {
-  margin: 0; /* Remove any default margins for the h1 element */
-  font-size: 40px; /* Increase the font size of the text */
-  margin-bottom: 10px;
-  margin-top: 10px;
+margin: 0; /* Remove any default margins for the h1 element */
+font-size: 40px; /* Increase the font size of the text */
+margin-bottom: 10px;
+margin-top: 10px;
+line-height: 40px;
+text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+white-space: nowrap; /* Prevent text from wrapping */
+overflow: hidden; /* Hide any overflowed text */
+width: 100%;
+}
+
+.image-container {
+max-height: 400px; /* Maximum height for the image container */
+max-width: 100%;
+height: auto; /* Maintain aspect ratio */
+display: flex;
+align-items: center; /* Center the image horizontally */
+justify-content: center; /* Center the image vertically */
+background-color: black;
+border-radius: 1rem;
+margin:0px;
+margin-bottom:10px;
+margin-top: 20px; /* Adjust space above the image */
+width: max-content; /* Set the width to max-content */
 }
 
 .left img {
-  max-width: 100%; /* Adjust the maximum width of the image */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 20px; /* Adjust space above the image */
-  margin-bottom: 20px; /* Adjust space below the image */
-  border-radius: 1rem;
-  flex-grow: 0; /* Prevent the image from growing to fill the space */
-  max-height: 450px;
+max-width: 100%; /* Adjust the maximum width of the image */
+max-height: 100%; /* Allow the image to occupy the entire height of the container */
+height: auto; /* Maintain aspect ratio */
+width: auto; /* Reset the width to auto to maintain aspect ratio */
+object-fit: contain; /* Scale the image to fit inside the container while maintaining aspect ratio */
+margin:0;
+padding:0;
+border-radius: 1rem;
 }
 
 /* Styling for the middle column */
 .middle {
-  text-align: left; /* Center text horizontally */
-  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+text-align: left; /* Center text horizontally */
+background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+min-width: 20%;
+max-width: 100%;
 }
 
 .right {
-  text-align: left; /* Center text horizontally */
-  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
-  padding-right: 30px;
-}
-
-/* Styling for the button */
-.artist {
-  display: inline-flex; 
-  align-items: center;
-  text-align: left; /* Align text within the button to the left */
-  margin: 0; /* Remove any margin */
-  padding: 0; /* Remove any padding */
-  margin-right: 15px; /* Remove any margin */
-}
-
-/* Style for the content within the button */
-.artist .button-content {
-  display: flex;
-  align-items: center;
-}
-
-/* Style for the image within the button */
-.artist img {
-  max-width: 40px; /* Increase the maximum width of the image */
-  height: auto;
-  margin-right: 5px;
-  border-radius: 50%; /* Make the image circular */
-}
-
-/* Style for the text within the button */
-.artist span {
-  font-size: 17px; /* Increase the font size of the text */
-}
-
-.application-format{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 15px; 
-  justify-content: space-between !important; /* Add this line to push elements to each end of the container */
-  width: 100%; /* Set the width to 100% to make it expand to the full width */
-
+text-align: left; /* Center text horizontally */
+background-color:#d8efed; /*no pude aplicarlo desde el theme*/
+min-width: 20%;
+max-width: 100%;
+align-items: center;
+display: flex;
 }
 
 .info-column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-  white-space: pre-wrap; /* Allow text to wrap to the next line */
-  word-wrap: break-word; /* Wrap long words to the next line */
-}
-
-.info-column p, .business-info-format p {
-  margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+height: 100%;
+white-space: pre-wrap; /* Allow text to wrap to the next line */
+word-wrap: break-word; /* Wrap long words to the next line */
+font-weight: 300;
 }
 
 .business-info-format{
-  white-space: pre-wrap; 
-  word-wrap: break-word; 
+white-space: pre-wrap; 
+word-wrap: break-word; 
 }
 
 .business-info{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+white-space: pre-wrap; 
+word-wrap: break-word; 
 }
 
 mat-divider{
-  width: 5px; /* Adjust the width of the divider line */
-  margin: 10px 22px; /* Add some spacing above and below the divider */
+width: 5px; /* Adjust the width of the divider line */
+margin: 10px 22px; /* Add some spacing above and below the divider */
 }
 
-/*todo esto para sacarle los efectos, lo hice usando el inspect y sobreescribiendo*/
-.mat-mdc-button:hover{
-  background-color: transparent;
-  font-weight: bold;
+/*style del texto*/
+
+.name{
+text-transform: uppercase;
 }
 
-.mat-mdc-button:focus{
-  background-color: transparent;
+.info-row {
+display: flex;
+align-items: center;
+margin-bottom: 10px; /* Adjust the spacing between rows */
+font-size: 18px; /* Adjust the font size for most text */
+white-space: pre-wrap; /* Allow text to wrap to the next line */
+word-wrap: break-word; /* Wrap long words to the next line */
+margin: 10px;
+padding: 2px;
+max-width: 300px;
 }
 
-.mat-mdc-button .mat-button-focus-overlay {
-  display: none;
+.info-row p {
+margin: 0px;
+padding: 0px;
 }
 
-.mat-mdc-button, .mat-mdc-outlined-button {
-  --mat-mdc-button-persistent-ripple-color: transparent;
-  --mat-mdc-button-ripple-color: transparent;
+mat-icon {
+margin-right: 10px; /* Add some spacing between icons and text */
+vertical-align: middle; /* Vertically align the icon */
 }
 
 
-/*sobre escribir para que no haya hover ni riple en list item*/
-
-.mat-mdc-list-base {
-
-  --mdc-list-list-item-hover-leading-icon-color: #d8efed;
-  --mdc-list-list-item-hover-trailing-icon-color: #d8efed;
-  --mdc-list-list-item-hover-state-layer-color:#d8efed;
-  --mdc-list-list-item-hover-state-layer-opacity: 0;
-  --mdc-list-list-item-focus-state-layer-color: #d8efed;
-  --mdc-list-list-item-focus-state-layer-opacity: 0;
+.info-row-text {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+font-size: 18px;
+white-space: pre-wrap;
+word-wrap: break-word;
+margin: 10px;
+padding: 2px;
+overflow: auto; /* Add overflow to create a scrollbar for long text */
+max-width: 300px;
 }
 
-/*para borrar ripple puse disable ripple en el html*/
+/* Optional: Set a fixed height to limit the scrollable area */
+.info-row-text p {
+max-height: 50px;
+max-width: 100%; /* Allow text to take up the full width and break into multiple lines */
+margin: 0px;
+padding: 0px;
+}
 
+.info-row-text .bold{
+font-weight: 900;
+text-transform: uppercase;
+
+}

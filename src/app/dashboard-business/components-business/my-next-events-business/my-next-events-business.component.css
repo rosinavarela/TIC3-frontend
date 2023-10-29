@@ -125,6 +125,8 @@ mat-list-item {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
 }
 
 mat-divider{
