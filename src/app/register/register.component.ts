@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ArtistProfileComponent } from '../artist-profile/artist-profile.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TermsComponent } from '../terms/terms.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -22,8 +23,7 @@ export class RegisterComponent {
   formDataBackup: any = {}; // Initialize as an empty object
 
 
-  constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent> // Inject MatDialogRef
-  ) {
+  constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>, private router: Router) {
     this.registrationForm = new FormGroup({
       userType: new FormControl('artist', Validators.required),
       // Common fields
@@ -100,6 +100,7 @@ export class RegisterComponent {
         this.registerService.registerBusiness(formData).subscribe(
           (resp) => {
             console.log('response:', resp)
+            this.router.navigate(['/dashboard-business', formData.rut]);
             this.dialogRef.close();
           },
           (error) => {

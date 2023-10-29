@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegisterService } from '../services/register/register.service';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artist-profile',
@@ -20,7 +22,7 @@ export class ArtistProfileComponent {
   failureMessage?: string;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private registerService: RegisterService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private registerService: RegisterService, private dialogRef: DialogRef, private router: Router) {
     //console.log('Data received in ArtistProfileComponent:', data);
     // You can access data.response here.
     this.profileForm = new FormGroup({
@@ -75,6 +77,8 @@ export class ArtistProfileComponent {
     this.registerService.registerProfileArtist(body).subscribe(
       (response) => {
         console.log('response:', response)
+        this.router.navigate(['/dashboard-artist', response.id]);
+        this.dialogRef.close();
       },
       (error) => {
         console.error('Errorrrrr:', error);

@@ -26,6 +26,7 @@ import { FilterUbicacionArtistComponent } from './components-artist/filter-ubica
 import { FilterMesArtistComponent } from './components-artist/filter-mes-artist/filter-mes-artist.component';
 import { FilterLocalArtistComponent } from './components-artist/filter-local-artist/filter-local-artist.component';
 import { FilterEstiloArtistComponent } from './components-artist/filter-estilo-artist/filter-estilo-artist.component';
+import { ArtistIdService } from '../services/user/artist-id.service';
 
 @NgModule({
   declarations: [SidenavWrapperArtistComponent, MyNextEventsComponent, ArtistViewProfileComponent, ExpandApplicationComponent, ApplyEventsComponent, ArtistEditProfileComponent], //tuve que poner expanded event para que me agarre el mat
@@ -54,6 +55,7 @@ import { FilterEstiloArtistComponent } from './components-artist/filter-estilo-a
     FilterEstiloArtistComponent,
     FilterLocalArtistComponent,
     FilterMesArtistComponent,
-  ]
+  ],
+  providers: [ArtistIdService],
 })
 export class DashboardArtistModule { }

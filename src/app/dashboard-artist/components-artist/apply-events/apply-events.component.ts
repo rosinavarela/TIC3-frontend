@@ -5,6 +5,7 @@ import { Event } from '../../../shared/models/Event';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from 'src/app/services/filter/filter.service';
+import { ArtistIdService } from 'src/app/services/user/artist-id.service';
 
 @Component({ 
   selector: 'app-apply-events',
@@ -28,7 +29,7 @@ export class ApplyEventsComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router, private route: ActivatedRoute, private eventservice: EventService, private filterService: FilterService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private eventservice: EventService, private filterService: FilterService, private artistIdService: ArtistIdService) { }
 
   ngOnInit(): void {
 
@@ -63,7 +64,8 @@ export class ApplyEventsComponent implements OnInit {
   }
 
   onEventClick(eventId: number) {
-    this.router.navigate(['/dashboard-artist/expand-application', eventId], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
+    const artistId = this.artistIdService.getArtistId();
+    this.router.navigate(['/dashboard-artist', artistId,'expand-application', eventId], { relativeTo: this.route }); //lo escribi asi pq sino no andaba
   }
 }
 

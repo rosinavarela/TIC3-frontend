@@ -35,6 +35,7 @@ import { PopUpApplicationComponent } from './dashboard-artist/components-artist/
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TermsComponent } from './terms/terms.component';
+import { DashboardArtistModule } from './dashboard-artist/dashboard-artist.module';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { TermsComponent } from './terms/terms.component';
     ReactiveFormsModule,
     DashboardModule,
     DashboardBusinessModule,
+    DashboardArtistModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatBadgeModule,

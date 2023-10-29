@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ArtistEditProfileComponent } from '../artist-edit-profile/artist-edit-profile.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserArtistService } from 'src/app/services/user/user-artist.service';
+import { ArtistIdService } from 'src/app/services/user/artist-id.service';
 
 
 @Component({
@@ -25,12 +26,10 @@ export class ArtistViewProfileComponent implements OnInit{
   musicGenre: string='';
   description:string='';
 
-  constructor(private matDialog:MatDialog, private router: Router, private route: ActivatedRoute, private userArtistService: UserArtistService){}
+  constructor(private matDialog:MatDialog, private router: Router, private route: ActivatedRoute, private userArtistService: UserArtistService, private artistIdService: ArtistIdService){}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.artistId = +params['artistId']; // The '+' sign converts it to a number
-    });
+    this.artistId = this.artistIdService.getArtistId();
     this.fetchAritist(this.artistId);
     
     

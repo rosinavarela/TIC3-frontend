@@ -5,6 +5,7 @@ import {EventService} from '../../../services/event/event.service';
 import {Event} from '../../../shared/models/Event';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { BusinessIdService } from 'src/app/services/user/business-id.service';
 
 const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto para desactivar el efecto cuando apretas
   disabled: true,
@@ -22,7 +23,7 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
 export class MyNextEventsBusinessComponent {
   events: any[] =[];
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private businessIdService: BusinessIdService) { }
 
   imagePath: string = "../../../assets/images/logos/logo.jpeg"
 
@@ -34,7 +35,7 @@ export class MyNextEventsBusinessComponent {
     }
   }
   ngOnInit(): void{
-    const id =1111;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
+    const id = this.businessIdService.getBusinessId();
     this.eventService.getUpcomingEventsFromBusiness(id).subscribe(
       (data: Event[]) => {
         console.log("upcomingEvents:", data)
