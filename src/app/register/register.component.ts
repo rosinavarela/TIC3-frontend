@@ -177,22 +177,9 @@ export class RegisterComponent {
   }
 
   goToTerms(){
-    /*
     this.matDialog.open(TermsComponent,{
       width:'700px',
       height: '500px'
     })
-    */
-    const dialogRef = this.matDialog.open(TermsComponent, {
-      width:'700px',
-      height: '500px'  
-    });
-  
-    // Subscribe to the dialog's afterClosed event
-    dialogRef.afterClosed().subscribe(() => {
-      // Restore the form data when the dialog is closed
-      this.registrationForm.patchValue(this.formDataBackup);
-    });
   }
-
 }
