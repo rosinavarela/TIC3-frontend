@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistSidenavService} from 'src/app/services/menubar/artist-sidenav.service';
+import { ArtistIdService } from 'src/app/services/user/artist-id.service';
 
 @Component({
   selector: 'app-sidenav-wrapper-artist',
@@ -9,7 +10,14 @@ import { ArtistSidenavService} from 'src/app/services/menubar/artist-sidenav.ser
 })
 
 export class SidenavWrapperArtistComponent {
-  artistId: number = 1; // FIXME: cambiar esto cuando hagamos el flujo del login!!!! 
-  constructor(public artistSidenavService: ArtistSidenavService) { }
+  artistId: number = 0;
+  constructor(public artistSidenavService: ArtistSidenavService, private route: ActivatedRoute,private artistIdService: ArtistIdService) { 
+    this.route.params.subscribe((params) => {
+      this.artistId = params['id'];
+    });
+    this.artistIdService.setArtistId(this.artistId);
+  }
+
+
 }
 

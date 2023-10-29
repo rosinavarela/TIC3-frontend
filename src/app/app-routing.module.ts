@@ -5,11 +5,11 @@ import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   // lazy loaded dashboard module
   {
-    path: 'dashboard-artist',
+    path: 'dashboard-artist/:id',
     loadChildren: () => import('./dashboard-artist/dashboard-artist.module').then(m => m.DashboardArtistModule)
   },
   {
-    path: 'dashboard-business',
+    path: 'dashboard-business/:id',
     loadChildren: () => import('./dashboard-business/dashboard-business.module').then(m => m.DashboardBusinessModule)
   },  
   {

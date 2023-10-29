@@ -4,6 +4,7 @@ import { RippleGlobalOptions } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'src/app/services/event/event.service';
 import { Event } from '../../../shared/models/Event'
+import { ArtistIdService } from 'src/app/services/user/artist-id.service';
 
 const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto para desactivar el efecto cuando apretas
   disabled: true,
@@ -18,26 +19,28 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
   templateUrl: './my-next-events.component.html',
   styleUrls: ['./my-next-events.component.css'],
 })
-export class MyNextEventsComponent {
-  events: any[] =[];
-  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) { }
-
+export class MyNextEventsComponent implements OnInit {
+  events: any[] = [];
   imagePath: string = "../../../assets/images/logos/logo.jpeg"
+  id: number = 0;
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private artistIdService: ArtistIdService) {
+    this.id = this.artistIdService.getArtistId();
+  }
 
-  getSource(event: any){
-    if(event.picture && event.picture !== ""){
+  getSource(event: any) {
+    if (event.picture && event.picture !== "") {
       return event.picture;
-    } else{
+    } else {
       return this.imagePath;
     }
   }
 
-  
-  ngOnInit(): void{
-    const id =22;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
+
+  ngOnInit(): void {
+    const id =this.id;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
     this.eventService.getUpcomingEventsFromArtist(id).subscribe(
       (data) => {
-        this.events = data; 
+        this.events = data;
       },
       (error) => {
         console.error('Error fetching events:', error);

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PopUpArtistComponent } from '../pop-up-artist/pop-up-artist.component';
 import { MatDialog } from '@angular/material/dialog';
+import { BusinessIdService } from 'src/app/services/user/business-id.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class NextEventsComponent {
   events: Event[] =[];
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog, private businessIdService: BusinessIdService) { }
 
   imagePath: string = "../../../assets/images/logos/logo.jpeg"
 
@@ -30,7 +31,7 @@ export class NextEventsComponent {
   }
 
   ngOnInit(): void{
-    const id =224;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
+    const id =this.businessIdService.getBusinessId();
     this.eventService.getUnassignedEventsFromBusiness(id).subscribe(
       (data: Event[]) => {
         console.log("eventsUnassigned:", data)

@@ -4,9 +4,11 @@ import { User } from '../shared/models/User';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Artist } from '../shared/models/Artist'
 import { Business } from '../shared/models/Business';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,7 @@ export class LoginComponent {
   business?: Business;
   hide: boolean = true; // Variable para controlar la visibilidad de la contraseña
 
-  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar) {
+  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>) {
 
   }
 
@@ -59,7 +61,6 @@ export class LoginComponent {
     this.loginService.checkUser(user).subscribe(
       (data) => {
         // Handle success
-        console.log('Response:', data);
         if (data.type === null) {
           this.loginMessage = data.message;
         }
@@ -68,27 +69,30 @@ export class LoginComponent {
             let jsonUser = data.user;
             if (jsonUser && typeof jsonUser === 'object') {
               this.artist = jsonUser
-              console.log('artist:', this.artist);
             } else {
               console.error('Invalid JSON data or not an object:', jsonUser);
             }
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
+          this.router.navigate(['/dashboard-artist', data.user.id]);
+          this.dialogRef.close();
 
         } else if (data.type === "business") {
           try {
             let jsonUser = data.user;
             if (jsonUser && typeof jsonUser === 'object') {
               this.business = jsonUser
-              console.log('business:', this.business);
             } else {
               console.error('Invalid JSON data or not an object:', jsonUser);
             }
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
+          this.router.navigate(['/dashboard-business', data.user.rut]);
+          this.dialogRef.close();
         }
+        
       },
       (error) => {
         // Handle error

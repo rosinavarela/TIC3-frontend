@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BusinessSidenavService} from 'src/app/services/menubar/business-sidenav.service';
+import { BusinessIdService } from 'src/app/services/user/business-id.service';
 
 @Component({
   selector: 'app-sidenav-wrapper-business',
@@ -9,6 +10,12 @@ import { BusinessSidenavService} from 'src/app/services/menubar/business-sidenav
 })
 
 export class SidenavWrapperBusinessComponent {
-  constructor(public businessSidenavService: BusinessSidenavService) { }
+  businessId: number = 0;
+  constructor(public businessSidenavService: BusinessSidenavService, private route: ActivatedRoute, private businessIdService: BusinessIdService) { 
+    this.route.params.subscribe((params) => {
+      this.businessId = params['id'];
+    });
+    this.businessIdService.setBusinessId(this.businessId);
+  }
 }
 

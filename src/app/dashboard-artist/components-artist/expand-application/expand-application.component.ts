@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { EventService } from 'src/app/services/event/event.service';
+import { ArtistIdService } from 'src/app/services/user/artist-id.service';
 
 @Component({
   selector: 'app-expand-application',
@@ -30,12 +31,12 @@ export class ExpandApplicationComponent {
     }
   }
 
-  constructor(private router: Router, private matDialog:MatDialog,private route: ActivatedRoute, private eventService: EventService){ }
+  constructor(private router: Router, private matDialog:MatDialog,private route: ActivatedRoute, private eventService: EventService, private artistIdService: ArtistIdService){ }
 
   ngOnInit() {
     // Retrieve the eventId parameter from the route
     this.eventId = this.route.snapshot.params['eventId'];
-    //this.artistId = lo que corresponda cuando hagamos el flujo de login
+    this.artistId = this.artistIdService.getArtistId();
 
     this.eventService.getEventById(this.eventId).subscribe(
       (data: any) => {
@@ -69,7 +70,7 @@ export class ExpandApplicationComponent {
   }
 
   goBackToEvent() {
-    this.router.navigate(['/dashboard-artist/apply-events'], { relativeTo: this.route });; 
+    this.router.navigate(['/dashboard-artist',this.artistId,'apply-events'], { relativeTo: this.route });; 
   }
 
   applyEvent(){

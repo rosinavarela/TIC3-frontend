@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventService } from 'src/app/services/event/event.service';
+import { BusinessIdService } from 'src/app/services/user/business-id.service';
 
 @Component({
   selector: 'app-create-event',
@@ -21,13 +22,11 @@ export class CreateEventComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        //this.selectedImage = reader.result as string;
         this.imageSelected = true;
 
         const base64DataUrl = reader.result as string;
         this.selectedImage = base64DataUrl;
 
-        // You can also save the Base64 data URL to a form field in your form.
         this.createEventForm.patchValue({
           picture: base64DataUrl.slice(22),
         });
@@ -52,7 +51,7 @@ export class CreateEventComponent {
 
   createEventForm: FormGroup;
 
-  constructor(private dateAdapter: DateAdapter<Date>, private eventService: EventService) {
+  constructor(private dateAdapter: DateAdapter<Date>, private eventService: EventService, private businessIdService: BusinessIdService) {
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
     this.createEventForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -68,8 +67,9 @@ export class CreateEventComponent {
     });
   }
 
-  createEvent() {//le tengo que pasar data que tenga el id del business!!!!!
+  createEvent() {
     const formData = this.createEventForm.value;
+    formData.id = this.businessIdService.getBusinessId();
     console.log('Create event data:', formData);
     this.eventService.createEvent(formData).subscribe(
       (resp) => {

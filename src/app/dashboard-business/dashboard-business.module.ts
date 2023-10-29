@@ -22,6 +22,7 @@ import {MyNextEventsBusinessComponent} from './components-business/my-next-event
 import { ArtistProfileBusinessComponent } from './components-business/artist-profile-business/artist-profile-business.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpArtistComponent } from './components-business/pop-up-artist/pop-up-artist.component';
+import { BusinessIdService } from '../services/user/business-id.service';
 
 @NgModule({
   declarations: [SidenavWrapperBusinessComponent, NextEventsComponent, MyNextEventsBusinessComponent, CreateEventComponent, ArtistProfileBusinessComponent, PopUpArtistComponent], //tuve que poner expanded event para que me agarre el mat
@@ -47,6 +48,7 @@ import { PopUpArtistComponent } from './components-business/pop-up-artist/pop-up
     MatNativeDateModule,
     MatDialogModule
 
-  ]
+  ],
+  providers: [BusinessIdService],
 })
 export class DashboardBusinessModule { }
