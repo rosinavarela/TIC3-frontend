@@ -1,35 +1,80 @@
 
+.container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* Styling for the event-container */
 .event-container {
+  height: auto;
+  min-height: 500px;
+  width: 1000px;
   display: flex;
-  justify-content: center; 
-  margin-left: 150px; /* Adjust the padding around the entire container */
-  margin-right: 150px; /* Adjust the padding around the entire container */
   margin-top: 20px; /* Adjust the padding around the entire container */
   background-color:white; /*no pude aplicarlo desde el theme*/
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
 }
 
-/* Styling for the left column */
-.left {
-  flex: 0 0 auto; /* Prevent the left column from growing to fill space */
-  text-align: left; /* Align text and content to the left */
-  padding: 40px;
-  padding-right: 0px;
-}
+  /* Styling for the left column */
+  .left {
+    flex-direction: column ;
+    width: 50%;
+    max-width: 50%;
+    justify-content: center;  
+    align-items: center;
+    display: flex; /* Make the left column a flex container */
+    width: max-content; /* Set the width to max-content */
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding: 0;
+    overflow: hidden; /* Hide any overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    margin-left: 20px;
+  }
 
-.left h1 {
-  margin: 0; /* Remove any default margins for the h1 element */
-  font-size: 40px; /* Increase the font size of the text */
-}
 
-.left img {
-  max-width: 100%; /* Adjust the maximum width of the image */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 20px; /* Adjust space above the image */
-  margin-bottom: 20px; /* Adjust space below the image */
-  border-radius: 1rem;
-}
+  .left h1 {
+    margin: 0; /* Remove any default margins for the h1 element */
+    font-size: 40px; /* Increase the font size of the text */
+    margin-bottom: 10px;
+    margin-top: 20px;
+    line-height: 40px;
+    text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide any overflowed text */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    white-space: pre-wrap; /* Allow text to wrap to the next line */
+    word-wrap: break-word; /* Wrap long words to the next line */
+  }
+
+  .image-container {
+    max-height: 450px; /* Maximum height for the image container */
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: flex;
+    align-items: center; /* Center the image horizontally */
+    justify-content: center; /* Center the image vertically */
+    background-color: black;
+    border-radius: 1rem;
+    margin:0px;
+    margin-bottom:10px;
+    width: max-content; /* Set the width to max-content */
+  }
+
+  .left img {
+    max-width: 100%; /* Adjust the maximum width of the image */
+    max-height: 100%; /* Allow the image to occupy the entire height of the container */
+    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Reset the width to auto to maintain aspect ratio */
+    object-fit: contain; /* Scale the image to fit inside the container while maintaining aspect ratio */
+    margin:0;
+    padding:0;
+    border-radius: 1rem;
+  }
 
 /* Styling for the apply-button-container */
 .apply-button-container {
@@ -37,6 +82,7 @@
   flex-direction: column;
   align-items: center; /* Center horizontally within the container */
   margin-top: 10px; /* Adjust the top margin to separate the button from the image */
+  margin-bottom: 20px;
 }
 
 /* Styling for the Postularse button */
@@ -45,26 +91,80 @@
   padding: 20px 20px; /* Add padding to increase button size */
 }
 
-/* Styling for the right column */
-.right {
-  text-align: left; /* Center text horizontally */
-  padding: 40px;
+  /* Styling for the right column */
+  .right {
+    text-align: left; /* Center text horizontally */
+    padding: 25px;
+    max-width: 50%;
+    width:50%
+  }
+
+  .info-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    white-space: pre-wrap; /* Allow text to wrap to the next line */
+    word-wrap: break-word; /* Wrap long words to the next line */
+    font-weight: 300;
+  }
+
+  .back-button {
+    font-size: 20px; /* Increase the font size of the button contents */
+    font-weight: 700;
 }
 
-.info-column{
+.name{
+  text-transform: uppercase;  
+}
+
+
+.info-row {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust the spacing between rows */
+  font-size: 18px; /* Adjust the font size for most text */
+  white-space: pre-wrap; /* Allow text to wrap to the next line */
+  word-wrap: break-word; /* Wrap long words to the next line */
+  margin: 10px;
+  padding: 2px;
+  max-width: 100%;
 }
 
-.info-column p {
-margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing between paragraphs */
+.info-row-text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 10px;
+  padding: 2px;
+  overflow: auto; /* Add overflow to create a scrollbar for long text */
+  max-width: 100%;
 }
 
-.back-button {
-  font-size: 20px; /* Increase the font size of the button contents */
-  font-weight: 700;
+/* Optional: Set a fixed height to limit the scrollable area */
+.info-row-text p {
+  max-height: 70px;
+  max-width: 100%; /* Allow text to take up the full width and break into multiple lines */
+  margin: 0px;
+  padding: 0px;
 }
 
+.info-row p {
+  margin: 0px;
+  padding: 0px;
+}
+
+mat-icon {
+  margin-right: 10px; /* Add some spacing between icons and text */
+  vertical-align: middle; /* Vertically align the icon */
+}
+
+.info-row-text .bold{
+  font-weight: 900;
+  text-transform: uppercase;
+
+}

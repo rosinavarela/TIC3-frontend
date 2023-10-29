@@ -49,5 +49,15 @@ export class MyNextEventsBusinessComponent {
     console.log("Eventos: "+this.events);
   }
 
+  formatTime(time: string | null): string {
+    if (time && typeof time === 'string') {
+      const timeParts = time.split(':'); // Split the time string
+      if (timeParts.length >= 2) {
+        return timeParts[0] + ':' + timeParts[1]; // Format as "HH:mm"
+      }
+    }
+    return time || ''; // Return the original time if it's not in the expected format
+  }
+  
 }
 
