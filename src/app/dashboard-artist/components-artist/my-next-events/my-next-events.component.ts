@@ -38,7 +38,6 @@ export class MyNextEventsComponent implements OnInit {
 
   ngOnInit(): void {
     const id =this.id;//este id hay que cambiarlo por el que venga de la pantalla anterior o ruta?
-
     this.eventService.getUpcomingEventsFromArtist(id).subscribe(
       (data) => {
         this.events = data;

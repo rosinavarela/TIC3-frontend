@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+    <form [formGroup]="registrationForm">
         <mat-dialog-content>
             <div class="row">
                 <header class="center-header">
@@ -22,9 +22,8 @@
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email" placeholder="Email">
-                    <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
-                        Por favor ingrese un mail válido.
-                    </mat-error>
+                    <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">Por favor ingrese un mail válido.</mat-error>
+                    <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">El mail es requerido</mat-error>
                 </mat-form-field>
             </div>
             <div class="row">
@@ -33,6 +32,7 @@
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
                         <input matInput [type]="passwordInputType1" formControlName="password" placeholder="Password">
+                        <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
                         <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
                             <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
                         </button>
@@ -43,6 +43,7 @@
                     <mat-form-field>
                         <mat-label>Repetir contraseña</mat-label>
                         <input matInput [type]="passwordInputType2" formControlName="password2" placeholder="Password">
+                        <mat-error *ngIf="registrationForm.get('password2')?.hasError('required')">La contraseña es requerida</mat-error>
                         <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility2()">
                             <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>            
                         </button>
@@ -57,6 +58,7 @@
                         <mat-form-field>
                             <mat-label>Nombre</mat-label>
                             <input matInput formControlName="name" placeholder="Nombre">
+                            <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">El nombre es requerido</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Column 2 -->
@@ -64,6 +66,7 @@
                         <mat-form-field>
                             <mat-label>Apellido</mat-label>
                             <input matInput formControlName="lastName" placeholder="Apellido">
+                            <mat-error *ngIf="registrationForm.get('lastName')?.hasError('required')">El apellido es requerido</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -73,6 +76,7 @@
                         <mat-form-field>
                             <mat-label>Cédula</mat-label>
                             <input matInput formControlName="id" placeholder="ej.: 12134715">
+                            <mat-error *ngIf="registrationForm.get('id')?.hasError('required')">La cédula es requerida</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Column 2 -->
@@ -80,6 +84,7 @@
                         <mat-form-field>
                             <mat-label>Teléfono</mat-label>
                             <input matInput formControlName="phone">
+                            <mat-error *ngIf="registrationForm.get('phone')?.hasError('required')">El teléfono es requerido</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -93,6 +98,7 @@
                         <mat-form-field>
                             <mat-label>Nombre</mat-label>
                             <input matInput formControlName="name" placeholder="Nombre">
+                            <mat-error *ngIf="registrationForm.get('name')?.hasError('required')">El nombre es requerido</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Column 2 -->
@@ -100,6 +106,7 @@
                         <mat-form-field>
                             <mat-label>Teléfono</mat-label>
                             <input matInput formControlName="phone">
+                            <mat-error *ngIf="registrationForm.get('phone')?.hasError('required')">El teléfono es requerido</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -110,6 +117,7 @@
                         <mat-form-field>
                             <mat-label>Rut</mat-label>
                             <input matInput formControlName="rut">
+                            <mat-error *ngIf="registrationForm.get('rut')?.hasError('required')">El rut es requerido</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Column 2 -->
@@ -117,6 +125,7 @@
                         <mat-form-field>
                             <mat-label>Razón Social</mat-label>
                             <input matInput formControlName="legalName">
+                            <mat-error *ngIf="registrationForm.get('legalName')?.hasError('required')">La razón social es requerida</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -127,6 +136,7 @@
                         <mat-form-field>
                             <mat-label>Ubicación</mat-label>
                             <input matInput formControlName="location">
+                            <mat-error *ngIf="registrationForm.get('location')?.hasError('required')">La ubicación es requerida</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Column 2 -->
@@ -154,7 +164,7 @@
                 <p *ngIf="failureMessage" class="failure-message">{{ failureMessage }}</p>
             </div>
             <div class="row">
-                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()" type="submit">Siguiente</button>
+                <button mat-raised-button class="right-align" color="primary" [disabled]="isButtonDisabled()" (click)="register()">Siguiente</button>
             </div>
         </mat-dialog-content>
     </form>

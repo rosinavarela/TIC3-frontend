@@ -60,13 +60,13 @@
                 <div class="artist-info"> 
                     <h1>Contacto del Artista:</h1>
                     <div class="artist-info-format" fxLayout="row">    
-                        <div class="info-row" *ngIf="event?.artisticName">
+                        <div class="info-row">
                             <mat-icon class="art-icon">brush</mat-icon> 
                             <p>{{ event?.artist?.artisticName }}</p> 
                         </div>
                         <div class="info-row">
                             <mat-icon class="person-icon">person</mat-icon> 
-                            <p>{{ event?.artist?.name }} - {{ event?.artist?.lastName }}</p> 
+                            <p>{{ event?.artist?.name }} {{ event?.artist?.lastName }}</p> 
                         </div>
                         <div class="info-row">
                             <mat-icon class="phone-icon">phone</mat-icon> 
