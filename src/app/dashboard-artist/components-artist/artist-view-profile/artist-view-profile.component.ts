@@ -39,7 +39,11 @@ export class ArtistViewProfileComponent implements OnInit{
     this.userArtistService.getArtistById(id).subscribe(
       (artistData) => {
         this.artisticName = artistData.artisticName;
-        this.picture= artistData.picture;
+        if(artistData.picture){
+          this.picture= artistData.picture;
+        } else {
+          this.picture = '/assets/images/logos/default-profile.webp';
+        }
         this.musicGenre=artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();//Transforms it so that the first letter is upper case
         this.description=artistData.description;
         this.instagramTag=artistData.igUsername;
