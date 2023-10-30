@@ -122,11 +122,10 @@ export class MenubarComponent{
     }
   }
 
-  badgeViewed(){
+  onMenuClosed(){
     this.badgeHidden= true; 
     this.lenUnseenNotifications=0;
     //aca tendria que haber una funcion que le ponga a todas las notis del array seen
-    this.toggleNotificationDropdown();
   }
   
 }

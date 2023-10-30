@@ -28,7 +28,7 @@
 }
 
 .menu-item {
-    padding: 8px 16px; /* Add padding for better spacing */
+    padding: 0px 16px; /* Add padding for better spacing */
     cursor: default; /* Set the cursor to the default arrow cursor */
     background-color: transparent; /* Set the background to transparent to remove hover effect */
 }
@@ -40,7 +40,7 @@
 
 .mat-divider {
     border-top: 1px solid rgba(0, 0, 0, 0.12); /* Customize the divider appearance */
-    margin: 0px 5%; /* Add spacing above and below the divider */
+    margin: 5px 5%; /* Add spacing above and below the divider */
 }
 
 .name-event{
