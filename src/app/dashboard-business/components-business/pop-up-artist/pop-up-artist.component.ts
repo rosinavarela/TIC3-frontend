@@ -11,11 +11,19 @@ import { Router } from '@angular/router';
 })
 
 export class PopUpArtistComponent {
+  artisticName: string = '';
+  msj: string = '';
+  artistId: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router, public dialogRef: MatDialogRef<PopUpArtistComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private route: ActivatedRoute, private router: Router, public dialogRef: MatDialogRef<PopUpArtistComponent>) {
+    this.msj = data.msj;
+    this.artisticName = data.artist.artisticName;
+    this.artistId = data.artist_id;
+    console.log(data);
+   }
 
   goToArtist(){
-    this.router.navigate(['/dashboard-business/artist-profile-business'],{ relativeTo: this.route });
+    this.router.navigate(['/dashboard-business/artist-profile-business', this.artistId],{ relativeTo: this.route });
     this.dialogRef.close();
   }
 }

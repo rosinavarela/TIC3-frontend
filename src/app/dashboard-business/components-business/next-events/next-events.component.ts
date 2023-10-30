@@ -45,10 +45,11 @@ export class NextEventsComponent {
     console.log("Eventos: "+this.events);
   }
 
-  goToArtist(){
+  goToArtist(application:any){
     this.matDialog.open(PopUpArtistComponent,{
       width:'550px',
-      height: '300px'
+      height: '300px',
+      data: application
     })
   }
 
