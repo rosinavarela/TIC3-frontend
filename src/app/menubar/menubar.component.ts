@@ -99,13 +99,14 @@ export class MenubarComponent{
     }
   }
 
-  notifications: string[] = ['notification1', 'notification2', 'notification3'];
-  //aca tendria que haber un for que se fije si la notificacion fue vista y cuente cuantas no fueron vistas con el atributo seen. 
-  // ese numero lo pasa a unseenNotifications y ademas llama a la funcion badgeVisibility()
+  unseenNotificationsArray: string[] = ['notification1', 'notification2', 'notification3'];
+  seenNotificationsArray: string[] = ['notification1', 'notification2', 'notification3'];
+
+  unseenNotifications = this.unseenNotificationsArray.length;
+
+  // ademas llama a la funcion badgeVisibility()
   //esta funcion se tiene que llamar en el constructor?? o algo asi onda cuando abris la pagina deberia pasar todo esto para que se 
   //actualicen los datos
-
-  unseenNotifications: number = 5;
 
   badgeHidden=false; //esto tiene que estar true si no tiene notificaciones
 
@@ -118,6 +119,8 @@ export class MenubarComponent{
     }
   }
 
+  //hasta aca
+  
   badgeViewed(){
     this.badgeHidden= true; 
     this.unseenNotifications=0;
