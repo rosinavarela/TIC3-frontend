@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from '../services/notifications/notification.service';
 
 
 @Component({
@@ -23,8 +24,10 @@ export class LoginComponent {
   artist?: Artist;
   business?: Business;
   hide: boolean = true; // Variable para controlar la visibilidad de la contraseña
+  unseenNotifications: any[] = [];
+  seenNotifications: any[] = [];
 
-  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>) {
+  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService) {
 
   }
 
@@ -72,6 +75,9 @@ export class LoginComponent {
             } else {
               console.error('Invalid JSON data or not an object:', jsonUser);
             }
+            this.unseenNotifications = data.unseenNotifications;
+            this.seenNotifications = data.seenNotifications;
+            this.notificationService.setNotifications(this.unseenNotifications, this.seenNotifications);
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
