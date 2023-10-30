@@ -11,7 +11,7 @@ import { EventService } from 'src/app/services/event/event.service';
 })
 export class ExpandedEventComponent {
 
-  link: string = "wwww.google.com" //aca poner el link del lugar
+  link: string | null = null; 
   event: any = {
     picture: of('/assets/images/logos/foto.jpeg'),
   };

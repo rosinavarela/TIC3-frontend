@@ -44,7 +44,7 @@
                     <mat-icon class="style-icon">music_note</mat-icon> <!-- Music icon -->
                     <p>{{event?.genrePreffered}}</p>
                 </div>  
-                <div class="info-row" >  <!-- *ngIf="event?.link" -->
+                <div class="info-row" *ngIf="link"> 
                     <mat-icon class="style-icon">link</mat-icon> <!-- Music icon -->
                     <div class="link" fxLayout="row">
                         Link:
