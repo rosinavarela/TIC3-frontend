@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserArtistService } from 'src/app/services/user/user-artist.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ArtistEditProfileComponent {
   failureMessage?: string;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService, private snackBar: MatSnackBar) {
     //console.log('Data received in ArtistProfileComponent:', data);
     // You can access data.response here.
    this.fetchAritist(data.id);
@@ -65,6 +66,35 @@ export class ArtistEditProfileComponent {
         console.error('Error fetching business:', error);
       }
     );
+  }
+
+  updateArtist(id: number, artistData: any): void {
+    this.userArtistService.updateArtistProfile(id, artistData).subscribe(
+      (updatedArtist) => {
+        // Handle the updated business data
+        this.snackBar.open('Datos actualizados', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
+      },
+      (error) => {
+        console.error('Error updating artist:', error);
+        this.snackBar.open('Ocurrió un error', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
+      }
+    );
+  }
+
+  editar(){
+    const artistData = {
+      artisticName: this.artisticName,
+      picture: this.picture,
+      igUsername: this.igUsername,
+      description: this.description,
+      links: this.links,
+      musicGenre: this.musicGenre.toLowerCase(),
+    };
+    this.updateArtist(this.data.id,artistData);
   }
 
 }
