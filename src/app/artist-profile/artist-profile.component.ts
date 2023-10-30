@@ -49,7 +49,7 @@ export class ArtistProfileComponent {
 
         // You can also save the Base64 data URL to a form field in your form.
         this.profileForm.patchValue({
-          picture: base64DataUrl,
+          picture: base64DataUrl.slice(22),
         });
       };
       reader.readAsDataURL(file);
