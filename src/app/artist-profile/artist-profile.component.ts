@@ -102,4 +102,10 @@ export class ArtistProfileComponent {
     }
   }
 
+  omitir( ) {
+    console.log(this.data.user.id);
+    this.router.navigate(['/dashboard-artist', this.data.user.id]);
+    this.dialogRef.close();
+  }
+
 }
