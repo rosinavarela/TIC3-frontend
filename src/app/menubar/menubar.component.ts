@@ -24,6 +24,8 @@ export class MenubarComponent{
   @ViewChild('notificationMenuTrigger') notificationMenuTrigger: MatMenuTrigger | undefined;
   unseenNotificationsArray: any[] = [];
   seenNotificationsArray: any[] = [];
+  lenUnseenNotifications: number=0;
+  badgeHidden=true; //esto tiene que estar true si no tiene notificaciones
 
   usertype= "general";
 
@@ -46,9 +48,9 @@ export class MenubarComponent{
         }
       }
     });
-
     this.notificationService.unseenNotifications$.subscribe((unseenNotifications) => {
       this.unseenNotificationsArray = unseenNotifications;
+      this.lenUnseenNotifications = this.unseenNotificationsArray.length;
       this.badgeVisibility();
     });
     this.notificationService.seenNotifications$.subscribe((seenNotifications) => {
@@ -111,19 +113,8 @@ export class MenubarComponent{
     }
   }
 
-  unseenNotificationsArray: string[] = ['notification1', 'notification2', 'notification3'];
-  seenNotificationsArray: string[] = ['notification1', 'notification2', 'notification3'];
-
-  unseenNotifications = this.unseenNotificationsArray.length;
-
-  // ademas llama a la funcion badgeVisibility()
-  //esta funcion se tiene que llamar en el constructor?? o algo asi onda cuando abris la pagina deberia pasar todo esto para que se 
-  //actualicen los datos
-
-  badgeHidden=false; //esto tiene que estar true si no tiene notificaciones
-
   badgeVisibility(){
-    if (this.unseenNotifications==0){
+    if (this.lenUnseenNotifications==0){
       this.badgeHidden=true;
     }
     else{
@@ -131,11 +122,9 @@ export class MenubarComponent{
     }
   }
 
-  //hasta aca
-  
   badgeViewed(){
     this.badgeHidden= true; 
-    this.unseenNotifications=0;
+    this.lenUnseenNotifications=0;
     //aca tendria que haber una funcion que le ponga a todas las notis del array seen
     this.toggleNotificationDropdown();
   }

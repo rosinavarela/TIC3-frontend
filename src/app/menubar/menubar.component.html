@@ -9,7 +9,7 @@
     <span class="example-spacer"></span>
     <div class="notifications">
         <button (click)="badgeViewed()" mat-icon-button *ngIf="usertype === 'artist'" [matMenuTriggerFor]="notificationMenu" #notificationMenuTrigger>
-            <mat-icon matBadgeColor="warn" [matBadge]= "unseenNotifications" [matBadgeHidden]="badgeHidden" >notifications</mat-icon>
+            <mat-icon matBadgeColor="warn" [matBadge]="lenUnseenNotifications" [matBadgeHidden]="badgeHidden" >notifications</mat-icon>
         </button>
         <div class="notifications-dropdown">
             <mat-menu #notificationMenu>
@@ -19,21 +19,27 @@
                     </h1>
                 </div>
                 <mat-divider></mat-divider>
-                <div class="menu-item"> <!--*ngIf no hay notificaciones-->
+                <div class="menu-item" *ngIf="lenUnseenNotifications === 0"> 
                     Aun no tienes notificaciones
                 </div>
-                <mat-divider></mat-divider>
-                <div class="menu-item"> <!--hacer un for de esta funcion (incluido matdivider) y borrar los items de abajo-->
+                <div class="menu-item" *ngFor="let notification of unseenNotificationsArray">
+                    <mat-divider></mat-divider>
                     <p>
                         <span>Has sido seleccionado para el evento: </span>
-                        <span class= "name-event">nombre evento</span> <!--de mensaje vale manda nombre evento-->
-                    </p>   
+                        <span class="name-event">{{notification.msj}}</span>
+                    </p>
                     <p>Encuentra más información en Mis Próximos Eventos</p>
                 </div>
-                <mat-divider></mat-divider>
-                <div class="menu-item">Item 2</div>
-                <mat-divider></mat-divider>
-                <div class="menu-item">Item 3</div>
+                <div class="menu-item" *ngFor="let notification of seenNotificationsArray">
+                    <mat-divider></mat-divider>
+                    <div class= "old-notification">
+                        <p>
+                            <span>Has sido seleccionado para el evento: </span>
+                            <span class="name-event">{{notification.msj}}</span>
+                        </p>
+                        <p>Encuentra más información en Mis Próximos Eventos</p>
+                    </div>
+                </div>
             </mat-menu>
         </div>
     </div>
