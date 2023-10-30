@@ -30,4 +30,10 @@ export class UserArtistService {
     
     return this.http.put(url, artistData);
   }
+
+  updateArtistProfile(id: number, artistData: any): Observable<any> {
+    const url = `${this.baseURL}artists/${id}`;
+    
+    return this.http.put(url, artistData);
+  }
 }

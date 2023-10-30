@@ -10,6 +10,7 @@ import { BusinessSidenavService } from 'src/app/services/menubar/business-sidena
 import { ArtistSidenavService } from 'src/app/services/menubar/artist-sidenav.service'; 
 import {NavigationEnd } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { NotificationService } from '../services/notifications/notification.service';
 
 
 @Component({
@@ -21,11 +22,12 @@ export class MenubarComponent{
 
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger | undefined;
   @ViewChild('notificationMenuTrigger') notificationMenuTrigger: MatMenuTrigger | undefined;
-
+  unseenNotificationsArray: any[] = [];
+  seenNotificationsArray: any[] = [];
 
   usertype= "general";
 
-  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router){
+  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService){
     // Subscribe to the NavigationEnd event to detect route changes. Esto es para ver en que ruta esta y asi mover la sidenav acorde
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -44,6 +46,16 @@ export class MenubarComponent{
         }
       }
     });
+
+    this.notificationService.unseenNotifications$.subscribe((unseenNotifications) => {
+      this.unseenNotificationsArray = unseenNotifications;
+      this.badgeVisibility();
+    });
+    this.notificationService.seenNotifications$.subscribe((seenNotifications) => {
+      this.seenNotificationsArray = seenNotifications;
+    });
+    console.log('unseen: ',this.unseenNotificationsArray);
+    console.log('seen: ',this.seenNotificationsArray);
   }
 
   toggleDropdown(): void {

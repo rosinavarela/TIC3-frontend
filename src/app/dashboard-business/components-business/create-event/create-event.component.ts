@@ -3,6 +3,7 @@ import { DateAdapter } from '@angular/material/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventService } from 'src/app/services/event/event.service';
 import { BusinessIdService } from 'src/app/services/user/business-id.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-event',
@@ -51,7 +52,7 @@ export class CreateEventComponent {
 
   createEventForm: FormGroup;
 
-  constructor(private dateAdapter: DateAdapter<Date>, private eventService: EventService, private businessIdService: BusinessIdService) {
+  constructor(private dateAdapter: DateAdapter<Date>, private eventService: EventService, private businessIdService: BusinessIdService, private snackbar: MatSnackBar) {
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
     this.createEventForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -74,6 +75,10 @@ export class CreateEventComponent {
     this.eventService.createEvent(formData).subscribe(
       (resp) => {
         console.log('response:', resp)
+        this.snackbar.open('Evento creado', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
+        this.failureMessage = '';
       },
       (error) => {
         console.error('Errorrrrr:', error);
