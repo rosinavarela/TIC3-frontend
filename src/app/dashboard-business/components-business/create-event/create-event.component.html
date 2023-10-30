@@ -23,7 +23,7 @@
                         <mat-error *ngIf="createEventForm.get('neighborhood')?.hasError('required')">El barrio es requerido</mat-error>
                     </mat-form-field> 
                     <mat-form-field class="date">
-                        <mat-label>Fecha --------> </mat-label>
+                        <mat-label>Fecha</mat-label>
                         <input matInput [matDatepicker]="picker" readonly [matDatepickerFilter]="dateFilter" formControlName="date">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>

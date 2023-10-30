@@ -11,7 +11,7 @@ import { UserArtistService } from 'src/app/services/user/user-artist.service';
 export class ArtistEditProfileComponent {
 
   profileForm: FormGroup;
-  picture: string | ArrayBuffer | null = "/assets/images/logos/foto.jpeg";
+  picture: string | ArrayBuffer | null = "/assets/images/logos/default-profile.webp";
   artisticName: string | null = "Nombre Artistico";
   igUsername: string | null = "Usuario";
   description: string | null = "no tengo";
@@ -33,12 +33,11 @@ export class ArtistEditProfileComponent {
       links: new FormControl(''),
       musicGenre: new FormControl(this.musicGenre),
     });
-
     
   }
 
   clearSelectedImage() {
-    this.picture = '';
+    this.picture = "/assets/images/logos/default-profile.webp";
     this.hasProfilePicture = false;
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     if (fileInput) {
