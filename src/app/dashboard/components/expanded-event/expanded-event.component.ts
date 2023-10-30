@@ -37,6 +37,8 @@ export class ExpandedEventComponent {
         this.event = data;
         // Calculate the image source and store it in eventImageSource
       this.eventImageSource = this.getImageSource(this.event);
+      this.link = data.business.webPage;
+      console.log('link: ', this.link);
       },
       (error) => {
         console.error('Error fetching event:', error);
