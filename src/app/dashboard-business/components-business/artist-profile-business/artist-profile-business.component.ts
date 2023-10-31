@@ -12,11 +12,7 @@ import { UserArtistService } from 'src/app/services/user/user-artist.service';
   styleUrls: ['./artist-profile-business.component.css']
 })
 export class ArtistProfileBusinessComponent implements OnInit {
-  links: string[] = [ //lista de links
-    'http://www.google.com',
-    'http://www.example.com',
-    'http://www.openai.com'
-  ];
+  links: string = 'http://www.google.com';
 
   instagramTag: string = "cristiano";
   instagramLink: string = '';

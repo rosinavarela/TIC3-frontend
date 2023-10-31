@@ -12,11 +12,7 @@ import { ArtistIdService } from 'src/app/services/user/artist-id.service';
   styleUrls: ['./artist-view-profile.component.css']
 })
 export class ArtistViewProfileComponent implements OnInit{
-  links: string[] = [ //lista de links
-    'http://www.google.com',
-    'http://www.example.com',
-    'http://www.openai.com'
-  ];
+  links: string ='http://www.google.com';
 
   instagramTag: string | null= null; 
   instagramLink: string='';
@@ -48,7 +44,7 @@ export class ArtistViewProfileComponent implements OnInit{
         this.description=artistData.description;
         console.log('Received artistData.igUsername:', artistData.igUsername);
         this.instagramTag=artistData.igUsername;
-        //this.links=artistData.links;
+        this.links=artistData.links;
         this.instagramLink = `https://www.instagram.com/${this.instagramTag}/`
         
       },

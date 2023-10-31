@@ -28,11 +28,11 @@
                         </button>
                     </a>
                 </div>   
-                <div class= "links">
+                <div class= "links" *ngIf="links">
                     <p>Links:</p> <!--este no suplantarlo-->
-                    <div *ngFor="let link of links; let i = index" fxLayout="row">
+                    <div fxLayout="row">
                         <button mat-button class="link-button">
-                            <a [href]="link" target="_blank">
+                            <a [href]="links" target="_blank">
                                 <mat-icon>link</mat-icon>
                             </a>
                         </button>
