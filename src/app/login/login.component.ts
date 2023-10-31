@@ -9,6 +9,7 @@ import { RegisterComponent } from '../register/register.component';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from '../services/notifications/notification.service';
+import { ArtistIdService } from '../services/user/artist-id.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent {
   unseenNotifications: any[] = [];
   seenNotifications: any[] = [];
 
-  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService) {
+  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService, private artistIdService: ArtistIdService) {
 
   }
 
@@ -81,6 +82,7 @@ export class LoginComponent {
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
+          this.artistIdService.setArtistId(data.user.id);
           this.router.navigate(['/dashboard-artist', data.user.id]);
           this.dialogRef.close();
 

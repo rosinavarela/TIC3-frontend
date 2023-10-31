@@ -5,10 +5,10 @@ import { BusinessAccountComponent } from '../business-account/business-account.c
 import { ArtistAccountComponent } from '../artist-account/artist-account.component';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
-import { SidenavService } from 'src/app/services/menubar/sidenav.service'; 
-import { BusinessSidenavService } from 'src/app/services/menubar/business-sidenav.service'; 
-import { ArtistSidenavService } from 'src/app/services/menubar/artist-sidenav.service'; 
-import {NavigationEnd } from '@angular/router';
+import { SidenavService } from 'src/app/services/menubar/sidenav.service';
+import { BusinessSidenavService } from 'src/app/services/menubar/business-sidenav.service';
+import { ArtistSidenavService } from 'src/app/services/menubar/artist-sidenav.service';
+import { NavigationEnd } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { NotificationService } from '../services/notifications/notification.service';
 import { ArtistIdService } from '../services/user/artist-id.service';
@@ -19,18 +19,18 @@ import { ArtistIdService } from '../services/user/artist-id.service';
   templateUrl: './menubar.component.html', // The HTML template for this component
   styleUrls: ['./menubar.component.css'] // The associated CSS styles for this component
 })
-export class MenubarComponent implements OnInit{
+export class MenubarComponent implements OnInit {
 
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger | undefined;
   @ViewChild('notificationMenuTrigger') notificationMenuTrigger: MatMenuTrigger | undefined;
   unseenNotificationsArray: any[] = [];
   seenNotificationsArray: any[] = [];
-  lenUnseenNotifications: number=0;
-  badgeHidden=true; //esto tiene que estar true si no tiene notificaciones
+  lenUnseenNotifications: number = 0;
+  badgeHidden = true; //esto tiene que estar true si no tiene notificaciones
 
-  usertype= "general";
+  usertype = "general";
 
-  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService, private artistIdService: ArtistIdService){
+  constructor(private matDialog: MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService, private artistIdService: ArtistIdService) {
     // Subscribe to the NavigationEnd event to detect route changes. Esto es para ver en que ruta esta y asi mover la sidenav acorde
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -40,9 +40,22 @@ export class MenubarComponent implements OnInit{
         // Determine usertype based on the current route
         if (currentRoute.includes('dashboard-business')) {
           this.usertype = "business";
-        } 
-        else if (currentRoute.includes('dashboard-artist')){
+        }
+        else if (currentRoute.includes('dashboard-artist')) {
           this.usertype = "artist";
+          const id = this.artistIdService.getArtistId();
+          this.notificationService.getNotifications(id).subscribe(
+            (data) => {
+              this.unseenNotificationsArray = data.unseenNotifications;
+              this.seenNotificationsArray = data.seenNotifications;
+            },
+            (error) => {
+              console.error('Error updating artist:', error);
+            }
+          );
+          this.badgeVisibility();
+          console.log('unseen: ', this.unseenNotificationsArray);
+          console.log('seen: ', this.seenNotificationsArray);
         }
         else {
           this.usertype = "general";
@@ -57,90 +70,78 @@ export class MenubarComponent implements OnInit{
     this.notificationService.seenNotifications$.subscribe((seenNotifications) => {
       this.seenNotificationsArray = seenNotifications;
     });*/
-    
+
   }
 
   ngOnInit(): void {
-    const id = this.artistIdService.getArtistId();
-    this.notificationService.getNotifications(id).subscribe(
-      (data) => {
-        this.unseenNotificationsArray = data.unseenNotifications;
-        this.seenNotificationsArray = data.seenNotifications;
-      },
-      (error) => {
-        console.error('Error updating artist:', error);
-      }
-    );
-    this.badgeVisibility();
-    console.log('unseen: ',this.unseenNotificationsArray);
-    console.log('seen: ',this.seenNotificationsArray);
+
   }
 
   toggleDropdown(): void {
     if (this.menuTrigger) {
-        this.menuTrigger.openMenu();
+      this.menuTrigger.openMenu();
     }
   }
 
   toggleNotificationDropdown(): void {
     if (this.notificationMenuTrigger) {
-        this.notificationMenuTrigger.openMenu();
+      this.notificationMenuTrigger.openMenu();
     }
   }
 
   goToPage(pageName: string) {
     this.matDialog.open(LoginComponent, {
-    width: '360px',
+      width: '360px',
     });
   }
 
   navigateToBusinessDashboard() {
     this.router.navigate(['dashboard-business']);
   }
-  
+
   navigateToArtistDashboard() {
     this.router.navigate(['dashboard-artist']);
   }
 
   toggleSidenav() {
-    if (this.usertype=="general"){
+    if (this.usertype == "general") {
       this.sidenavService.toggleSidenav();
     }
-    else if (this.usertype=="business"){
+    else if (this.usertype == "business") {
       this.businessSidenavService.toggleSidenav();
     }
-    else if (this.usertype=="artist"){
+    else if (this.usertype == "artist") {
       this.artistSidenavService.toggleSidenav();
     }
   }
-  
-  selectOption(option: string){
-    if (option=="account"){
-      if (this.usertype=="business"){
+
+  selectOption(option: string) {
+    if (option == "account") {
+      if (this.usertype == "business") {
         this.matDialog.open(BusinessAccountComponent, {
-          width:'40%',
-          });
+          width: '40%',
+        });
       }
-      else if (this.usertype=="artist"){
+      else if (this.usertype == "artist") {
         this.matDialog.open(ArtistAccountComponent, {
           width: '40%',
-          });
+        });
       }
     }
   }
 
-  badgeVisibility(){
-    if (this.lenUnseenNotifications==0){
-      this.badgeHidden=true;
+  badgeVisibility() {
+    if (this.lenUnseenNotifications == 0) {
+      this.badgeHidden = true;
     }
-    else{
-      this.badgeHidden=false;
+    else {
+      this.badgeHidden = false;
     }
   }
 
-  onMenuClosed(){
-    this.badgeHidden= true; 
-    this.lenUnseenNotifications=0;
+  onMenuClosed() {
+    this.badgeHidden = true;
+    this.lenUnseenNotifications = 0;
     const id = this.artistIdService.getArtistId();
     this.notificationService.viewNotifications(id).subscribe(
       (updatedArtist) => {
@@ -151,6 +152,6 @@ export class MenubarComponent implements OnInit{
       }
     );
   }
-  
+
 }
 
