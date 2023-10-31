@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { BusinessIdService } from 'src/app/services/user/business-id.service';
 
 
 @Component({
@@ -19,10 +20,11 @@ export class ArtistProfileBusinessComponent {
   instagramTag: string ="cristiano"; 
   instagramLink: string=`https://www.instagram.com/${this.instagramTag}/`;
 
-  constructor(private matDialog:MatDialog, private route: ActivatedRoute, private router: Router) { }
+  constructor(private matDialog:MatDialog, private route: ActivatedRoute, private router: Router, private businessIdService: BusinessIdService) { }
 
   goBackToNextEvents() {
-    this.router.navigate(['/dashboard-business/next-events'],{ relativeTo: this.route });
+    const businessId = this.businessIdService.getBusinessId();
+    this.router.navigate(['/dashboard-business',businessId,'next-events'],{ relativeTo: this.route });
   }
 
 }

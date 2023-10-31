@@ -188,4 +188,13 @@ export class EventService {
     return this.http.get<any[]>(url);
   }
 
+
+  createApplication(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(data);
+    console.log(body)
+    let id = data.id;//id del evento
+    const url = `${this.baseURL}events/${id}/application`;
+    return this.http.post(url, body, { 'headers': headers })
+  }
 }

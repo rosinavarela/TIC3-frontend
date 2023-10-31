@@ -31,7 +31,7 @@ const routes: Routes = [
         component: CreateEventComponent
       },
       {
-        path: 'artist-profile-business', 
+        path: 'artist-profile-business/:artistId', 
         component: ArtistProfileBusinessComponent
       }
     ]
