@@ -133,19 +133,7 @@ mat-divider {
     margin: 40px 7%; /* Adjust the margin as needed to control the divider's spacing */
 }
 
-.edit-button {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 100%;
-    margin-right: 20px;
-
-}
-
 .info-column{
     margin-bottom: 10px;
 }
 
-.edit{
-    font-size: 16px;
-}
