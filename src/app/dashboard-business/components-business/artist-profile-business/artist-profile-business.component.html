@@ -4,7 +4,7 @@
             
         <!-- Left Column -->
         <div class="left" fxFlex="50%" fxLayout="column" >
-            <img src="/assets/images/logos/default-profile.webp" alt="Event Image" />
+            <img src="{{picture}}" alt="Event Image" />
         </div>
 
         <!-- Right Column -->
@@ -15,12 +15,12 @@
                 </button>
             </div>
             <div class="info-column">
-                <h1>Valegon</h1> <!--nombre artistico-->
+                <h1>{{artisticName}}</h1> <!--nombre artistico-->
                 <div class="style" fxLayout= "row">
                     <mat-icon matSuffix>music_note</mat-icon>
-                    <p>Jazz</p> <!--estilo musical-->
+                    <p>{{musicGenre}}</p> <!--estilo musical-->
                 </div>
-                <p>Me gusta mucho cantar y tocar el bajo. Soy valegon y te invito a mirar mi perfil de ig!</p>             
+                <p>{{description}}</p>             
                 <a [href]="instagramLink" target="_blank">
                     <button mat-button class="instagram">
                         <div class="button-content">
