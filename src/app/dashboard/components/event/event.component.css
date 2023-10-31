@@ -97,7 +97,7 @@ mat-list-item .location {
 .filter-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end; /* Horizontally align items to the right */
+    justify-content: center; /* Horizontally align items to the right - flex-end*/
     align-items: center; /* Vertically center items */
     padding-top: 30px;
 }

@@ -1,4 +1,12 @@
 /* Apply styles to the Angular Material list */
+
+.full-width{
+  width:100%;
+  justify-content: center;
+  display: flex;
+  text-transform: uppercase;
+}
+
 mat-nav-list {
     display: flex;
     justify-content: center;
@@ -97,9 +105,8 @@ mat-list-item .location {
 .filter-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end; /* Horizontally align items to the right */
+    justify-content: center; /* Horizontally align items to the right - flex-end*/
     align-items: center; /* Vertically center items */
-    padding-top: 30px;
 }
 
 /* Add spacing between filter components */
