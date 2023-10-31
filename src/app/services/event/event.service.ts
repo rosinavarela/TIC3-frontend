@@ -192,9 +192,16 @@ export class EventService {
   createApplication(data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(data);
-    console.log(body)
-    let id = data.id;//id del evento
+    let id = data.id;//id del negocio
     const url = `${this.baseURL}events/${id}/application`;
+    return this.http.post(url, body, { 'headers': headers })
+  }
+
+  assignArtistToEvent(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(data);
+    let id = data.id;//id del evento
+    const url = `${this.baseURL}events/${id}/selection`;
     return this.http.post(url, body, { 'headers': headers })
   }
 }

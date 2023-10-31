@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PopUpArtistComponent } from '../pop-up-artist/pop-up-artist.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BusinessIdService } from 'src/app/services/user/business-id.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { BusinessIdService } from 'src/app/services/user/business-id.service';
 export class NextEventsComponent {
   events: Event[] =[];
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog, private businessIdService: BusinessIdService) { }
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog, private businessIdService: BusinessIdService, private snackbar: MatSnackBar) { }
 
   imagePath: string = "../../../assets/images/logos/logo.jpeg"
 
@@ -31,18 +32,7 @@ export class NextEventsComponent {
   }
 
   ngOnInit(): void{
-    const id =this.businessIdService.getBusinessId();
-    this.eventService.getUnassignedEventsFromBusiness(id).subscribe(
-      (data: Event[]) => {
-        console.log("eventsUnassigned:", data)
-        this.events = data; 
-      },
-      (error) => {
-        console.error('Error fetching events:', error);
-      }
-    );
-
-    console.log("Eventos: "+this.events);
+    this.fetchEvents();
   }
 
   goToArtist(application:any){
@@ -62,8 +52,45 @@ export class NextEventsComponent {
     }
     return time || ''; // Return the original time if it's not in the expected format
   }
+
+  fetchEvents() {
+    const id = this.businessIdService.getBusinessId();
+    this.eventService.getUnassignedEventsFromBusiness(id).subscribe(
+      (data: Event[]) => {
+        console.log("eventsUnassigned:", data);
+        this.events = data;
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
+    );
+  }
   
   
+  confirmarArtista(event: any, application: any) {
+    const artistId = application.artist_id;
+    const id =event.id;
+    const data = {
+      artistId: artistId,
+      id: id,
+    }
+    this.eventService.assignArtistToEvent(data).subscribe(
+      (resp) => {
+        this.snackbar.open('Artista confirmado', 'Close', {
+          duration: 5000, // Duration of the snackbar display (in milliseconds)
+        });
+        this.fetchEvents();
+      },
+      (error) => {
+        console.error('Errorrrrr:', error);
+        if (error.status === 500) {
+          this.snackbar.open('Ocurrió un error, intente de nuevo', 'Close', {
+            duration: 5000, // Duration of the snackbar display (in milliseconds)
+          });
+        }
+      }
+    );
+  }
 
 }
 
