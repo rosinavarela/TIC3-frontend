@@ -1,8 +1,9 @@
-import { Component, ElementRef, Inject } from '@angular/core';
+import { Component, ElementRef, Inject,ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserArtistService } from 'src/app/services/user/user-artist.service';
+
 
 @Component({
   selector: 'app-artist-edit-profile',
@@ -10,6 +11,8 @@ import { UserArtistService } from 'src/app/services/user/user-artist.service';
   styleUrls: ['./artist-edit-profile.component.css']
 })
 export class ArtistEditProfileComponent {
+
+  @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
 
   profileForm: FormGroup;
   picture: string | null = null;
@@ -35,19 +38,18 @@ export class ArtistEditProfileComponent {
       links: new FormControl(''),
       musicGenre: new FormControl(this.musicGenre),
     });
-    
   }
 
   clearSelectedImage() {
     this.selectedImage = "/assets/images/logos/default-profile.webp";
     this.picture = null;
     this.hasProfilePicture = false;
-    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     
-    if (fileInput) {
-      fileInput.value = '';
+    // Clear the file input value
+    if (this.fileInput) {
+        this.fileInput.nativeElement.value = '';
     }
-  } 
+  }
 
   onImageSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;

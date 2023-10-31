@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, Inject,ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegisterService } from '../services/register/register.service';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./artist-profile.component.css']
 })
 export class ArtistProfileComponent {
+
+  @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
 
   profileForm: FormGroup;
   picture: string | ArrayBuffer | null = "/assets/images/logos/default-profile.webp";
@@ -96,11 +98,12 @@ export class ArtistProfileComponent {
   clearSelectedImage() {
     this.picture = "/assets/images/logos/default-profile.webp";
     this.hasProfilePicture = false;
-    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-    if (fileInput) {
-      fileInput.value = '';
+    
+    // Clear the file input value
+    if (this.fileInput) {
+        this.fileInput.nativeElement.value = '';
     }
-  }
+  } 
 
   omitir( ) {
     console.log(this.data.user.id);
