@@ -1,5 +1,5 @@
 // Import necessary Angular modules and components
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BusinessAccountComponent } from '../business-account/business-account.component';
 import { ArtistAccountComponent } from '../artist-account/artist-account.component';
@@ -19,7 +19,7 @@ import { ArtistIdService } from '../services/user/artist-id.service';
   templateUrl: './menubar.component.html', // The HTML template for this component
   styleUrls: ['./menubar.component.css'] // The associated CSS styles for this component
 })
-export class MenubarComponent{
+export class MenubarComponent implements OnInit{
 
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger | undefined;
   @ViewChild('notificationMenuTrigger') notificationMenuTrigger: MatMenuTrigger | undefined;
@@ -49,14 +49,29 @@ export class MenubarComponent{
         }
       }
     });
-    this.notificationService.unseenNotifications$.subscribe((unseenNotifications) => {
+    /*this.notificationService.unseenNotifications$.subscribe((unseenNotifications) => {
       this.unseenNotificationsArray = unseenNotifications;
       this.lenUnseenNotifications = this.unseenNotificationsArray.length;
       this.badgeVisibility();
     });
     this.notificationService.seenNotifications$.subscribe((seenNotifications) => {
       this.seenNotificationsArray = seenNotifications;
-    });
+    });*/
+    
+  }
+
+  ngOnInit(): void {
+    const id = this.artistIdService.getArtistId();
+    this.notificationService.getNotifications(id).subscribe(
+      (data) => {
+        this.unseenNotificationsArray = data.unseenNotifications;
+        this.seenNotificationsArray = data.seenNotifications;
+      },
+      (error) => {
+        console.error('Error updating artist:', error);
+      }
+    );
+    this.badgeVisibility();
     console.log('unseen: ',this.unseenNotificationsArray);
     console.log('seen: ',this.seenNotificationsArray);
   }

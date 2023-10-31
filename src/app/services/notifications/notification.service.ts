@@ -26,4 +26,10 @@ export class NotificationService {
     const url = `${this.baseURL}artists/${id}/notifications`;
     return this.http.put(url, '');
   }
+
+  getNotifications(id: number): Observable<any> {
+    const url = `${this.baseURL}artists/${id}/notifications`;
+    
+    return this.http.get(url);
+  }
 }
