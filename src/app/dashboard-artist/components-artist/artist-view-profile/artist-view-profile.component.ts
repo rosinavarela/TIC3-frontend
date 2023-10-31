@@ -18,7 +18,7 @@ export class ArtistViewProfileComponent implements OnInit{
     'http://www.openai.com'
   ];
 
-  instagramTag: string ="cristiano"; 
+  instagramTag: string | null= null; 
   instagramLink: string='';
   artistId: number =0;
   artisticName: string='';
@@ -46,8 +46,9 @@ export class ArtistViewProfileComponent implements OnInit{
         }
         this.musicGenre=artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();//Transforms it so that the first letter is upper case
         this.description=artistData.description;
+        console.log('Received artistData.igUsername:', artistData.igUsername);
         this.instagramTag=artistData.igUsername;
-        this.links=artistData.links;
+        //this.links=artistData.links;
         this.instagramLink = `https://www.instagram.com/${this.instagramTag}/`
         
       },

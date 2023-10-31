@@ -7,7 +7,6 @@
     margin: 0 auto; /* Center the container horizontally */
     flex-direction: column;
     background-color: white;
-    /* Add shadow styles */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow properties as needed */
 }
 
@@ -22,22 +21,24 @@
     padding: 40px;
     align-items: center;
     display: flex; /* Enable flex layout for the left column */
+    justify-content: center;
   }
   
   .right h1 {
     margin: 0; /* Remove any default margins for the h1 element */
-    font-size: 40px; /* Increase the font size of the text */
-    margin-bottom: 20px;
+    font-size: 50px; /* Increase the font size of the text */
+    margin-bottom: 10px;
   }
   
   .left img {
-    max-width: 100%; /* Allow the image to take up the entire left column width */
-    height: auto; /* Maintain aspect ratio */
+    width: 350px; /* Set a fixed width for the circular image */
+    height: 350px; /* Set a fixed height for the circular image */
+    object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+    border-radius: 50%;
     margin-top: 20px; /* Adjust space above the image */
     margin-bottom: 20px; /* Adjust space below the image */
-    border-radius: 50%; /* Make the image circular */
-  }
-  
+    }
+
   /* Styling for the right column */
   .right {
     flex: 0 0 50%; /* Set the right column to be 50% of the container width */
@@ -132,6 +133,11 @@ mat-divider {
     align-items: center;
     width: 100%;
     margin-right: 20px;
+
+}
+
+.edit{
+    font-size: 16px;
 
 }
 
