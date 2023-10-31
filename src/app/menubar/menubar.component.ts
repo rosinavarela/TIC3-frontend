@@ -128,6 +128,9 @@ export class MenubarComponent implements OnInit {
         });
       }
     }
+    else if (option == "signout") {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   badgeVisibility() {
