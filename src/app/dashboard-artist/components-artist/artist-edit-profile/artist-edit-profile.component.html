@@ -7,9 +7,9 @@
                     <mat-icon>close</mat-icon>
                 </button>
             </div>
-            <div class="row">
+            <div class="row"> 
                 <div class="col1">
-                    <img [src]="picture" alt="Artist Image" [ngClass]="{'profile-picture': hasProfilePicture, 'default-image': !hasProfilePicture}">
+                    <img src="{{selectedImage}}" alt="Artist Image" [ngClass]="{'profile-picture': hasProfilePicture, 'default-image': !hasProfilePicture}">
                 </div>
 
                 <div class="col">
