@@ -16,19 +16,23 @@ n
             </div>
             <div class="info-column">
                 <h1>{{artisticName}}</h1> <!--nombre artistico-->
-                <div class="style" fxLayout= "row">
+                <div class="style" fxLayout= "row" *ngIf="musicGenre!=null">
                     <mat-icon matSuffix>music_note</mat-icon>
                     <p>{{musicGenre}}</p> <!--estilo musical-->
                 </div>
-                <p>{{description}}</p>             
-                <a [href]="instagramLink" target="_blank">
-                    <button mat-button class="instagram">
-                        <div class="button-content">
-                            <img class="logo" src="/assets/images/logos/instagram-logo.webp" alt="Instagram" />
-                            <span>{{instagramTag}}</span>
-                        </div>
-                    </button>
-                </a>
+                <div class="description" *ngIf="description!=null">
+                    <p>{{description}}</p>  
+                </div>
+                <div *ngIf="instagramTag!=null">             
+                    <a [href]="instagramLink" target="_blank" *ngIf="instagramTag!=null">
+                        <button mat-button class="instagram" *ngIf="instagramTag!=null">
+                            <div class="button-content">
+                                <img class="logo" src="/assets/images/logos/instagram-logo.webp" alt="Instagram" />
+                                <span>{{instagramTag}}</span>
+                            </div>
+                        </button>
+                    </a>
+                </div>
                 <div class= "links" *ngIf="links">
                     <p>Links:</p> <!--este no suplantarlo-->
                     <div fxLayout="row">
