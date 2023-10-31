@@ -11,6 +11,7 @@ import { ArtistSidenavService } from 'src/app/services/menubar/artist-sidenav.se
 import {NavigationEnd } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { NotificationService } from '../services/notifications/notification.service';
+import { ArtistIdService } from '../services/user/artist-id.service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class MenubarComponent{
 
   usertype= "general";
 
-  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService){
+  constructor(private matDialog:MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService, private artistIdService: ArtistIdService){
     // Subscribe to the NavigationEnd event to detect route changes. Esto es para ver en que ruta esta y asi mover la sidenav acorde
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -125,7 +126,15 @@ export class MenubarComponent{
   onMenuClosed(){
     this.badgeHidden= true; 
     this.lenUnseenNotifications=0;
-    //aca tendria que haber una funcion que le ponga a todas las notis del array seen
+    const id = this.artistIdService.getArtistId();
+    this.notificationService.viewNotifications(id).subscribe(
+      (updatedArtist) => {
+        // Handle the updated business data
+      },
+      (error) => {
+        console.error('Error updating artist:', error);
+      }
+    );
   }
   
 }

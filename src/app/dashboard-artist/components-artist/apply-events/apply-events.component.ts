@@ -55,7 +55,6 @@ export class ApplyEventsComponent implements OnInit {
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
       (data) => {
         this.events = data;
-        console.log(this.events)
       },
       (error) => {
         console.error('Error fetching events:', error);
