@@ -17,11 +17,10 @@ export class ExpandApplicationComponent {
   event: any = {
     picture: of('/assets/images/logos/foto.jpeg'),
   };
-  eventImageSource: string = '';
   eventId: string = '';
   artistId: number = 1;
 
-  imagePath: string = "../../../assets/images/logos/logo.jpeg"
+  imagePath: string = "/assets/images/logos/logo.jpeg"
 
   getSource(){
     if(this.event.picture && this.event.picture !== ""){
@@ -41,7 +40,6 @@ export class ExpandApplicationComponent {
     this.eventService.getEventById(this.eventId).subscribe(
       (data: any) => {
         this.event = data;
-        this.eventImageSource = this.getImageSource(this.event);
       },
       (error) => {
         console.error('Error fetching event:', error);
@@ -59,7 +57,7 @@ export class ExpandApplicationComponent {
     return time || ''; // Return the original time if it's not in the expected format
   }
 
-  getImageSource(event: any): any {
+  /*getImageSource(event: any): any {
     if (event.picture && event.picture.type === 'Buffer' && Array.isArray(event.picture.data)) {
       const buffer = event.picture.data; // Extract the image data from the Buffer
       const arrayBuffer = new Uint8Array(buffer).buffer; // Convert the array to an ArrayBuffer
@@ -68,6 +66,7 @@ export class ExpandApplicationComponent {
       return objectURL;
     }
   }
+  */
 
   goBackToEvent() {
     this.router.navigate(['/dashboard-artist',this.artistId,'apply-events'], { relativeTo: this.route });; 

@@ -19,7 +19,7 @@ export class ApplyEventsComponent implements OnInit {
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
 
-  imagePath: string = "../../../assets/images/events/BarArocena.jpeg"
+  imagePath: string = "/assets/images/logos/logo.jpeg"
 
   getSource(event: Event){
     if(event.picture && event.picture !== ""){

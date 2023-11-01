@@ -21,7 +21,7 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
 })
 export class MyNextEventsComponent implements OnInit {
   events: any[] = [];
-  imagePath: string = "../../../assets/images/logos/logo.jpeg"
+  imagePath: string = "/assets/images/logos/logo.jpeg"
   id: number = 0;
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private artistIdService: ArtistIdService) {
     this.id = this.artistIdService.getArtistId();

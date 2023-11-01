@@ -20,7 +20,7 @@
   /* Styling for the left column */
   .left {
     flex-direction: column ;
-    width: 50%;
+    width: 50% !important;
     max-width: 50%;
     justify-content: center;  
     align-items: center;
@@ -58,7 +58,6 @@
     display: flex;
     align-items: center; /* Center the image horizontally */
     justify-content: center; /* Center the image vertically */
-    background-color: black;
     border-radius: 1rem;
     margin:0px;
     margin-bottom:10px;
@@ -96,7 +95,7 @@
     text-align: left; /* Center text horizontally */
     padding: 25px;
     max-width: 50%;
-    width:50%
+    width: 50% !important;
   }
 
   .info-column{
