@@ -81,8 +81,9 @@ export class ArtistEditProfileComponent {
         }
         this.igUsername = artistData.igUsername;
         this.description = artistData.description;
-        this.links = artistData.links;
-        this.musicGenre = artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();
+        this.links = artistData.links;        
+        this.musicGenre = artistData.musicGenre;
+        this.musicGenre = this.musicGenre.toLowerCase();
         console.log(artistData);
         if(artistData.picture){
           this.hasProfilePicture = true;

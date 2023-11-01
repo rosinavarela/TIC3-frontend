@@ -48,7 +48,7 @@
                 <div class="col">
                     <mat-form-field>
                         <mat-label>Género musical</mat-label>
-                        <mat-select id="artistGenre" [(ngModel)]="musicGenre" name="musicGenre" formControlName="musicGenre">
+                        <mat-select id="artistGenre" [(value)]="musicGenre" [(ngModel)]="musicGenre" name="musicGenre" formControlName="musicGenre">
                             <mat-option value="pop">Pop</mat-option>
                             <mat-option value="rock">Rock</mat-option>
                             <mat-option value="jazz">Jazz</mat-option>
