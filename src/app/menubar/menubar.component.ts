@@ -48,6 +48,8 @@ export class MenubarComponent implements OnInit {
             (data) => {
               this.unseenNotificationsArray = data.unseenNotifications;
               this.seenNotificationsArray = data.seenNotifications;
+              this.lenUnseenNotifications = this.unseenNotificationsArray.length;
+              this.badgeVisibility();
             },
             (error) => {
               console.error('Error updating artist:', error);
@@ -62,14 +64,6 @@ export class MenubarComponent implements OnInit {
         }
       }
     });
-    /*this.notificationService.unseenNotifications$.subscribe((unseenNotifications) => {
-      this.unseenNotificationsArray = unseenNotifications;
-      this.lenUnseenNotifications = this.unseenNotificationsArray.length;
-      this.badgeVisibility();
-    });
-    this.notificationService.seenNotifications$.subscribe((seenNotifications) => {
-      this.seenNotificationsArray = seenNotifications;
-    });*/
 
   }
 

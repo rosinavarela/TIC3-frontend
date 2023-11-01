@@ -20,7 +20,7 @@ export class EventComponent implements OnInit {
   selectedLocal: string | null = null;
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
-  imagePath: string = "../../../assets/images/events/BarArocena.jpeg"
+  imagePath: string = "/assets/images/logos/logo.jpeg"
 
   getSource(event: Event){
     if(event.picture){
@@ -89,32 +89,4 @@ export class EventComponent implements OnInit {
 }
 
 
-/*
 
-
-import { Component, OnInit } from '@angular/core';
-import {EventService} from '../../../services/event/event.service';
-import {Event} from '../../../shared/models/Event';
-import { Router } from '@angular/router';
-
-
-@Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css'],
-})
-export class EventComponent implements OnInit{
-
-  events: Event[] = [];
-  constructor(private eventservice: EventService, private router: Router){}
-
-  ngOnInit(): void {
-    this.events=this.eventservice.getAll(); //llama a la funcion getall de los servicios
-  }
-
-  onEventClick(eventId: number) {
-    // Navigate to the expanded-event component with the event ID as a parameter
-    this.router.navigate(['/expanded-event', eventId]);
-  }
-}
-*/

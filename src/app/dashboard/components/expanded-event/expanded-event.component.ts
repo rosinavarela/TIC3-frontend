@@ -12,15 +12,14 @@ import { EventService } from 'src/app/services/event/event.service';
 export class ExpandedEventComponent {
 
   link: string | null = null; 
-  event: any = {
-    picture: of('/assets/images/logos/foto.jpeg'),
-  };
-  eventImageSource: string = '';
-  imagePath: string = '../../../assets/images/logos/foto.jpeg';
+
+  event: any = {};
+
+  imagePath: string = '/assets/images/logos/logo.jpeg';
   
-  getSource(event: any){
-    if(event.picture){
-      return event.picture;
+  getSource(){
+    if(this.event.picture){
+      return this.event.picture;
     } else{
       return this.imagePath;
     }
@@ -36,7 +35,6 @@ export class ExpandedEventComponent {
       (data: any) => {
         this.event = data;
         // Calculate the image source and store it in eventImageSource
-      this.eventImageSource = this.getImageSource(this.event);
       this.link = data.business.webPage;
       console.log('link: ', this.link);
       },
@@ -56,7 +54,7 @@ export class ExpandedEventComponent {
     return time || ''; // Return the original time if it's not in the expected format
   }
 
-  getImageSource(event: any): any {
+ /* getImageSource(event: any): any {
     if (event.picture && event.picture.type === 'Buffer' && Array.isArray(event.picture.data)) {
       const buffer = event.picture.data; // Extract the image data from the Buffer
       const arrayBuffer = new Uint8Array(buffer).buffer; // Convert the array to an ArrayBuffer
@@ -78,12 +76,13 @@ export class ExpandedEventComponent {
       /*const buffer = event.picture.data as number[]; // Convert to a number array
       const base64 = btoa(String.fromCharCode.apply(null, buffer)); // Convert to base64
       const mimeType = 'image/*'; // Replace with the appropriate image type (e.g., 'image/jpeg', 'image/png', etc.)
-      return `data:${mimeType};base64,${base64}`;*/
+      return `data:${mimeType};base64,${base64}`;
     }
 
     // If the picture format is not as expected, return a default image source
-    return '/assets/images/logos/foto.jpeg';
+    return '/assets/images/logos/logo.jpeg';
   }
+  */
 
 
   goBackToEvent() {

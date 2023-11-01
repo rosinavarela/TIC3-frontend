@@ -21,7 +21,7 @@ export class NextEventsComponent {
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog, private businessIdService: BusinessIdService, private snackbar: MatSnackBar) { }
 
-  imagePath: string = "../../../assets/images/logos/logo.jpeg"
+  imagePath: string = "/assets/images/logos/logo.jpeg"
 
   getSource(event: Event){
     if(event.picture && event.picture !== ""){

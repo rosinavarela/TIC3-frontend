@@ -73,7 +73,7 @@ mat-list-item {
   display: flex;
   align-items: center; /* Center the image horizontally */
   justify-content: center; /* Center the image vertically */
-  background-color: black;
+  background-color:#d8efed; /*no pude aplicarlo desde el theme*/
   border-radius: 1rem;
   margin:0px;
   margin-bottom:10px;

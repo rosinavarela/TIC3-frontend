@@ -33,10 +33,11 @@ mat-list-item .image-container {
   display: flex;
   align-items: center; /* Center the image horizontally */
   justify-content: center; /* Center the image vertically */
-  background-color: black;
   border-radius: 0.7rem;
   margin-bottom:20px;
+  border: 1px solid lightgray; /* Add border style and color */
 }
+
 
 mat-list-item img {
   max-width: 100%; /* Maximum width for the image */
@@ -45,7 +46,8 @@ mat-list-item img {
   height: auto; /* Reset the height to auto to maintain aspect ratio */
   object-fit: contain; /* Scale the image to fit inside the container while maintaining aspect ratio */
   margin:0;
-  padding:0;
+  padding:0;  
+  border-radius: 0.7rem;
 }
 
 .content {

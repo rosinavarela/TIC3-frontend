@@ -6,7 +6,7 @@
         <div class="left" fxFlex="50%" fxLayout="column">
             <h1 class="name">{{event?.name}}</h1>
             <div class= "image-container">
-                <img src="{{getSource(event)}}" alt="Event Image" *ngIf="event.picture !== null" />
+                <img src="{{getSource()}}" alt="Event Image"/>
             </div>
             <button mat-button class="artist" (click)="goToArtist()">
                 <div class="button-content">
