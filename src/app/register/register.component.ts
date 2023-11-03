@@ -6,6 +6,8 @@ import { ArtistProfileComponent } from '../artist-profile/artist-profile.compone
 import { MatDialogRef } from '@angular/material/dialog';
 import { TermsComponent } from '../terms/terms.component';
 import { Router } from '@angular/router';
+import { BusinessIdService } from '../services/user/business-id.service';
+import { ArtistIdService } from '../services/user/artist-id.service';
 
 @Component({
   selector: 'app-register-form',
@@ -23,7 +25,7 @@ export class RegisterComponent {
   formDataBackup: any = {}; // Initialize as an empty object
 
 
-  constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>, private router: Router) {
+  constructor(private registerService: RegisterService, private matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>, private router: Router, private businessIdService: BusinessIdService, private artistIdService: ArtistIdService) {
     this.registrationForm = new FormGroup({
       userType: new FormControl('artist', Validators.required),
       // Common fields
@@ -77,6 +79,7 @@ export class RegisterComponent {
           (response) => {
             resp = response;
             console.log('response:', response);
+            this.artistIdService.setArtistId(response.user.id);
             this.matDialog.open(ArtistProfileComponent, {
               width: '900px',
               height: '650px',
@@ -100,6 +103,7 @@ export class RegisterComponent {
         this.registerService.registerBusiness(formData).subscribe(
           (resp) => {
             console.log('response:', resp)
+            this.businessIdService.setBusinessId(resp.user.rut);
             this.router.navigate(['/dashboard-business', formData.rut]);
             this.dialogRef.close();
           },
