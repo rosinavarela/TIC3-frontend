@@ -13,7 +13,7 @@ import { ArtistIdService } from 'src/app/services/user/artist-id.service';
   styleUrls: ['./expand-application.component.css']
 })
 export class ExpandApplicationComponent {
-  link: string = "wwww.google.com" //aca poner el link del lugar
+  link: string = "" //aca poner el link del lugar
   event: any = {
     picture: of('/assets/images/logos/foto.jpeg'),
   };

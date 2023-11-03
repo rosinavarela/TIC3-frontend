@@ -16,10 +16,10 @@ export class ArtistEditProfileComponent {
 
   profileForm: FormGroup;
   picture: string | null = null;
-  artisticName: string | null = "Nombre Artistico";
-  igUsername: string | null = "Usuario";
-  description: string | null = "no tengo";
-  links: string | null = "google.com";
+  artisticName: string | null = "";
+  igUsername: string | null = "";
+  description: string | null = "";
+  links: string | null = "";
   musicGenre: string = "";
   hasProfilePicture: boolean = false;
   failureMessage?: string;
