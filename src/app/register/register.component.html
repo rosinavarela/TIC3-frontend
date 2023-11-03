@@ -33,6 +33,7 @@
                         <mat-label>Contraseña</mat-label>
                         <input matInput [type]="passwordInputType1" formControlName="password" placeholder="Password">
                         <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
+                        <mat-error *ngIf="registrationForm.get('password')?.hasError('minlength')">Deben ser mínimo 8 caracteres</mat-error>
                         <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility1()">
                             <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>            
                         </button>
