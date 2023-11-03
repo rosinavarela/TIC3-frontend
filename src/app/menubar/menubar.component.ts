@@ -12,6 +12,7 @@ import { NavigationEnd } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { NotificationService } from '../services/notifications/notification.service';
 import { ArtistIdService } from '../services/user/artist-id.service';
+import { BusinessIdService } from '../services/user/business-id.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class MenubarComponent implements OnInit {
 
   usertype = "general";
 
-  constructor(private matDialog: MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService, private artistIdService: ArtistIdService) {
+  constructor(private matDialog: MatDialog, public sidenavService: SidenavService, public businessSidenavService: BusinessSidenavService, public artistSidenavService: ArtistSidenavService, private router: Router, private notificationService: NotificationService, private artistIdService: ArtistIdService, private businessIdService: BusinessIdService) {
     // Subscribe to the NavigationEnd event to detect route changes. Esto es para ver en que ruta esta y asi mover la sidenav acorde
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -112,13 +113,21 @@ export class MenubarComponent implements OnInit {
   selectOption(option: string) {
     if (option == "account") {
       if (this.usertype == "business") {
+        const data = {
+          id: this.businessIdService.getBusinessId()
+        }
         this.matDialog.open(BusinessAccountComponent, {
           width: '40%',
+          data: data
         });
       }
       else if (this.usertype == "artist") {
+        const data = {
+          id: this.artistIdService.getArtistId()
+        }
         this.matDialog.open(ArtistAccountComponent, {
           width: '40%',
+          data: data,
         });
       }
     }
