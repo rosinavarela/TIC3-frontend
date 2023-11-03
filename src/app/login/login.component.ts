@@ -28,6 +28,7 @@ export class LoginComponent {
   unseenNotifications: any[] = [];
   seenNotifications: any[] = [];
 
+
   constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService, private artistIdService: ArtistIdService) {
 
   }
