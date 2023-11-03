@@ -10,6 +10,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from '../services/notifications/notification.service';
 import { ArtistIdService } from '../services/user/artist-id.service';
+import { BusinessIdService } from '../services/user/business-id.service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent {
   seenNotifications: any[] = [];
 
 
-  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService, private artistIdService: ArtistIdService) {
+  constructor(private matDialog:MatDialog, private loginService: LoginService, private snackBar: MatSnackBar, private router: Router, private dialogRef: MatDialogRef<LoginComponent>, private notificationService: NotificationService, private artistIdService: ArtistIdService, private businessIdService: BusinessIdService) {
 
   }
 
@@ -98,6 +99,7 @@ export class LoginComponent {
           } catch (error) {
             console.error('Error parsing JSON:', error);
           }
+          this.businessIdService.setBusinessId(data.user.rut);
           this.router.navigate(['/dashboard-business', data.user.rut]);
           this.dialogRef.close();
         }
