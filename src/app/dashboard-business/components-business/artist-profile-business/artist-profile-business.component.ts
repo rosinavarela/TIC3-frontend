@@ -12,9 +12,9 @@ import { UserArtistService } from 'src/app/services/user/user-artist.service';
   styleUrls: ['./artist-profile-business.component.css']
 })
 export class ArtistProfileBusinessComponent implements OnInit {
-  links: string = 'http://www.google.com';
+  links: string = '';
 
-  instagramTag: string = "cristiano";
+  instagramTag: string = "";
   instagramLink: string = '';
   artistId: number = 0;
   eventId: string = '';
@@ -43,7 +43,7 @@ export class ArtistProfileBusinessComponent implements OnInit {
           this.picture = '/assets/images/logos/default-profile.webp';
         }
 
-        this.musicGenre = artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();//Transforms it so that the first letter is upper case
+        this.musicGenre = artistData.musicGenre ? artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase() : '';
         this.description = artistData.description;
         this.instagramTag = artistData.igUsername;
         this.links = artistData.links;

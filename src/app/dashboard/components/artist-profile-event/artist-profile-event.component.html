@@ -16,7 +16,7 @@
             </div>
             <div class="info-column">
                 <h1>{{artisticName}}</h1> <!--nombre artistico-->
-                <div class="style" fxLayout= "row" *ngIf="musicGenre!=null">
+                <div class="style" fxLayout= "row" *ngIf="musicGenre!=null && musicGenre!=''">
                     <mat-icon matSuffix>music_note</mat-icon>
                     <p>{{musicGenre}}</p> <!--estilo musical-->
                 </div>

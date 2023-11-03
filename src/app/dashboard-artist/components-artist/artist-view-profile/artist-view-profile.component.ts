@@ -12,7 +12,7 @@ import { ArtistIdService } from 'src/app/services/user/artist-id.service';
   styleUrls: ['./artist-view-profile.component.css']
 })
 export class ArtistViewProfileComponent implements OnInit{
-  links: string ='http://www.google.com';
+  links: string ='';
 
   instagramTag: string | null= null; 
   instagramLink: string='';
@@ -40,7 +40,8 @@ export class ArtistViewProfileComponent implements OnInit{
         } else {
           this.picture = '/assets/images/logos/default-profile.webp';
         }
-        this.musicGenre=artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase();//Transforms it so that the first letter is upper case
+        this.musicGenre = artistData.musicGenre ? artistData.musicGenre.charAt(0).toUpperCase() + artistData.musicGenre.slice(1).toLowerCase() : '';
+        console.log('Received .music:',this.musicGenre);
         this.description=artistData.description;
         console.log('Received artistData.igUsername:', artistData.igUsername);
         this.instagramTag=artistData.igUsername;
