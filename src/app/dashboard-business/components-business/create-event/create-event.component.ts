@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { EventService } from 'src/app/services/event/event.service';
 import { BusinessIdService } from 'src/app/services/user/business-id.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -121,6 +121,11 @@ export class CreateEventComponent {
   clearSelectedImage() {
     this.selectedImage = '';
     this.imageSelected = false;
+
+    this.createEventForm.patchValue({
+      picture: null,
+    });
+
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
