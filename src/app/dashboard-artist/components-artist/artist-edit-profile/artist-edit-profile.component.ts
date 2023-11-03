@@ -83,7 +83,9 @@ export class ArtistEditProfileComponent {
         this.description = artistData.description;
         this.links = artistData.links;        
         this.musicGenre = artistData.musicGenre;
-        this.musicGenre = this.musicGenre.toLowerCase();
+        if(artistData.musicGenre){
+          this.musicGenre = this.musicGenre.toLowerCase();
+        }
         console.log(artistData);
         if(artistData.picture){
           this.hasProfilePicture = true;
@@ -115,15 +117,27 @@ export class ArtistEditProfileComponent {
   }
 
   editar(){
-    const artistData = {
-      artisticName: this.artisticName,
-      picture: this.picture,
-      igUsername: this.igUsername,
-      description: this.description,
-      links: this.links,
-      musicGenre: this.musicGenre.toLowerCase(),
-    };
-    this.updateArtist(this.data.id,artistData);
+    if(this.musicGenre) {
+      const artistData = {
+        artisticName: this.artisticName,
+        picture: this.picture,
+        igUsername: this.igUsername,
+        description: this.description,
+        links: this.links,
+        musicGenre: this.musicGenre.toLowerCase(),
+      };
+      this.updateArtist(this.data.id,artistData);
+    }else {
+      const artistData = {
+        artisticName: this.artisticName,
+        picture: this.picture,
+        igUsername: this.igUsername,
+        description: this.description,
+        links: this.links,
+      };
+      this.updateArtist(this.data.id,artistData);
+    }
+    
   }
 
 }
