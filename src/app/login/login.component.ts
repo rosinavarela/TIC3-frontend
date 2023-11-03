@@ -106,13 +106,14 @@ export class LoginComponent {
         
       },
       (error) => {
-        // Handle error
-        console.error('Error:', error);
-        // Display an error message to the user
-        this.snackBar.open('An error occurred', 'Close', {
-          duration: 3000, // Duration of the snackbar display (in milliseconds)
-          panelClass: ['custom-snackbar'] // Apply the custom class to change style (no funcionaaaaa)
-        });
+        if (error.status === 401) {
+          this.loginMessage = error.error.message;
+        } else if (error.status === 500) {
+          this.snackBar.open('An error occurred', 'Close', {
+            duration: 3000, // Duration of the snackbar display (in milliseconds)
+            panelClass: ['custom-snackbar'] // Apply the custom class to change style (no funcionaaaaa)
+          });
+        }
       }
     );
   }
