@@ -104,7 +104,7 @@ export class ArtistAccountComponent {
 
   constructor(private matDialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userArtistService: UserArtistService) {
     //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser artist
-    this.fetchAritist(1);//aca hay que poner data.id en vez de 1!!!!!
+    this.fetchAritist(data.id);//aca hay que poner data.id en vez de 1!!!!!
     this.initialName = this.name;
     this.initialLastName = this.lastName;
     this.initialId = this.id;
