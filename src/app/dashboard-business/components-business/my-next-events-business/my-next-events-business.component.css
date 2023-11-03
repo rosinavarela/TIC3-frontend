@@ -196,3 +196,8 @@ mat-icon {
   text-transform: uppercase;
 
 }
+
+
+.no-events{
+  color: grey;
+}

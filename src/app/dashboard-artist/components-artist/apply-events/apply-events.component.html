@@ -1,7 +1,7 @@
 <div class="full-width">
     <h1>Postularse a Eventos</h1>
 </div>
-<div class="filter-container">
+<div class="filter-container" *ngIf="!noEventsMessageVisible">
     <span class="filter-text">Aplicar filtros:</span>
     <app-filter-ubicacion-artist></app-filter-ubicacion-artist>
     <app-filter-mes-artist></app-filter-mes-artist>
@@ -10,6 +10,7 @@
 </div>
 
 <mat-nav-list> 
+    <span class="no-events" *ngIf="noEventsMessageVisible">Aún no hay eventos</span>
     <mat-list-item *ngFor="let event of events" (click)="onEventClick(event.id)"> 
         <div class="container" fxLayout="column">
             <div class="image-container">

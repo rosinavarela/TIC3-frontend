@@ -196,3 +196,7 @@ font-weight: 900;
 text-transform: uppercase;
 
 }
+
+.no-events{
+  color: grey;
+}

@@ -22,6 +22,7 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
 })
 export class MyNextEventsBusinessComponent {
   events: any[] =[];
+  noEventsMessageVisible = false; 
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private businessIdService: BusinessIdService) { }
 
@@ -40,6 +41,7 @@ export class MyNextEventsBusinessComponent {
       (data: Event[]) => {
         console.log("upcomingEvents:", data)
         this.events = data; 
+        this.noEventsMessageVisible = this.events.length === 0;
       },
       (error) => {
         console.error('Error fetching events:', error);

@@ -129,3 +129,7 @@ mat-list-item .location {
     font-weight: 900;
     padding-bottom: 20px; /*lo tuve que centrar asi*/
 }
+
+.no-events{
+  color: grey;
+}

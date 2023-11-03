@@ -18,6 +18,7 @@ export class ApplyEventsComponent implements OnInit {
   selectedLocal: string | null = null;
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
+  noEventsMessageVisible = false; 
 
   imagePath: string = "/assets/images/logos/logo.jpeg"
 
@@ -55,6 +56,7 @@ export class ApplyEventsComponent implements OnInit {
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
       (data) => {
         this.events = data;
+        this.noEventsMessageVisible = this.events.length === 0;
       },
       (error) => {
         console.error('Error fetching events:', error);

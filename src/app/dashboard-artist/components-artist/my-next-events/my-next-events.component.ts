@@ -21,6 +21,8 @@ const globalRippleConfig: RippleGlobalOptions = { //ver bien como se hace esto p
 })
 export class MyNextEventsComponent implements OnInit {
   events: any[] = [];
+  noEventsMessageVisible = false; 
+
   imagePath: string = "/assets/images/logos/logo.jpeg"
   id: number = 0;
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private artistIdService: ArtistIdService) {
@@ -41,6 +43,7 @@ export class MyNextEventsComponent implements OnInit {
     this.eventService.getUpcomingEventsFromArtist(id).subscribe(
       (data) => {
         this.events = data;
+        this.noEventsMessageVisible = this.events.length === 0;
       },
       (error) => {
         console.error('Error fetching events:', error);

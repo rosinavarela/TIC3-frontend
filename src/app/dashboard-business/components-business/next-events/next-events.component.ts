@@ -18,6 +18,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NextEventsComponent {
   events: Event[] =[];
+  noEventsMessageVisible = false; 
+
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private matDialog:MatDialog, private businessIdService: BusinessIdService, private snackbar: MatSnackBar) { }
 
@@ -59,6 +61,7 @@ export class NextEventsComponent {
       (data: Event[]) => {
         console.log("eventsUnassigned:", data);
         this.events = data;
+        this.noEventsMessageVisible = this.events.length === 0;
       },
       (error) => {
         console.error('Error fetching events:', error);

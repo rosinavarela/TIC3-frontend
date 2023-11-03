@@ -21,6 +21,8 @@ export class EventComponent implements OnInit {
   selectedTime: number | null = null;
   selectedUbicacion: string | null = null;
   imagePath: string = "/assets/images/logos/logo.jpeg"
+  noEventsMessageVisible = false; 
+
 
   getSource(event: Event){
     if(event.picture){
@@ -80,6 +82,7 @@ export class EventComponent implements OnInit {
     this.eventservice.getFilteredEvents(neighborhood, timeWindow, business, genre, unassigned).subscribe(
       (data) => {
         this.events = data;
+        this.noEventsMessageVisible = this.events.length === 0;
       },
       (error) => {
         console.error('Error fetching events:', error);

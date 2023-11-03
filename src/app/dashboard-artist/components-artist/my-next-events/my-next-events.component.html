@@ -2,6 +2,7 @@
     <h1>Mis Próximos Eventos</h1>
 </div>
 <mat-nav-list>
+    <span class="no-events" *ngIf="noEventsMessageVisible">Aún no tienes próximos eventos</span>
     <mat-list-item [disableRipple]="true" *ngFor="let event of events"> 
         <div class="event-container" fxLayout="row">
             

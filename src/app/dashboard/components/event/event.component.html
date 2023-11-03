@@ -1,5 +1,5 @@
 
-<div class="filter-container">
+<div class="filter-container" *ngIf="!noEventsMessageVisible">
     <span class="filter-text">Aplicar filtros:</span>
     <app-filter-ubicacion></app-filter-ubicacion>
     <app-filter-mes></app-filter-mes>
@@ -8,6 +8,7 @@
 </div>
 
 <mat-nav-list>
+    <span class="no-events" *ngIf="noEventsMessageVisible">Aún no hay eventos</span>
     <mat-list-item *ngFor="let event of events" (click)="onEventClick(event.id)">
         <div class="container" fxLayout="column">
             <div class="image-container">
