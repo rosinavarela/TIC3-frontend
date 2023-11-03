@@ -141,7 +141,7 @@ export class BusinessAccountComponent {
 
   constructor(private matDialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private userBusinessService: UserBusinessService) {
     //data tendría que tener el id y tipo del usuario loggeado, en este caso ya se q va a ser business
-    this.fetchBusiness(224);  //poner en vez de 224 data.id!!!!
+    this.fetchBusiness(data.id); 
 
     this.initialName = this.name;
     this.initialLegalName = this.legalName;
