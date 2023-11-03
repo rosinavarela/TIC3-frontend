@@ -28,7 +28,7 @@ export class RegisterComponent {
       userType: new FormControl('artist', Validators.required),
       // Common fields
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       password2: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
